@@ -4,7 +4,7 @@ import {
   Globe, ExternalLink, GitBranch,
   Mail, ChevronDown, BarChart2, Shield, Layers,
   DollarSign, Briefcase, GraduationCap,
-  MapPin, ArrowRight, Bot,
+  MapPin, ArrowRight, Bot, Menu, X,
 } from 'lucide-react'
 
 // ─── i18n ─────────────────────────────────────────────────────────────────────
@@ -561,7 +561,7 @@ function ImagePlaceholder({ label }) {
 
 function Hero({ t }) {
   return (
-    <section className="flex flex-col justify-start md:min-h-[calc(100vh-4rem)] md:justify-center relative overflow-hidden px-6 pt-6 pb-16 md:py-24">
+    <section className="flex flex-col justify-start relative overflow-hidden px-6 pt-6 pb-16 md:pt-16 md:pb-24">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-indigo-700/20 rounded-full blur-[140px]" />
       </div>
@@ -895,11 +895,16 @@ function Navbar({ t, lang, setLang }) {
   const anchors = ['#experience', '#skills', '#contact']
   const projectAnchors = ['#lenny', '#restaurant', '#sup']
   const [dropOpen, setDropOpen] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
+
+  const closeMobile = () => setMobileOpen(false)
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-xl border-b border-white/5">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }} className="text-white font-bold text-sm hover:text-indigo-300 transition-colors cursor-pointer">Andrea Fabbri</a>
         <div className="flex items-center gap-4">
+          {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-5">
             {/* Projects dropdown */}
             <div className="relative" onMouseEnter={() => setDropOpen(true)} onMouseLeave={() => setDropOpen(false)}>
@@ -955,8 +960,46 @@ function Navbar({ t, lang, setLang }) {
               <img src="https://flagcdn.com/it.svg" alt="IT" className="w-full h-full object-cover" />
             </button>
           </div>
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMobileOpen(o => !o)}
+            className="md:hidden text-slate-300 hover:text-white transition-colors"
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div className="md:hidden bg-[#0a0a0f]/95 backdrop-blur-xl border-t border-white/5">
+          <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-1">
+            <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">{t.navProjects}</p>
+            {t.navProjectItems.map((label, i) => (
+              <a
+                key={projectAnchors[i]}
+                href={projectAnchors[i]}
+                onClick={closeMobile}
+                className="block py-2 pl-3 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+              >
+                {label}
+              </a>
+            ))}
+            <div className="border-t border-white/5 my-2" />
+            {t.nav.map((label, i) => (
+              <a
+                key={anchors[i]}
+                href={anchors[i]}
+                onClick={closeMobile}
+                className="block py-2 pl-3 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </nav>
   )
 }
