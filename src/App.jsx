@@ -25,8 +25,8 @@ const translations = {
       <>
         I engineer business-critical platforms that replace manual operations with
         intelligent automation. My flagship product delivers{' '}
-        <span className="text-white font-semibold">A$75,000+ in annual savings</span>{' '}
-        and a <span className="text-white font-semibold">1,700% ROI</span> to a
+        <span className="text-white font-semibold">A$60,000+ in annual savings</span>{' '}
+        and a <span className="text-white font-semibold">1,450% ROI</span> to a
         live food-delivery operation.
       </>
     ),
@@ -62,7 +62,7 @@ const translations = {
     lennyModulesTitle: 'Operational Modules — Quantified Business Value',
     lennySavingsLabel: 'Total Quantified Annual Savings',
     lennySavingsFooter: (
-      <>Maintenance cost: <span className="text-white font-medium">~A$4,100/yr</span>{' · '}ROI:{' '}<span className="text-emerald-400 font-bold">1,700%</span>{' · '}Time saved:{' '}<span className="text-white font-medium">2,088 hrs/yr</span></>
+      <>Maintenance cost: <span className="text-white font-medium">~A$4,100/yr</span>{' · '}ROI:{' '}<span className="text-emerald-400 font-bold">1,450%</span>{' · '}Time saved:{' '}<span className="text-white font-medium">1,650 hrs/yr</span></>
     ),
     videoLabel1: '[ INSERT: lenny-demo.gif — screen recording ]',
     imgLabel1: '[ INSERT: lenny-sidebar-screenshot.jpg ]',
@@ -129,7 +129,7 @@ const translations = {
           'Sole architect of Lenny Platform — a 778-route ERP used daily in a live food-delivery operation, built through AI-assisted engineering',
 
           'Architected and delivered 29 software modules, eliminating all manual back-office processes',
-          'Quantified A$76,100/yr in operational savings with a documented 1,700% ROI',
+          'Quantified A$60,200/yr in operational savings with a documented 1,450% ROI',
           'Integrated Google Gemini AI, WhatsApp Business API, Firebase Push, Brevo, and AWS RDS',
           'Implemented enterprise-grade security: AES-128 encryption, 8-role RBAC, audit trails, automated backups',
         ],
@@ -221,8 +221,8 @@ const translations = {
       <>
         Sviluppo piattaforme mission-critical che sostituiscono processi manuali con
         automazione intelligente. Il mio prodotto di punta genera{' '}
-        <span className="text-white font-semibold">€44.000+ di risparmi annui</span>{' '}
-        e un <span className="text-white font-semibold">ROI del 1.700%</span> per
+        <span className="text-white font-semibold">€35.000+ di risparmi annui</span>{' '}
+        e un <span className="text-white font-semibold">ROI del 1.450%</span> per
         un'operazione di food delivery attiva.
       </>
     ),
@@ -258,7 +258,7 @@ const translations = {
     lennyModulesTitle: 'Moduli Operativi — Valore di Business Quantificato',
     lennySavingsLabel: 'Risparmio Annuo Totale Quantificato',
     lennySavingsFooter: (
-      <>Costo di manutenzione: <span className="text-white font-medium">~€2.400/anno</span>{' · '}ROI:{' '}<span className="text-emerald-400 font-bold">1.700%</span>{' · '}Ore risparmiate:{' '}<span className="text-white font-medium">2.088 ore/anno</span></>
+      <>Costo di manutenzione: <span className="text-white font-medium">~€2.400/anno</span>{' · '}ROI:{' '}<span className="text-emerald-400 font-bold">1.450%</span>{' · '}Ore risparmiate:{' '}<span className="text-white font-medium">1.650 ore/anno</span></>
     ),
     videoLabel1: '[ INSERIRE: lenny-demo.gif — registrazione schermo ]',
     imgLabel1: '[ INSERIRE: lenny-sidebar-screenshot.jpg ]',
@@ -325,7 +325,7 @@ const translations = {
           'Unico architetto della Lenny Platform — ERP con 778 route usato quotidianamente in una operazione food delivery attiva, costruito attraverso ingegneria AI-assistita',
 
           'Progettato e consegnato 29 moduli software, eliminando tutti i processi di back office manuali',
-          'Quantificati €44.240/anno di risparmi operativi con un ROI documentato del 1.700%',
+          'Quantificati €35.000/anno di risparmi operativi con un ROI documentato del 1.450%',
           'Integrazione di Google Gemini AI, WhatsApp Business API, Firebase Push, Brevo e AWS RDS',
           'Sicurezza enterprise: crittografia AES-128, RBAC 8 ruoli, audit trail, backup automatici',
         ],
@@ -408,8 +408,8 @@ const lennyMetrics = (lang) => [
   { label: lang === 'it' ? 'Tabelle Database' : 'Database Tables', value: '131+', icon: Database },
   { label: lang === 'it' ? 'Moduli Software' : 'Software Modules', value: '29', icon: Layers },
   { label: lang === 'it' ? 'Partner Ristoranti' : 'Restaurant Partners', value: '47+', icon: Users },
-  { label: lang === 'it' ? 'Ore Risparmiate / Anno' : 'Hours Saved / Year', value: '2,088', icon: Clock },
-  { label: 'ROI', value: '1,700%', icon: TrendingUp },
+  { label: lang === 'it' ? 'Ore Risparmiate / Anno' : 'Hours Saved / Year', value: '1,650', icon: Clock },
+  { label: 'ROI', value: '1,450%', icon: TrendingUp },
 ]
 
 const lennyModules = (lang) => {
@@ -421,7 +421,7 @@ const lennyModules = (lang) => {
       description: it
         ? 'Raccolta disponibilità self-service, assegnazione automatica, invio massivo WhatsApp e rilevamento conflitti veicoli in tempo reale — elimina 2,5 ore di coordinamento manuale al giorno.'
         : 'Self-service availability collection, auto-assignment, WhatsApp bulk dispatch, and real-time vehicle conflict detection — eliminating 2.5 hrs of manual coordination daily.',
-      saving: it ? '€9.900/anno' : 'A$17,000/yr',
+      saving: it ? '€7.800/anno' : 'A$13,400/yr',
     },
     {
       icon: Clock,
@@ -429,7 +429,7 @@ const lennyModules = (lang) => {
       description: it
         ? 'La busta paga viene calcolata dai dati reali degli ordini, non dai turni dichiarati. Elimina un overpayment del 5–10% su 15 driver tramite regole intelligenti sui turni.'
         : 'Payroll calculated from actual order data, not declared shifts. Eliminates a 5–10% overpayment across 15 drivers through intelligent gap and shift boundary rules.',
-      saving: it ? '€11.080/anno' : 'A$19,100/yr',
+      saving: it ? '€8.800/anno' : 'A$15,100/yr',
     },
     {
       icon: Bot,
@@ -437,7 +437,7 @@ const lennyModules = (lang) => {
       description: it
         ? 'Google Gemini con function calling interroga il database live in linguaggio naturale. Il personale non tecnico ottiene risposte immediate — senza SQL, senza aspettare report.'
         : 'Google Gemini with function calling queries the live database in natural language. Non-technical staff get instant answers — no SQL, no waiting for reports.',
-      saving: it ? '€6.660/anno' : 'A$11,500/yr',
+      saving: it ? '€5.300/anno' : 'A$9,100/yr',
     },
     {
       icon: DollarSign,
@@ -445,7 +445,7 @@ const lennyModules = (lang) => {
       description: it
         ? 'Calcolo automatico delle commissioni per 47+ partner con regole multi-livello, workflow strutturato per l\'approvazione delle penali e rendiconti PDF per ristorante.'
         : 'Automated commission calculations for 47+ partners with multi-tier fee rules, structured penalty approval workflows, and per-restaurant PDF statements.',
-      saving: it ? '€3.400/anno' : 'A$5,850/yr',
+      saving: it ? '€2.700/anno' : 'A$4,650/yr',
     },
     {
       icon: BarChart2,
@@ -453,7 +453,7 @@ const lennyModules = (lang) => {
       description: it
         ? 'Campagne email (Brevo) + WhatsApp con segmentazione automatica RFM dei clienti estratta direttamente dal database ordini — niente Mailchimp o liste manuali.'
         : 'Email (Brevo) + WhatsApp campaigns with automatic RFM customer segmentation sourced directly from the order database — no Mailchimp or manual lists required.',
-      saving: it ? '€730/anno' : 'A$1,260/yr',
+      saving: it ? '€580/anno' : 'A$1,000/yr',
     },
     {
       icon: Shield,
@@ -658,7 +658,7 @@ function LennySection({ t, lang }) {
 
         <div className="bg-gradient-to-br from-indigo-600/20 to-purple-700/20 border border-indigo-500/30 rounded-2xl p-8 text-center glow">
           <p className="text-slate-400 text-xs uppercase tracking-widest mb-2">{t.lennySavingsLabel}</p>
-          <p className="text-5xl font-black text-white mb-3">{lang === 'it' ? '€44.240' : 'A$76,100'}</p>
+          <p className="text-5xl font-black text-white mb-3">{lang === 'it' ? '€35.000' : 'A$60,200'}</p>
           <p className="text-slate-400 text-sm">{t.lennySavingsFooter}</p>
         </div>
       </div>
