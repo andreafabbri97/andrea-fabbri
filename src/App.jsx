@@ -53,6 +53,7 @@ const translations = {
       '8 automated cron jobs running 24/7 without human intervention',
       '7 third-party integrations: WhatsApp, Gemini AI, Firebase, Brevo, AWS RDS…',
       'Real-time WebSocket updates via Pusher for live operational dashboards',
+      'and more…',
     ],
     lennyScreenshotTitle: 'Dashboard Screenshot',
     lennyModulesTitle: 'Operational Modules — Quantified Business Value',
@@ -245,6 +246,7 @@ const translations = {
       '8 cron job automatizzati attivi 24/7 senza intervento umano',
       '7 integrazioni di terze parti: WhatsApp, Gemini AI, Firebase, Brevo, AWS RDS…',
       'Aggiornamenti WebSocket in tempo reale via Pusher per dashboard operative live',
+      'e altro…',
     ],
     lennyScreenshotTitle: 'Screenshot della Dashboard',
     lennyModulesTitle: 'Moduli Operativi — Valore di Business Quantificato',
@@ -553,7 +555,7 @@ function ImagePlaceholder({ label }) {
 
 function Hero({ t }) {
   return (
-    <section className="min-h-screen flex flex-col justify-center relative overflow-hidden px-6 py-24">
+    <section className="flex flex-col justify-start md:min-h-screen md:justify-center relative overflow-hidden px-6 pt-14 pb-16 md:py-24">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-indigo-700/20 rounded-full blur-[140px]" />
       </div>
@@ -634,7 +636,11 @@ function LennySection({ t, lang }) {
               ))}
             </div>
           </div>
-          <VideoPlaceholder label={t.videoLabel1} />
+          <img
+            src="images/lenny-platform-screenshot.jpg"
+            alt="Lenny Platform dashboard"
+            className="w-full rounded-2xl border border-white/10"
+          />
         </div>
 
         <h3 className="text-xl font-bold text-white mb-8 text-center">{t.lennyModulesTitle}</h3>
@@ -694,10 +700,9 @@ function RestaurantSection({ t }) {
             </div>
           </div>
 
-          <div className="flex-1 w-full space-y-5">
-            <VideoPlaceholder label={t.videoLabel2} />
+          <div className="flex-1 w-full">
             <img
-              src="images/restaurant-manager-mobile-mockup.jpg"
+              src="images/restaurant-manager-screenshot.jpg"
               alt="Restaurant Manager screenshot"
               className="w-full rounded-2xl border border-white/10"
             />
@@ -752,8 +757,7 @@ function SupSection({ t }) {
             </div>
           </div>
 
-          <div className="flex-1 w-full space-y-5">
-            <VideoPlaceholder label={t.videoLabel3} />
+          <div className="flex-1 w-full">
             <img
               src="images/sup-manager-screenshot.jpg"
               alt="SUP Manager screenshot"
