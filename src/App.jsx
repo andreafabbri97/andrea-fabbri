@@ -171,7 +171,7 @@ const translations = {
     ],
 
     // Skills
-    skillsLabel: 'Competencies',
+    skillsLabel: 'Skills & Tools',
     skillsTitle: 'Skills & Tools',
     skillGroups: [
       {
@@ -365,7 +365,7 @@ const translations = {
     ],
 
     // Skills
-    skillsLabel: 'Competenze',
+    skillsLabel: 'Skills & Strumenti',
     skillsTitle: 'Competenze & Strumenti',
     skillGroups: [
       {
@@ -425,7 +425,7 @@ const lennyModules = (lang) => {
       description: it
         ? 'La busta paga viene calcolata dai dati reali degli ordini, non dai turni dichiarati. Elimina un overpayment del 5–10% su 15 driver tramite regole intelligenti sui turni.'
         : 'Payroll calculated from actual order data, not declared shifts. Eliminates a 5–10% overpayment across 15 drivers through intelligent gap and shift boundary rules.',
-      saving: it ? '€10.080/anno' : '€10,080/yr',
+      saving: it ? '€11.080/anno' : '€11,080/yr',
     },
     {
       icon: Bot,
@@ -441,7 +441,7 @@ const lennyModules = (lang) => {
       description: it
         ? 'Calcolo automatico delle commissioni per 47+ partner con regole multi-livello, workflow strutturato per l\'approvazione delle penali e rendiconti PDF per ristorante.'
         : 'Automated commission calculations for 47+ partners with multi-tier fee rules, structured penalty approval workflows, and per-restaurant PDF statements.',
-      saving: it ? '€2.400/anno' : '€2,400/yr',
+      saving: it ? '€3.400/anno' : '€3,400/yr',
     },
     {
       icon: BarChart2,
@@ -449,7 +449,7 @@ const lennyModules = (lang) => {
       description: it
         ? 'Campagne email (Brevo) + WhatsApp con segmentazione automatica RFM dei clienti estratta direttamente dal database ordini — niente Mailchimp o liste manuali.'
         : 'Email (Brevo) + WhatsApp campaigns with automatic RFM customer segmentation sourced directly from the order database — no Mailchimp or manual lists required.',
-      saving: it ? '€2.730/anno' : '€2,730/yr',
+      saving: it ? '€730/anno' : '€730/yr',
     },
     {
       icon: Shield,
@@ -557,7 +557,7 @@ function ImagePlaceholder({ label }) {
 
 function Hero({ t }) {
   return (
-    <section className="flex flex-col justify-start md:min-h-screen md:justify-center relative overflow-hidden px-6 pt-14 pb-16 md:py-24">
+    <section className="flex flex-col justify-start md:min-h-screen md:justify-center relative overflow-hidden px-6 pt-6 pb-16 md:py-24">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-indigo-700/20 rounded-full blur-[140px]" />
       </div>
