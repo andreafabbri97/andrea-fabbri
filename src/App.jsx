@@ -53,6 +53,7 @@ const translations = {
       '8 automated cron jobs running 24/7 without human intervention',
       '7 third-party integrations: WhatsApp, Gemini AI, Firebase, Brevo, AWS RDS…',
       'Real-time WebSocket updates via Pusher for live operational dashboards',
+      'Automated database backup to protect against attacks and data loss',
       'and more…',
     ],
     lennyScreenshotTitle: 'Dashboard Screenshot',
@@ -246,6 +247,7 @@ const translations = {
       '8 cron job automatizzati attivi 24/7 senza intervento umano',
       '7 integrazioni di terze parti: WhatsApp, Gemini AI, Firebase, Brevo, AWS RDS…',
       'Aggiornamenti WebSocket in tempo reale via Pusher per dashboard operative live',
+      'Backup automatico del database per protezione da attacchi e perdite di dati',
       'e altro…',
     ],
     lennyScreenshotTitle: 'Screenshot della Dashboard',
@@ -664,8 +666,8 @@ function RestaurantSection({ t }) {
   return (
     <section id="restaurant" className="py-24 px-6 border-t border-white/5">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col lg:flex-row gap-16 items-start">
-          <div className="flex-1">
+        <div className="flex flex-col lg:flex-row gap-12 items-center">
+          <div className="lg:w-5/12">
             <SectionLabel>{t.restLabel}</SectionLabel>
             <SectionTitle>{t.restTitle}</SectionTitle>
             <p className="text-slate-400 leading-relaxed mb-6">{t.restDesc}</p>
@@ -700,11 +702,11 @@ function RestaurantSection({ t }) {
             </div>
           </div>
 
-          <div className="flex-1 w-full">
+          <div className="lg:w-7/12 w-full">
             <img
               src="images/restaurant-manager-screenshot.jpg"
               alt="Restaurant Manager screenshot"
-              className="w-full rounded-2xl border border-white/10"
+              className="w-full rounded-2xl border border-white/10 shadow-2xl shadow-black/60"
             />
           </div>
         </div>
@@ -717,8 +719,8 @@ function SupSection({ t }) {
   return (
     <section id="sup" className="py-24 px-6 border-t border-white/5">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col lg:flex-row-reverse gap-16 items-start">
-          <div className="flex-1">
+        <div className="flex flex-col lg:flex-row-reverse gap-12 items-center">
+          <div className="lg:w-5/12">
             <SectionLabel>{t.supLabel}</SectionLabel>
             <SectionTitle>
               {t.supTitle1}
@@ -757,11 +759,11 @@ function SupSection({ t }) {
             </div>
           </div>
 
-          <div className="flex-1 w-full">
+          <div className="lg:w-7/12 w-full">
             <img
               src="images/sup-manager-screenshot.jpg"
               alt="SUP Manager screenshot"
-              className="w-full rounded-2xl border border-white/10"
+              className="w-full rounded-2xl border border-white/10 shadow-2xl shadow-black/60"
             />
           </div>
         </div>
