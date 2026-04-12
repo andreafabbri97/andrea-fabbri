@@ -24,9 +24,8 @@ const translations = {
     heroDesc: (
       <>
         I engineer business-critical platforms that replace manual operations with
-        intelligent automation. No off-the-shelf software — I build it around your business
-        like a tailor-made suit,{' '}
-        <span className="text-white font-semibold">designing every feature for your specific operations</span>.
+        intelligent automation. I build the software around your business like a tailor-made
+        suit, designing every feature for your specific operations.
         My flagship product delivers{' '}
         <span className="text-white font-semibold">A$60,000+ in annual savings</span>{' '}
         and a <span className="text-white font-semibold">1,450% ROI</span> to a
@@ -223,9 +222,8 @@ const translations = {
     heroDesc: (
       <>
         Sviluppo piattaforme mission-critical che sostituiscono processi manuali con
-        automazione intelligente. Niente software preconfezionato — lo costruisco su misura
-        per la tua azienda, come un abito sartoriale,{' '}
-        <span className="text-white font-semibold">progettando ogni funzionalità sulle tue specifiche esigenze operative</span>.
+        automazione intelligente. Costruisco il software attorno alla tua azienda come un
+        abito su misura, progettando ogni funzionalità per le tue specifiche esigenze operative.
         Il mio prodotto di punta genera{' '}
         <span className="text-white font-semibold">€35.000+ di risparmi annui</span>{' '}
         e un <span className="text-white font-semibold">ROI del 1.450%</span> per
