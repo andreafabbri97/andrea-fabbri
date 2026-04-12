@@ -12,7 +12,9 @@ import {
 const translations = {
   en: {
     // Navbar
-    nav: ['Lenny Platform', 'Restaurant SaaS', 'SUP Manager', 'Experience', 'Skills', 'Contact'],
+    nav: ['Experience', 'Skills', 'Contact'],
+    navProjects: 'Projects',
+    navProjectItems: ['Lenny Platform', 'Restaurant SaaS', 'SUP Manager'],
 
     // Hero
     heroStatus: 'Open to opportunities',
@@ -206,7 +208,9 @@ const translations = {
 
   it: {
     // Navbar
-    nav: ['Lenny Platform', 'Restaurant SaaS', 'SUP Manager', 'Esperienza', 'Competenze', 'Contatti'],
+    nav: ['Esperienza', 'Competenze', 'Contatti'],
+    navProjects: 'Progetti',
+    navProjectItems: ['Lenny Platform', 'Restaurant SaaS', 'SUP Manager'],
 
     // Hero
     heroStatus: 'Disponibile',
@@ -888,13 +892,40 @@ function ContactSection({ t }) {
 }
 
 function Navbar({ t, lang, setLang }) {
-  const anchors = ['#lenny', '#restaurant', '#sup', '#experience', '#skills', '#contact']
+  const anchors = ['#experience', '#skills', '#contact']
+  const projectAnchors = ['#lenny', '#restaurant', '#sup']
+  const [dropOpen, setDropOpen] = React.useState(false)
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-xl border-b border-white/5">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }} className="text-white font-bold text-sm hover:text-indigo-300 transition-colors cursor-pointer">Andrea Fabbri</a>
         <div className="flex items-center gap-4">
           <div className="hidden md:flex items-center gap-5">
+            {/* Projects dropdown */}
+            <div className="relative" onMouseEnter={() => setDropOpen(true)} onMouseLeave={() => setDropOpen(false)}>
+              <button
+                onClick={() => setDropOpen(o => !o)}
+                className="flex items-center gap-1 text-slate-400 hover:text-white text-sm font-medium transition-colors"
+              >
+                {t.navProjects}
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${dropOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {dropOpen && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-44 bg-[#13131a] border border-white/10 rounded-xl shadow-xl overflow-hidden">
+                  {t.navProjectItems.map((label, i) => (
+                    <a
+                      key={projectAnchors[i]}
+                      href={projectAnchors[i]}
+                      onClick={() => setDropOpen(false)}
+                      className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
+                    >
+                      {label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+            {/* Other nav links */}
             {t.nav.map((label, i) => (
               <a
                 key={anchors[i]}
