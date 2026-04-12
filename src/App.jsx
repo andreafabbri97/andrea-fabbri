@@ -561,7 +561,7 @@ function ImagePlaceholder({ label }) {
 
 function Hero({ t }) {
   return (
-    <section className="flex flex-col justify-start md:min-h-screen md:justify-center relative overflow-hidden px-6 pt-6 pb-16 md:py-24">
+    <section className="flex flex-col justify-start md:min-h-[calc(100vh-4rem)] md:justify-center relative overflow-hidden px-6 pt-6 pb-16 md:py-24">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-indigo-700/20 rounded-full blur-[140px]" />
       </div>
