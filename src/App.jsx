@@ -23,8 +23,10 @@ const translations = {
     heroSubtitle: 'Management Engineer · AI Automation Specialist',
     heroDesc: (
       <>
-        I engineer business-critical platforms that replace manual operations with
-        intelligent automation. My flagship product delivers{' '}
+        I don't sell off-the-shelf software — I build it around your business like a
+        tailor-made suit.{' '}
+        <span className="text-white font-semibold">Every feature is designed for your specific operations</span>,
+        replacing manual processes with intelligent automation. My flagship product delivers{' '}
         <span className="text-white font-semibold">A$60,000+ in annual savings</span>{' '}
         and a <span className="text-white font-semibold">1,450% ROI</span> to a
         live food-delivery operation.
@@ -219,8 +221,10 @@ const translations = {
     heroSubtitle: 'Ingegnere Gestionale · Specialista AI & Automazione',
     heroDesc: (
       <>
-        Sviluppo piattaforme mission-critical che sostituiscono processi manuali con
-        automazione intelligente. Il mio prodotto di punta genera{' '}
+        Non vendo software preconfezionato — lo costruisco su misura per la tua azienda,
+        come un abito sartoriale.{' '}
+        <span className="text-white font-semibold">Ogni funzionalità è progettata sulle tue specifiche esigenze operative</span>,
+        sostituendo i processi manuali con automazione intelligente. Il mio prodotto di punta genera{' '}
         <span className="text-white font-semibold">€35.000+ di risparmi annui</span>{' '}
         e un <span className="text-white font-semibold">ROI del 1.450%</span> per
         un'operazione di food delivery attiva.
