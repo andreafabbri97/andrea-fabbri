@@ -894,7 +894,7 @@ function ContactSection({ t }) {
 function Navbar({ t, lang, setLang }) {
   const anchors = ['#experience', '#skills', '#contact']
   const projectAnchors = ['#lenny', '#restaurant', '#sup']
-  const [dropOpen, setDropOpen] = React.useState(false)
+  const [dropOpen, setDropOpen] = useState(false)
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-xl border-b border-white/5">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
