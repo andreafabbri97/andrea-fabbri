@@ -1015,6 +1015,11 @@ export default function App() {
       <Navbar t={t} lang={lang} setLang={setLang} />
       <main className="pt-16">
         <Hero t={t} />
+        <div id="projects" className="border-t border-white/5 bg-[#0a0a0f]">
+          <div className="max-w-6xl mx-auto px-6 py-10 text-center">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">{t.navProjects}</h2>
+          </div>
+        </div>
         <LennySection t={t} lang={lang} />
         <RestaurantSection t={t} />
         <SupSection t={t} />
