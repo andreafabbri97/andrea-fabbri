@@ -395,7 +395,7 @@ const translations = {
     // Contact
     contactLabel: 'Contatti',
     contactTitle: (
-      <>Costruiamo qualcosa<br />che scala.</>
+      <>Costruiamo qualcosa<br />che scali.</>
     ),
     contactDesc: "Cerco attivamente opportunità lavorative per crescere professionalmente — in particolare ruoli in cui automazione, ingegneria dei dati e eccellenza operativa si incontrano. Se cerchi qualcuno che consegna sistemi pronti per la produzione, parliamone.",
     contactLinkedIn: 'LinkedIn',
