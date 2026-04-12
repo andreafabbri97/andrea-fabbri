@@ -615,7 +615,7 @@ function Hero({ t }) {
 
 function LennySection({ t, lang }) {
   return (
-    <section id="lenny" className="py-24 px-6 border-t border-white/5">
+    <section id="lenny" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <SectionLabel>{t.lennyLabel}</SectionLabel>
