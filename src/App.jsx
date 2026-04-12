@@ -906,27 +906,27 @@ function Navbar({ t, lang, setLang }) {
 
   const closeMobile = () => setMobileOpen(false)
 
-  // Close mobile menu on outside tap
-  useEffect(() => {
-    if (!mobileOpen) return
-    const handler = (e) => {
-      if (navRef.current && !navRef.current.contains(e.target)) closeMobile()
-    }
-    document.addEventListener('pointerdown', handler)
-    return () => document.removeEventListener('pointerdown', handler)
-  }, [mobileOpen])
-
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
+  const handleBackdrop = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    closeMobile()
+  }
+
   return (
     <>
-      {/* Backdrop overlay */}
+      {/* Backdrop overlay — blocks all interaction with content behind */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 bg-black/60 md:hidden" onClick={closeMobile} />
+        <div
+          className="fixed inset-0 z-40 bg-black/60 md:hidden"
+          onClick={handleBackdrop}
+          onTouchStart={handleBackdrop}
+        />
       )}
       <nav ref={navRef} className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
