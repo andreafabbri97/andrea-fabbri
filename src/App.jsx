@@ -911,7 +911,8 @@ function Navbar({ t, lang, setLang }) {
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${dropOpen ? 'rotate-180' : ''}`} />
               </button>
               {dropOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-44 bg-[#13131a] border border-white/10 rounded-xl shadow-xl overflow-hidden">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-44">
+                  <div className="bg-[#13131a] border border-white/10 rounded-xl shadow-xl overflow-hidden">
                   {t.navProjectItems.map((label, i) => (
                     <a
                       key={projectAnchors[i]}
@@ -922,6 +923,7 @@ function Navbar({ t, lang, setLang }) {
                       {label}
                     </a>
                   ))}
+                  </div>
                 </div>
               )}
             </div>
