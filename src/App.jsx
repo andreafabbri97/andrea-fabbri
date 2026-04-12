@@ -912,8 +912,12 @@ function Navbar({ t, lang, setLang }) {
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
-  // Block all touch events on backdrop without closing prematurely
-  const blockTouch = (e) => { e.preventDefault(); e.stopPropagation() }
+  const handleBackdropTouch = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    // Delay closing so the backdrop absorbs the full touch→click cycle
+    setTimeout(closeMobile, 10)
+  }
 
   return (
     <>
@@ -921,10 +925,8 @@ function Navbar({ t, lang, setLang }) {
       {mobileOpen && (
         <div
           className="fixed inset-0 z-40 bg-black/60 md:hidden"
-          onClick={(e) => { e.preventDefault(); e.stopPropagation(); closeMobile() }}
-          onTouchStart={blockTouch}
-          onTouchMove={blockTouch}
-          onTouchEnd={blockTouch}
+          onClick={(e) => { e.stopPropagation(); closeMobile() }}
+          onTouchEnd={handleBackdropTouch}
         />
       )}
       <nav ref={navRef} className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-xl border-b border-white/5">
