@@ -201,7 +201,7 @@ const translations = {
     contactTitle: (
       <>Let&apos;s build something<br />that scales.</>
     ),
-    contactDesc: "I'm actively seeking opportunities in Australia — particularly roles where automation, data engineering, and operational excellence intersect. If you need someone who ships production-grade systems, let's talk.",
+    contactDesc: "I'm actively seeking working opportunities for myself to grow — particularly roles where automation, data engineering, and operational excellence intersect. If you need someone who ships production-grade systems, let's talk.",
     contactLinkedIn: 'LinkedIn',
 
     // Footer
@@ -397,7 +397,7 @@ const translations = {
     contactTitle: (
       <>Costruiamo qualcosa<br />che scala.</>
     ),
-    contactDesc: "Sto cercando attivamente opportunità in Australia — in particolare ruoli in cui automazione, ingegneria dei dati e eccellenza operativa si incontrano. Se cerchi qualcuno che consegna sistemi pronti per la produzione, parliamone.",
+    contactDesc: "Cerco attivamente opportunità lavorative per crescere professionalmente — in particolare ruoli in cui automazione, ingegneria dei dati e eccellenza operativa si incontrano. Se cerchi qualcuno che consegna sistemi pronti per la produzione, parliamone.",
     contactLinkedIn: 'LinkedIn',
 
     // Footer
