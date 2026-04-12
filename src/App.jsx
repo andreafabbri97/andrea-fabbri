@@ -1,0 +1,929 @@
+import { useState } from 'react'
+import {
+  Cpu, Database, Zap, TrendingUp, Users, Clock,
+  Globe, ExternalLink, GitBranch,
+  Mail, ChevronDown, BarChart2, Shield, Layers,
+  DollarSign, Briefcase, GraduationCap,
+  MapPin, ArrowRight, Bot,
+} from 'lucide-react'
+
+// ─── i18n ─────────────────────────────────────────────────────────────────────
+
+const translations = {
+  en: {
+    // Navbar
+    nav: ['Lenny Platform', 'Restaurant SaaS', 'SUP Manager', 'Experience', 'Skills', 'Contact'],
+
+    // Hero
+    heroStatus: 'Open to opportunities — Brisbane, Australia',
+    heroTitle1: 'Andrea',
+    heroTitle2: 'Fabbri',
+    heroSubtitle: 'Management Engineer · AI Automation Specialist',
+    heroDesc: (
+      <>
+        I engineer business-critical platforms that replace manual operations with
+        intelligent automation. My flagship product delivers{' '}
+        <span className="text-white font-semibold">€44,000+ in annual savings</span>{' '}
+        and a <span className="text-white font-semibold">1,700% ROI</span> to a
+        live food-delivery operation.
+      </>
+    ),
+    heroBtn1: 'View Flagship Project',
+    heroBtn2: 'GitHub',
+    heroBtn3: 'Contact',
+
+    // Lenny
+    lennyLabel: 'Flagship Product · Proprietary ERP',
+    lennyTitle: 'Lenny Platform',
+    lennyIntro: (
+      <>
+        A full-stack ERP engineered from scratch and{' '}
+        <span className="text-white font-semibold">already adopted by a real company in San Marino</span>.
+        {' '}It replaces an entire ecosystem of spreadsheets and manual processes — the operational
+        equivalent of{' '}
+        <span className="text-white font-semibold">
+          two full-time employees working 24/7
+        </span>.
+      </>
+    ),
+    lennyOverviewTitle: 'Platform Overview',
+    lennyOverviewDesc: 'The platform handles everything from driver scheduling and payroll to partner billing, multi-channel marketing, and real-time business intelligence — all in a single production-grade interface.',
+    lennyFeatures: [
+      '778 API routes across 29 integrated modules',
+      '8 automated cron jobs running 24/7 without human intervention',
+      '7 third-party integrations: WhatsApp, Gemini AI, Firebase, Brevo, AWS RDS…',
+      'Real-time WebSocket updates via Pusher for live operational dashboards',
+    ],
+    lennyScreenshotTitle: 'Dashboard Screenshot',
+    lennyModulesTitle: 'Operational Modules — Quantified Business Value',
+    lennySavingsLabel: 'Total Quantified Annual Savings',
+    lennySavingsFooter: (
+      <>Maintenance cost: <span className="text-white font-medium">~€2,400/yr</span>{' · '}ROI:{' '}<span className="text-emerald-400 font-bold">1,700%</span>{' · '}Time saved:{' '}<span className="text-white font-medium">2,088 hrs/yr</span></>
+    ),
+    videoLabel1: '[ INSERT: lenny-demo.gif — screen recording ]',
+    imgLabel1: '[ INSERT: lenny-sidebar-screenshot.jpg ]',
+
+    // Restaurant
+    restLabel: 'SaaS Product · Public Repository',
+    restTitle: 'Restaurant Manager',
+    restDesc: 'A multi-tenant restaurant management system designed to scale across multiple clients. Each tenant operates their own Supabase instance; feature access is gated server-side through a custom license authority — protecting revenue and enabling tiered plans without code changes.',
+    restFeatures: [
+      'Multi-tenant SaaS with 3-tier license system (Demo / Standard / Premium) validated against a central license authority',
+      'Real-time order management across dine-in, takeaway, and delivery channels',
+      'Split bill engine: manual, alla romana, and per-item modes with SMAC loyalty card tracking',
+      'EOQ-based inventory with automatic ingredient cost-out on every order',
+      'Automated food cost & profit margin calculation per dish',
+      'Multi-language (IT/EN), PWA-installable, offline-capable with localStorage fallback',
+    ],
+    restLiveDemo: 'Live Demo',
+    restSource: 'Source Code',
+    videoLabel2: '[ INSERT: restaurant-manager-demo.gif ]',
+    imgLabel2: '[ INSERT: restaurant-manager-mobile-mockup.jpg ]',
+
+    // SUP
+    supLabel: 'Internal Tool · Family Business',
+    supTitle1: 'SUP & Equipment',
+    supTitle2: 'Rental Manager',
+    supDesc: 'Built for a water-sports rental business to replace a paper-based booking system. Manages SUP boards, life vests, and pedal boats — real-time availability, automated revenue tracking, payroll integration, and full seasonal accounting. Used on-site directly from a phone.',
+    supFeatures: [
+      'Booking calendar (day / week / month view) for SUP boards, life vests, and pedal boats',
+      'Equipment package composition with custom duration and fixed pricing',
+      'Automated hourly revenue calculation from bookings',
+      'Expense tracking and payroll integration for seasonal staff',
+      'Supabase RLS-secured multi-role access (admin / staff)',
+      'PWA installable — operated directly on-site from a phone or tablet',
+    ],
+    supLiveDemo: 'Live Demo',
+    supSource: 'Source Code',
+    videoLabel3: '[ INSERT: sup-manager-demo.gif ]',
+    imgLabel3: '[ INSERT: sup-manager-screenshot.jpg ]',
+
+    // Experience
+    expLabel: 'Background',
+    expTitle: 'Experience & Education',
+    expItems: [
+      {
+        icon: Briefcase,
+        title: 'Management Engineer & Operations',
+        org: 'Lenny SRL',
+        period: 'Jun 2023 — Present',
+        location: 'Borgo Maggiore, San Marino · Hybrid',
+        bullets: [
+          'Part of the management team responsible for business operations, administrative support, and strategic project coordination',
+          'Applied data analysis and performance metrics to drive measurable improvements in company operations',
+          'Day-to-day operational workload progressively automated by Lenny Platform — freeing time for higher-value decisions',
+          'Cross-functional collaboration with colleagues in senior management to align business and technology objectives',
+        ],
+      },
+      {
+        icon: Briefcase,
+        title: 'AI Automation Engineer & Software Architect',
+        org: 'Lenny SRL',
+        period: 'Jun 2023 — Present',
+        location: 'Borgo Maggiore, San Marino · Hybrid',
+        bullets: [
+          'Sole architect of Lenny Platform — a 778-route ERP used daily in a live food-delivery operation, built through AI-assisted engineering',
+
+          'Architected and delivered 29 software modules, eliminating all manual back-office processes',
+          'Quantified €44,240/yr in operational savings with a documented 1,700% ROI',
+          'Integrated Google Gemini AI, WhatsApp Business API, Firebase Push, Brevo, and AWS RDS',
+          'Implemented enterprise-grade security: AES-128 encryption, 8-role RBAC, audit trails, automated backups',
+        ],
+      },
+      {
+        icon: Briefcase,
+        title: 'Marketing Assistant Manager',
+        org: 'Lenny SRL',
+        period: 'Sep 2022 — May 2023',
+        location: 'Borgo Maggiore, San Marino · Part-time',
+        bullets: [
+          'Designed and executed multi-channel marketing campaigns (social media, email, advertising)',
+          'Managed CRM data and business intelligence reporting to support operational decisions',
+          'Supported senior management on project coordination and performance metrics analysis',
+        ],
+      },
+      {
+        icon: GraduationCap,
+        title: "Bachelor's Degree — Management Engineering",
+        org: 'UNIRSM – Università degli Studi della Repubblica di San Marino',
+        period: 'Sep 2020 — Oct 2023',
+        location: 'San Marino',
+        bullets: [
+          'Graduated with 100/110 — specialisation in operations management, process optimisation, and systems engineering',
+          'Applied lean methodology and systems thinking — now core to every software solution I build',
+          'Skills validated: Project Management, Business Analysis, Data Analysis, Business Intelligence, Performance Metrics',
+        ],
+      },
+      {
+        icon: GraduationCap,
+        title: 'Studies in Physics',
+        org: 'Alma Mater Studiorum – Università di Bologna',
+        period: 'Sep 2017 — 2020',
+        location: 'Bologna, Italy',
+        bullets: [
+          'Developed and applied advanced analytical and mathematical reasoning to high-level complexity problems',
+          'Built rigorous problem-solving foundations in calculus, linear algebra, classical mechanics, thermodynamics, and relativity',
+          'Applied laboratory methodologies and scientific instrumentation in experimental physics settings',
+        ],
+      },
+    ],
+
+    // Skills
+    skillsLabel: 'Competencies',
+    skillsTitle: 'Skills & Tools',
+    skillGroups: [
+      {
+        group: 'Business & Management',
+        items: ['Project Management', 'Business Analysis', 'Data Analysis', 'Business Intelligence', 'Performance Metrics', 'Process Optimisation', 'CRM', 'Social Media', 'Microsoft Excel', 'Microsoft Office'],
+      },
+      {
+        group: 'AI & Automation',
+        items: ['Google Gemini AI', 'Claude AI', 'AI-Driven Development', 'Prompt Engineering', 'WhatsApp Business API', 'Firebase', 'Brevo (Email/SMS)', 'Workflow Automation'],
+      },
+      {
+        group: 'Platforms & Tools',
+        items: ['Supabase', 'PostgreSQL', 'AWS RDS', 'GitHub', 'Vite', 'Tailwind CSS', 'PWA'],
+      },
+      {
+        group: 'Soft Skills',
+        items: ['Problem Solving', 'Analytical Thinking', 'Project Coordination', 'Attention to Detail', 'Resource Management', 'Adaptability', 'Team Collaboration', 'Communication', 'Self-Management'],
+      },
+    ],
+
+    // Contact
+    contactLabel: 'Get in Touch',
+    contactTitle: (
+      <>Let&apos;s build something<br />that scales.</>
+    ),
+    contactDesc: "I'm actively seeking opportunities in Australia — particularly roles where automation, data engineering, and operational excellence intersect. If you need someone who ships production-grade systems, let's talk.",
+    contactLinkedIn: 'LinkedIn',
+
+    // Footer
+    footer: '© 2026 Andrea Fabbri · Management Engineer · Built with React + Tailwind CSS',
+  },
+
+  it: {
+    // Navbar
+    nav: ['Lenny Platform', 'Restaurant SaaS', 'SUP Manager', 'Esperienza', 'Competenze', 'Contatti'],
+
+    // Hero
+    heroStatus: 'Disponibile — Brisbane, Australia',
+    heroTitle1: 'Andrea',
+    heroTitle2: 'Fabbri',
+    heroSubtitle: 'Ingegnere Gestionale · Specialista AI & Automazione',
+    heroDesc: (
+      <>
+        Sviluppo piattaforme mission-critical che sostituiscono processi manuali con
+        automazione intelligente. Il mio prodotto di punta genera{' '}
+        <span className="text-white font-semibold">€44.000+ di risparmi annui</span>{' '}
+        e un <span className="text-white font-semibold">ROI del 1.700%</span> per
+        un'operazione di food delivery attiva.
+      </>
+    ),
+    heroBtn1: 'Progetto Principale',
+    heroBtn2: 'GitHub',
+    heroBtn3: 'Contatti',
+
+    // Lenny
+    lennyLabel: 'Prodotto Principale · ERP Proprietario',
+    lennyTitle: 'Lenny Platform',
+    lennyIntro: (
+      <>
+        Un ERP full-stack sviluppato da zero e{' '}
+        <span className="text-white font-semibold">già adottato da un'azienda reale di San Marino</span>.
+        {' '}Sostituisce un intero ecosistema di fogli Excel e processi manuali —
+        l'equivalente operativo di{' '}
+        <span className="text-white font-semibold">
+          due dipendenti a tempo pieno attivi 24/7
+        </span>.
+      </>
+    ),
+    lennyOverviewTitle: 'Panoramica della Piattaforma',
+    lennyOverviewDesc: "La piattaforma gestisce tutto: dalla pianificazione dei turni driver e la busta paga, alla fatturazione dei partner, al marketing multicanale e alla business intelligence in tempo reale — tutto in un'unica interfaccia di livello enterprise.",
+    lennyFeatures: [
+      '778 route API distribuite su 29 moduli integrati',
+      '8 cron job automatizzati attivi 24/7 senza intervento umano',
+      '7 integrazioni di terze parti: WhatsApp, Gemini AI, Firebase, Brevo, AWS RDS…',
+      'Aggiornamenti WebSocket in tempo reale via Pusher per dashboard operative live',
+    ],
+    lennyScreenshotTitle: 'Screenshot della Dashboard',
+    lennyModulesTitle: 'Moduli Operativi — Valore di Business Quantificato',
+    lennySavingsLabel: 'Risparmio Annuo Totale Quantificato',
+    lennySavingsFooter: (
+      <>Costo di manutenzione: <span className="text-white font-medium">~€2.400/anno</span>{' · '}ROI:{' '}<span className="text-emerald-400 font-bold">1.700%</span>{' · '}Ore risparmiate:{' '}<span className="text-white font-medium">2.088 ore/anno</span></>
+    ),
+    videoLabel1: '[ INSERIRE: lenny-demo.gif — registrazione schermo ]',
+    imgLabel1: '[ INSERIRE: lenny-sidebar-screenshot.jpg ]',
+
+    // Restaurant
+    restLabel: 'Prodotto SaaS · Repository Pubblico',
+    restTitle: 'Restaurant Manager',
+    restDesc: "Sistema di gestione ristorante multi-tenant progettato per scalare su più clienti. Ogni tenant opera sulla propria istanza Supabase; l'accesso alle funzionalità è protetto lato server tramite un'autorità di licenza personalizzata — a tutela del revenue e per abilitare piani a livelli senza modifiche al codice.",
+    restFeatures: [
+      'SaaS multi-tenant con sistema di licenze a 3 livelli (Demo / Standard / Premium) validato tramite authority centrale',
+      'Gestione ordini in tempo reale su canali sala, asporto e consegna',
+      'Motore di divisione conto: manuale, alla romana e per voce con tracciamento tessera fedeltà SMAC',
+      'Inventario basato su EOQ con calcolo automatico del food cost per ogni ordine',
+      'Calcolo automatico del margine di profitto per piatto',
+      'Multilingua (IT/EN), installabile come PWA, funziona offline con fallback localStorage',
+    ],
+    restLiveDemo: 'Demo Live',
+    restSource: 'Codice Sorgente',
+    videoLabel2: '[ INSERIRE: restaurant-manager-demo.gif ]',
+    imgLabel2: '[ INSERIRE: restaurant-manager-mobile-mockup.jpg ]',
+
+    // SUP
+    supLabel: 'Strumento Interno · Azienda di Famiglia',
+    supTitle1: 'SUP & Attrezzatura',
+    supTitle2: 'Gestione Noleggi',
+    supDesc: "Sviluppato per un'attività di noleggio sport acquatici per sostituire un sistema cartaceo. Gestisce tavole SUP, giubbotti e pedalò — disponibilità in tempo reale, calcolo ricavi automatico, integrazione stipendi e contabilità stagionale completa. Utilizzato in loco direttamente da smartphone.",
+    supFeatures: [
+      'Calendario prenotazioni (vista giorno / settimana / mese) per tavole SUP, giubbotti e pedalò',
+      'Composizione pacchetti attrezzatura con durata personalizzata e prezzi fissi',
+      'Calcolo automatico dei ricavi orari dalle prenotazioni',
+      'Tracciamento spese e gestione stipendi per personale stagionale',
+      'Accesso multi-ruolo protetto con Supabase RLS (admin / staff)',
+      'Installabile come PWA — operativo in loco da smartphone o tablet',
+    ],
+    supLiveDemo: 'Demo Live',
+    supSource: 'Codice Sorgente',
+    videoLabel3: '[ INSERIRE: sup-manager-demo.gif ]',
+    imgLabel3: '[ INSERIRE: sup-manager-screenshot.jpg ]',
+
+    // Experience
+    expLabel: 'Percorso',
+    expTitle: 'Esperienza & Formazione',
+    expItems: [
+      {
+        icon: Briefcase,
+        title: 'Ingegnere Gestionale & Operations',
+        org: 'Lenny SRL',
+        period: 'Giu 2023 — Presente',
+        location: 'Borgo Maggiore, San Marino · Ibrido',
+        bullets: [
+          'Parte del team di direzione aziendale: gestione operativa, supporto amministrativo e coordinamento strategico dei progetti',
+          'Applicazione di analisi dati e metriche di performance per miglioramenti misurabili delle operations aziendali',
+          'Il carico operativo quotidiano è stato progressivamente automatizzato dalla Lenny Platform — liberando tempo per decisioni ad alto valore',
+          'Collaborazione trasversale con i colleghi di direzione per allineare obiettivi di business e tecnologia',
+        ],
+      },
+      {
+        icon: Briefcase,
+        title: 'AI Automation Engineer & Software Architect',
+        org: 'Lenny SRL',
+        period: 'Giu 2023 — Presente',
+        location: 'Borgo Maggiore, San Marino · Ibrido',
+        bullets: [
+          'Unico architetto della Lenny Platform — ERP con 778 route usato quotidianamente in una operazione food delivery attiva, costruito attraverso ingegneria AI-assistita',
+
+          'Progettato e consegnato 29 moduli software, eliminando tutti i processi di back office manuali',
+          'Quantificati €44.240/anno di risparmi operativi con un ROI documentato del 1.700%',
+          'Integrazione di Google Gemini AI, WhatsApp Business API, Firebase Push, Brevo e AWS RDS',
+          'Sicurezza enterprise: crittografia AES-128, RBAC 8 ruoli, audit trail, backup automatici',
+        ],
+      },
+      {
+        icon: Briefcase,
+        title: 'Assistente Responsabile Marketing',
+        org: 'Lenny SRL',
+        period: 'Set 2022 — Mag 2023',
+        location: 'Borgo Maggiore, San Marino · Part-time',
+        bullets: [
+          'Ideazione e realizzazione di campagne marketing multicanale (social media, email, pubblicità)',
+          'Gestione dati CRM e reportistica di business intelligence a supporto delle decisioni operative',
+          'Supporto alla direzione aziendale su coordinamento progettuale e analisi metriche di performance',
+        ],
+      },
+      {
+        icon: GraduationCap,
+        title: 'Laurea Triennale — Ingegneria Gestionale',
+        org: 'UNIRSM – Università degli Studi della Repubblica di San Marino',
+        period: 'Set 2020 — Ott 2023',
+        location: 'San Marino',
+        bullets: [
+          'Votazione 100/110 — specializzazione in gestione delle operations, ottimizzazione dei processi e ingegneria dei sistemi',
+          'Applicazione della metodologia lean e del systems thinking — oggi al centro di ogni soluzione software sviluppata',
+          'Competenze validate: Project Management, Analisi Aziendale, Analisi Dati, Business Intelligence, Metriche di Performance',
+        ],
+      },
+      {
+        icon: GraduationCap,
+        title: 'Studi in Fisica',
+        org: 'Alma Mater Studiorum – Università di Bologna',
+        period: 'Set 2017 — 2020',
+        location: 'Bologna, Italia',
+        bullets: [
+          'Sviluppato un pensiero analitico e matematico di livello avanzato, superiore ai curricula standard di ingegneria',
+          'Costruite solide basi di problem-solving in calcolo, algebra lineare, meccanica classica, termodinamica e relatività',
+          'Applicazione di metodologie di laboratorio e strumentazione scientifica in contesti di fisica sperimentale',
+        ],
+      },
+    ],
+
+    // Skills
+    skillsLabel: 'Competenze',
+    skillsTitle: 'Competenze & Strumenti',
+    skillGroups: [
+      {
+        group: 'Business & Management',
+        items: ['Project Management', 'Analisi Aziendale', 'Analisi Dati', 'Business Intelligence', 'Metriche di Performance', 'Ottimizzazione Processi', 'CRM', 'Social Media', 'Microsoft Excel', 'Microsoft Office'],
+      },
+      {
+        group: 'AI & Automazione',
+        items: ['Google Gemini AI', 'Claude AI', 'ChatGPT', 'Sviluppo AI-Driven', 'Prompt Engineering', 'WhatsApp Business API', 'Firebase', 'Brevo (Email/SMS)', 'Automazione Workflow'],
+      },
+      {
+        group: 'Piattaforme & Strumenti',
+        items: ['Supabase', 'PostgreSQL', 'AWS RDS', 'GitHub', 'Vite', 'Tailwind CSS', 'PWA'],
+      },      {
+        group: 'Soft Skills',
+        items: ['Problem Solving', 'Pensiero Analitico', 'Coordinamento Progetti', 'Attenzione al Dettaglio', 'Gestione delle Risorse', 'Adattabilità', 'Lavoro di Squadra', 'Comunicazione', 'Autonomia'],
+      },    ],
+
+    // Contact
+    contactLabel: 'Contatti',
+    contactTitle: (
+      <>Costruiamo qualcosa<br />che scala.</>
+    ),
+    contactDesc: "Sto cercando attivamente opportunità in Australia — in particolare ruoli in cui automazione, ingegneria dei dati e eccellenza operativa si incontrano. Se cerchi qualcuno che consegna sistemi pronti per la produzione, parliamone.",
+    contactLinkedIn: 'LinkedIn',
+
+    // Footer
+    footer: '© 2026 Andrea Fabbri · Ingegnere Gestionale · Realizzato con React + Tailwind CSS',
+  },
+}
+
+// ─── Data ────────────────────────────────────────────────────────────────────
+
+const lennyMetrics = (lang) => [
+  { label: lang === 'it' ? 'Route Operative' : 'Operational Routes', value: '778', icon: Cpu },
+  { label: lang === 'it' ? 'Tabelle Database' : 'Database Tables', value: '131+', icon: Database },
+  { label: lang === 'it' ? 'Moduli Software' : 'Software Modules', value: '29', icon: Layers },
+  { label: lang === 'it' ? 'Partner Ristoranti' : 'Restaurant Partners', value: '47+', icon: Users },
+  { label: lang === 'it' ? 'Ore Risparmiate / Anno' : 'Hours Saved / Year', value: '2,088', icon: Clock },
+  { label: 'ROI', value: '1,700%', icon: TrendingUp },
+]
+
+const lennyModules = (lang) => {
+  const it = lang === 'it'
+  return [
+    {
+      icon: Users,
+      title: it ? 'Automazione Turni Driver' : 'Driver Shift Automation',
+      description: it
+        ? 'Raccolta disponibilità self-service, assegnazione automatica, invio massivo WhatsApp e rilevamento conflitti veicoli in tempo reale — elimina 2,5 ore di coordinamento manuale al giorno.'
+        : 'Self-service availability collection, auto-assignment, WhatsApp bulk dispatch, and real-time vehicle conflict detection — eliminating 2.5 hrs of manual coordination daily.',
+      saving: it ? '€9.900/anno' : '€9,900/yr',
+    },
+    {
+      icon: Clock,
+      title: it ? 'Tracciamento Ore in Tempo Reale' : 'Real-Time Hours Tracking',
+      description: it
+        ? 'La busta paga viene calcolata dai dati reali degli ordini, non dai turni dichiarati. Elimina un overpayment del 5–10% su 15 driver tramite regole intelligenti sui turni.'
+        : 'Payroll calculated from actual order data, not declared shifts. Eliminates a 5–10% overpayment across 15 drivers through intelligent gap and shift boundary rules.',
+      saving: it ? '€10.080/anno' : '€10,080/yr',
+    },
+    {
+      icon: Bot,
+      title: it ? 'Assistente AI Dati Integrato' : 'Embedded AI Data Assistant',
+      description: it
+        ? 'Google Gemini con function calling interroga il database live in linguaggio naturale. Il personale non tecnico ottiene risposte immediate — senza SQL, senza aspettare report.'
+        : 'Google Gemini with function calling queries the live database in natural language. Non-technical staff get instant answers — no SQL, no waiting for reports.',
+      saving: it ? '€6.660/anno' : '€6,660/yr',
+    },
+    {
+      icon: DollarSign,
+      title: it ? 'Motore di Fatturazione Ristoranti' : 'Restaurant Billing Engine',
+      description: it
+        ? 'Calcolo automatico delle commissioni per 47+ partner con regole multi-livello, workflow strutturato per l\'approvazione delle penali e rendiconti PDF per ristorante.'
+        : 'Automated commission calculations for 47+ partners with multi-tier fee rules, structured penalty approval workflows, and per-restaurant PDF statements.',
+      saving: it ? '€2.400/anno' : '€2,400/yr',
+    },
+    {
+      icon: BarChart2,
+      title: it ? 'Motore Marketing & RFM' : 'Marketing & RFM Engine',
+      description: it
+        ? 'Campagne email (Brevo) + WhatsApp con segmentazione automatica RFM dei clienti estratta direttamente dal database ordini — niente Mailchimp o liste manuali.'
+        : 'Email (Brevo) + WhatsApp campaigns with automatic RFM customer segmentation sourced directly from the order database — no Mailchimp or manual lists required.',
+      saving: it ? '€2.730/anno' : '€2,730/yr',
+    },
+    {
+      icon: Shield,
+      title: it ? 'Layer di Sicurezza Enterprise' : 'Enterprise Security Layer',
+      description: it
+        ? 'Crittografia credenziali AES-128 (Fernet) at rest, RBAC con 8 ruoli e permessi granulari, protezione CSRF, prevenzione SQL injection, audit trail GDPR e backup automatici multi-strato con retention 90 giorni.'
+        : 'AES-128 (Fernet) credential encryption at rest, 8-role RBAC with granular permissions, CSRF protection, SQL injection prevention, GDPR audit trail, and automated multi-layer backups with 90-day retention.',
+      saving: it ? 'Conformità' : 'Compliance',
+    },
+  ]
+}
+
+// ─── UI Primitives ───────────────────────────────────────────────────────────
+
+function SectionLabel({ children }) {
+  return (
+    <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-indigo-400 mb-4">
+      <span className="w-8 h-px bg-indigo-500" />
+      {children}
+    </span>
+  )
+}
+
+function SectionTitle({ children }) {
+  return (
+    <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
+      {children}
+    </h2>
+  )
+}
+
+function MetricCard({ label, value, icon: Icon }) {
+  return (
+    <div className="bg-white/5 border border-white/10 rounded-2xl p-5 text-center card-hover">
+      <Icon className="w-5 h-5 text-indigo-400 mx-auto mb-3" />
+      <div className="text-2xl font-bold text-white mb-1">{value}</div>
+      <div className="text-xs text-slate-400 leading-snug">{label}</div>
+    </div>
+  )
+}
+
+function ModuleCard({ icon: Icon, title, description, saving }) {
+  return (
+    <div className="bg-white/5 border border-white/10 rounded-2xl p-6 card-hover">
+      <div className="flex items-start justify-between mb-4">
+        <div className="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center shrink-0">
+          <Icon className="w-5 h-5 text-indigo-400" />
+        </div>
+        <span className="text-xs font-semibold text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2 py-1 rounded-full">
+          {saving}
+        </span>
+      </div>
+      <h3 className="text-white font-semibold mb-2">{title}</h3>
+      <p className="text-slate-400 text-sm leading-relaxed">{description}</p>
+    </div>
+  )
+}
+
+function Bullet({ text }) {
+  return (
+    <li className="flex items-start gap-3 text-sm text-slate-300">
+      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0" />
+      {text}
+    </li>
+  )
+}
+
+function TagBadge({ tag, color = 'indigo' }) {
+  const styles = {
+    indigo: 'text-indigo-300 bg-indigo-500/10 border-indigo-500/20',
+    purple: 'text-purple-300 bg-purple-500/10 border-purple-500/20',
+    slate: 'text-slate-300 bg-slate-500/10 border-slate-500/20',
+  }
+  return (
+    <span className={`text-xs font-semibold border px-3 py-1 rounded-full ${styles[color] ?? styles.indigo}`}>
+      {tag}
+    </span>
+  )
+}
+
+// ─── Media Placeholders ──────────────────────────────────────────────────────
+
+function VideoPlaceholder({ label }) {
+  const isGif = label.toLowerCase().includes('.gif')
+  return (
+    <div className="aspect-video w-full bg-white/5 border-2 border-dashed border-white/20 rounded-2xl flex flex-col items-center justify-center gap-3 text-slate-500">
+      <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-xl font-bold text-slate-400">
+        {isGif ? 'GIF' : '▶'}
+      </div>
+      <span className="text-xs font-mono text-center px-4">{label}</span>
+    </div>
+  )
+}
+
+function ImagePlaceholder({ label }) {
+  return (
+    <div className="w-full bg-white/5 border-2 border-dashed border-white/20 rounded-2xl aspect-video flex flex-col items-center justify-center gap-2 text-slate-500">
+      <div className="text-3xl">🖼</div>
+      <span className="text-xs font-mono text-center px-4">{label}</span>
+    </div>
+  )
+}
+
+// ─── Sections ────────────────────────────────────────────────────────────────
+
+function Hero({ t }) {
+  return (
+    <section className="min-h-screen flex flex-col justify-center relative overflow-hidden px-6 py-24">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-indigo-700/20 rounded-full blur-[140px]" />
+      </div>
+
+      <div className="max-w-4xl mx-auto w-full relative z-10">
+        <div className="inline-flex items-center gap-2 text-sm text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-4 py-2 mb-8">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          {t.heroStatus}
+        </div>
+
+        <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight mb-6">
+          {t.heroTitle1}
+          <br />
+          <span className="text-gradient">{t.heroTitle2}</span>
+        </h1>
+
+        <p className="text-xl md:text-2xl text-slate-300 font-medium mb-4">{t.heroSubtitle}</p>
+
+        <p className="text-lg text-slate-400 max-w-2xl leading-relaxed mb-10">{t.heroDesc}</p>
+
+        <div className="flex flex-wrap gap-4">
+          <a
+            href="#lenny"
+            className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+          >
+            {t.heroBtn1} <ArrowRight className="w-4 h-4" />
+          </a>
+          <a
+            href="https://github.com/andreafabbri97"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+          >
+            <GitBranch className="w-4 h-4" /> {t.heroBtn2}
+          </a>
+          <a
+            href="mailto:andreafabbri97@gmail.com"
+            className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+          >
+            <Mail className="w-4 h-4" /> {t.heroBtn3}
+          </a>
+        </div>
+      </div>
+
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-slate-600 animate-bounce">
+        <ChevronDown className="w-6 h-6" />
+      </div>
+    </section>
+  )
+}
+
+function LennySection({ t, lang }) {
+  return (
+    <section id="lenny" className="py-24 px-6 border-t border-white/5">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <SectionLabel>{t.lennyLabel}</SectionLabel>
+          <SectionTitle>{t.lennyTitle}</SectionTitle>
+          <p className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">{t.lennyIntro}</p>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
+          {lennyMetrics(lang).map((m) => (
+            <MetricCard key={m.label} {...m} />
+          ))}
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-10 mb-16 items-center">
+          <div>
+            <h3 className="text-xl font-bold text-white mb-4">{t.lennyOverviewTitle}</h3>
+            <p className="text-slate-400 text-sm leading-relaxed mb-6">{t.lennyOverviewDesc}</p>
+            <div className="space-y-2.5">
+              {t.lennyFeatures.map((f) => (
+                <div key={f} className="flex items-start gap-2 text-sm text-slate-300">
+                  <Zap className="w-3.5 h-3.5 text-indigo-400 mt-0.5 shrink-0" />
+                  {f}
+                </div>
+              ))}
+            </div>
+          </div>
+          <VideoPlaceholder label={t.videoLabel1} />
+        </div>
+
+        <h3 className="text-xl font-bold text-white mb-8 text-center">{t.lennyModulesTitle}</h3>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+          {lennyModules(lang).map((m) => (
+            <ModuleCard key={m.title} {...m} />
+          ))}
+        </div>
+
+        <div className="bg-gradient-to-br from-indigo-600/20 to-purple-700/20 border border-indigo-500/30 rounded-2xl p-8 text-center glow">
+          <p className="text-slate-400 text-xs uppercase tracking-widest mb-2">{t.lennySavingsLabel}</p>
+          <p className="text-5xl font-black text-white mb-3">€44,240</p>
+          <p className="text-slate-400 text-sm">{t.lennySavingsFooter}</p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function RestaurantSection({ t }) {
+  return (
+    <section id="restaurant" className="py-24 px-6 border-t border-white/5">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-col lg:flex-row gap-16 items-start">
+          <div className="flex-1">
+            <SectionLabel>{t.restLabel}</SectionLabel>
+            <SectionTitle>{t.restTitle}</SectionTitle>
+            <p className="text-slate-400 leading-relaxed mb-6">{t.restDesc}</p>
+
+            <div className="flex flex-wrap gap-2 mb-8">
+              {['React 19', 'TypeScript', 'Supabase', 'Tailwind CSS', 'PWA', 'Recharts'].map((tag) => (
+                <TagBadge key={tag} tag={tag} color="indigo" />
+              ))}
+            </div>
+
+            <ul className="space-y-3 mb-8">
+              {t.restFeatures.map((f) => <Bullet key={f} text={f} />)}
+            </ul>
+
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="https://andreafabbri97.github.io/restaurant-manager/"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm px-5 py-2.5 rounded-xl font-semibold transition-colors"
+              >
+                <Globe className="w-4 h-4" /> {t.restLiveDemo}
+              </a>
+              <a
+                href="https://github.com/andreafabbri97/restaurant-manager"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 text-white text-sm px-5 py-2.5 rounded-xl font-semibold transition-colors"
+              >
+                <GitBranch className="w-4 h-4" /> {t.restSource}
+              </a>
+            </div>
+          </div>
+
+          <div className="flex-1 w-full space-y-5">
+            <VideoPlaceholder label={t.videoLabel2} />
+            <ImagePlaceholder label={t.imgLabel2} />
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function SupSection({ t }) {
+  return (
+    <section id="sup" className="py-24 px-6 border-t border-white/5">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-col lg:flex-row-reverse gap-16 items-start">
+          <div className="flex-1">
+            <SectionLabel>{t.supLabel}</SectionLabel>
+            <SectionTitle>
+              {t.supTitle1}
+              <br />
+              {t.supTitle2}
+            </SectionTitle>
+            <p className="text-slate-400 leading-relaxed mb-6">{t.supDesc}</p>
+
+            <div className="flex flex-wrap gap-2 mb-8">
+              {['React', 'TypeScript', 'Supabase', 'Tailwind CSS', 'PWA', 'Vitest'].map((tag) => (
+                <TagBadge key={tag} tag={tag} color="purple" />
+              ))}
+            </div>
+
+            <ul className="space-y-3 mb-8">
+              {t.supFeatures.map((f) => <Bullet key={f} text={f} />)}
+            </ul>
+
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="https://andreafabbri97.github.io/sup-manager/"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm px-5 py-2.5 rounded-xl font-semibold transition-colors"
+              >
+                <Globe className="w-4 h-4" /> {t.supLiveDemo}
+              </a>
+              <a
+                href="https://github.com/andreafabbri97/sup-manager"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 text-white text-sm px-5 py-2.5 rounded-xl font-semibold transition-colors"
+              >
+                <GitBranch className="w-4 h-4" /> {t.supSource}
+              </a>
+            </div>
+          </div>
+
+          <div className="flex-1 w-full space-y-5">
+            <VideoPlaceholder label={t.videoLabel3} />
+            <ImagePlaceholder label={t.imgLabel3} />
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function ExperienceSection({ t }) {
+  return (
+    <section id="experience" className="py-24 px-6 border-t border-white/5">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-16">
+          <SectionLabel>{t.expLabel}</SectionLabel>
+          <SectionTitle>{t.expTitle}</SectionTitle>
+        </div>
+
+        <div className="space-y-6">
+          {t.expItems.map((item) => (
+            <div
+              key={item.title}
+              className="bg-white/5 border border-white/10 rounded-2xl p-8 card-hover"
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center shrink-0 mt-0.5">
+                  <item.icon className="w-5 h-5 text-indigo-400" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-wrap items-start justify-between gap-2 mb-1">
+                    <h3 className="text-white font-bold leading-snug">{item.title}</h3>
+                    <span className="text-xs text-slate-500 font-mono whitespace-nowrap">{item.period}</span>
+                  </div>
+                  <p className="text-indigo-300 text-sm font-medium mb-1">{item.org}</p>
+                  <div className="flex items-center gap-1 text-xs text-slate-500 mb-5">
+                    <MapPin className="w-3 h-3" /> {item.location}
+                  </div>
+                  <ul className="space-y-2.5">
+                    {item.bullets.map((b) => <Bullet key={b} text={b} />)}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function SkillsSection({ t }) {
+  const groupColors = ['indigo', 'purple', 'indigo', 'purple']
+  return (
+    <section id="skills" className="py-24 px-6 border-t border-white/5">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-16">
+          <SectionLabel>{t.skillsLabel}</SectionLabel>
+          <SectionTitle>{t.skillsTitle}</SectionTitle>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {t.skillGroups.map((sg, i) => (
+            <div key={sg.group} className="bg-white/5 border border-white/10 rounded-2xl p-6">
+              <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-widest">{sg.group}</h3>
+              <div className="flex flex-wrap gap-2">
+                {sg.items.map((item) => (
+                  <TagBadge key={item} tag={item} color={groupColors[i % groupColors.length]} />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function ContactSection({ t }) {
+  return (
+    <section id="contact" className="py-24 px-6 border-t border-white/5">
+      <div className="max-w-2xl mx-auto text-center">
+        <SectionLabel>{t.contactLabel}</SectionLabel>
+        <SectionTitle>{t.contactTitle}</SectionTitle>
+        <p className="text-slate-400 leading-relaxed mb-10">{t.contactDesc}</p>
+        <div className="flex flex-wrap justify-center gap-4">
+          <a
+            href="mailto:andreafabbri97@gmail.com"
+            className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+          >
+            <Mail className="w-4 h-4" /> andreafabbri97@gmail.com
+          </a>
+          <a
+            href="https://github.com/andreafabbri97"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+          >
+            <GitBranch className="w-4 h-4" /> GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/andrea-fabbri-9873081a6/"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+          >
+            <ExternalLink className="w-4 h-4" /> {t.contactLinkedIn}
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function Navbar({ t, lang, setLang }) {
+  const anchors = ['#lenny', '#restaurant', '#sup', '#experience', '#skills', '#contact']
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-xl border-b border-white/5">
+      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <span className="text-white font-bold text-sm">Andrea Fabbri</span>
+        <div className="flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-5">
+            {t.nav.map((label, i) => (
+              <a
+                key={anchors[i]}
+                href={anchors[i]}
+                className="text-slate-400 hover:text-white text-sm font-medium transition-colors"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+          {/* Language switcher */}
+          <div className="flex items-center gap-1.5 ml-3 border-l border-white/10 pl-3">
+            <button
+              onClick={() => setLang('en')}
+              title="English"
+              className={`w-7 h-5 rounded-sm overflow-hidden transition-opacity ${lang === 'en' ? 'opacity-100 ring-1 ring-white/40' : 'opacity-40 hover:opacity-70'}`}
+            >
+              <img src="https://flagcdn.com/au.svg" alt="AU" className="w-full h-full object-cover" />
+            </button>
+            <button
+              onClick={() => setLang('it')}
+              title="Italiano"
+              className={`w-7 h-5 rounded-sm overflow-hidden transition-opacity ${lang === 'it' ? 'opacity-100 ring-1 ring-white/40' : 'opacity-40 hover:opacity-70'}`}
+            >
+              <img src="https://flagcdn.com/it.svg" alt="IT" className="w-full h-full object-cover" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  )
+}
+
+// ─── Root ─────────────────────────────────────────────────────────────────────
+
+export default function App() {
+  const [lang, setLang] = useState('en')
+  const t = translations[lang]
+
+  return (
+    <div className="bg-[#0a0a0f] text-slate-300 min-h-screen">
+      <Navbar t={t} lang={lang} setLang={setLang} />
+      <main className="pt-16">
+        <Hero t={t} />
+        <LennySection t={t} lang={lang} />
+        <RestaurantSection t={t} />
+        <SupSection t={t} />
+        <ExperienceSection t={t} />
+        <SkillsSection t={t} />
+        <ContactSection t={t} />
+      </main>
+      <footer className="border-t border-white/5 py-8 text-center text-xs text-slate-600">
+        {t.footer}
+      </footer>
+    </div>
+  )
+}
