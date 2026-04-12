@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import {
   Cpu, Database, Zap, TrendingUp, Users, Clock,
   Globe, ExternalLink, GitBranch,
@@ -474,8 +474,8 @@ const lennyModules = (lang) => {
 
 function SectionLabel({ children }) {
   return (
-    <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-indigo-400 mb-4">
-      <span className="w-8 h-px bg-indigo-500" />
+    <span className="inline-flex items-center gap-2 text-[11px] sm:text-xs font-semibold tracking-widest uppercase text-indigo-400 mb-3 sm:mb-4">
+      <span className="w-6 sm:w-8 h-px bg-indigo-500" />
       {children}
     </span>
   )
@@ -483,7 +483,7 @@ function SectionLabel({ children }) {
 
 function SectionTitle({ children }) {
   return (
-    <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
+    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight mb-3 sm:mb-4">
       {children}
     </h2>
   )
@@ -491,27 +491,27 @@ function SectionTitle({ children }) {
 
 function MetricCard({ label, value, icon: Icon }) {
   return (
-    <div className="bg-white/5 border border-white/10 rounded-2xl p-5 text-center card-hover">
-      <Icon className="w-5 h-5 text-indigo-400 mx-auto mb-3" />
-      <div className="text-2xl font-bold text-white mb-1">{value}</div>
-      <div className="text-xs text-slate-400 leading-snug">{label}</div>
+    <div className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-3 sm:p-5 text-center card-hover">
+      <Icon className="w-4 sm:w-5 h-4 sm:h-5 text-indigo-400 mx-auto mb-2 sm:mb-3" />
+      <div className="text-lg sm:text-2xl font-bold text-white mb-0.5 sm:mb-1">{value}</div>
+      <div className="text-[10px] sm:text-xs text-slate-400 leading-snug">{label}</div>
     </div>
   )
 }
 
 function ModuleCard({ icon: Icon, title, description, saving }) {
   return (
-    <div className="bg-white/5 border border-white/10 rounded-2xl p-6 card-hover">
-      <div className="flex items-start justify-between mb-4">
-        <div className="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center shrink-0">
-          <Icon className="w-5 h-5 text-indigo-400" />
+    <div className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 card-hover">
+      <div className="flex items-start justify-between mb-3 sm:mb-4">
+        <div className="w-9 sm:w-10 h-9 sm:h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center shrink-0">
+          <Icon className="w-4 sm:w-5 h-4 sm:h-5 text-indigo-400" />
         </div>
-        <span className="text-xs font-semibold text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2 py-1 rounded-full">
+        <span className="text-[11px] sm:text-xs font-semibold text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2 py-1 rounded-full">
           {saving}
         </span>
       </div>
-      <h3 className="text-white font-semibold mb-2">{title}</h3>
-      <p className="text-slate-400 text-sm leading-relaxed">{description}</p>
+      <h3 className="text-white font-semibold text-sm sm:text-base mb-1.5 sm:mb-2">{title}</h3>
+      <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">{description}</p>
     </div>
   )
 }
@@ -565,52 +565,54 @@ function ImagePlaceholder({ label }) {
 
 function Hero({ t }) {
   return (
-    <section className="flex flex-col justify-start relative overflow-hidden px-6 pt-6 pb-16 md:pt-16 md:pb-24">
+    <section className="flex flex-col justify-start relative overflow-hidden px-4 sm:px-6 pt-4 pb-12 md:pt-16 md:pb-24">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-indigo-700/20 rounded-full blur-[140px]" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] md:w-[700px] h-[400px] md:h-[500px] bg-indigo-700/20 rounded-full blur-[140px]" />
       </div>
 
       <div className="max-w-4xl mx-auto w-full relative z-10">
-        <div className="inline-flex items-center gap-2 text-sm text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-4 py-2 mb-8">
+        <div className="inline-flex items-center gap-2 text-xs sm:text-sm text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 mb-6 sm:mb-8">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
           {t.heroStatus}
         </div>
 
-        <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight mb-6">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight tracking-tight mb-4 sm:mb-6">
           {t.heroTitle1}
           <br />
           <span className="text-gradient">{t.heroTitle2}</span>
         </h1>
 
-        <p className="text-xl md:text-2xl text-slate-300 font-medium mb-4">{t.heroSubtitle}</p>
+        <p className="text-lg sm:text-xl md:text-2xl text-slate-300 font-medium mb-3 sm:mb-4">{t.heroSubtitle}</p>
 
-        <p className="text-lg text-slate-400 max-w-2xl leading-relaxed mb-10">{t.heroDesc}</p>
+        <p className="text-base sm:text-lg text-slate-400 max-w-2xl leading-relaxed mb-8 sm:mb-10">{t.heroDesc}</p>
 
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
           <a
             href="#lenny"
-            className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+            className="inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors text-sm sm:text-base"
           >
             {t.heroBtn1} <ArrowRight className="w-4 h-4" />
           </a>
-          <a
-            href="https://github.com/andreafabbri97"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 text-white px-6 py-3 rounded-xl font-semibold transition-colors"
-          >
-            <GitBranch className="w-4 h-4" /> {t.heroBtn2}
-          </a>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 text-white px-6 py-3 rounded-xl font-semibold transition-colors"
-          >
-            <Mail className="w-4 h-4" /> {t.heroBtn3}
-          </a>
+          <div className="flex gap-3 sm:gap-4">
+            <a
+              href="https://github.com/andreafabbri97"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 active:bg-white/20 text-white px-6 py-3 rounded-xl font-semibold transition-colors flex-1 sm:flex-none text-sm sm:text-base"
+            >
+              <GitBranch className="w-4 h-4" /> {t.heroBtn2}
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 active:bg-white/20 text-white px-6 py-3 rounded-xl font-semibold transition-colors flex-1 sm:flex-none text-sm sm:text-base"
+            >
+              <Mail className="w-4 h-4" /> {t.heroBtn3}
+            </a>
+          </div>
         </div>
       </div>
 
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-slate-600 animate-bounce">
+      <div className="absolute bottom-4 sm:bottom-10 left-1/2 -translate-x-1/2 text-slate-600 animate-bounce">
         <ChevronDown className="w-6 h-6" />
       </div>
     </section>
@@ -619,24 +621,24 @@ function Hero({ t }) {
 
 function LennySection({ t, lang }) {
   return (
-    <section id="lenny" className="py-24 px-6">
+    <section id="lenny" className="py-16 sm:py-24 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-16">
           <SectionLabel>{t.lennyLabel}</SectionLabel>
           <SectionTitle>{t.lennyTitle}</SectionTitle>
-          <p className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">{t.lennyIntro}</p>
+          <p className="text-slate-400 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">{t.lennyIntro}</p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
+        <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-4 mb-10 sm:mb-16">
           {lennyMetrics(lang).map((m) => (
             <MetricCard key={m.label} {...m} />
           ))}
         </div>
 
-        <div className="grid md:grid-cols-2 gap-10 mb-16 items-center">
+        <div className="grid md:grid-cols-2 gap-8 sm:gap-10 mb-10 sm:mb-16 items-center">
           <div>
-            <h3 className="text-xl font-bold text-white mb-4">{t.lennyOverviewTitle}</h3>
-            <p className="text-slate-400 text-sm leading-relaxed mb-6">{t.lennyOverviewDesc}</p>
+            <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">{t.lennyOverviewTitle}</h3>
+            <p className="text-slate-400 text-sm leading-relaxed mb-4 sm:mb-6">{t.lennyOverviewDesc}</p>
             <div className="space-y-2.5">
               {t.lennyFeatures.map((f) => (
                 <div key={f} className="flex items-start gap-2 text-sm text-slate-300">
@@ -653,17 +655,17 @@ function LennySection({ t, lang }) {
           />
         </div>
 
-        <h3 className="text-xl font-bold text-white mb-8 text-center">{t.lennyModulesTitle}</h3>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+        <h3 className="text-lg sm:text-xl font-bold text-white mb-6 sm:mb-8 text-center">{t.lennyModulesTitle}</h3>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mb-8 sm:mb-12">
           {lennyModules(lang).map((m) => (
             <ModuleCard key={m.title} {...m} />
           ))}
         </div>
 
-        <div className="bg-gradient-to-br from-indigo-600/20 to-purple-700/20 border border-indigo-500/30 rounded-2xl p-8 text-center glow">
+        <div className="bg-gradient-to-br from-indigo-600/20 to-purple-700/20 border border-indigo-500/30 rounded-2xl p-5 sm:p-8 text-center glow">
           <p className="text-slate-400 text-xs uppercase tracking-widest mb-2">{t.lennySavingsLabel}</p>
-          <p className="text-5xl font-black text-white mb-3">{lang === 'it' ? '€35.000' : 'A$60,200'}</p>
-          <p className="text-slate-400 text-sm">{t.lennySavingsFooter}</p>
+          <p className="text-3xl sm:text-5xl font-black text-white mb-2 sm:mb-3">{lang === 'it' ? '€35.000' : 'A$60,200'}</p>
+          <p className="text-slate-400 text-xs sm:text-sm">{t.lennySavingsFooter}</p>
         </div>
       </div>
     </section>
@@ -672,21 +674,21 @@ function LennySection({ t, lang }) {
 
 function RestaurantSection({ t }) {
   return (
-    <section id="restaurant" className="py-24 px-6 border-t border-white/5">
+    <section id="restaurant" className="py-16 sm:py-24 px-4 sm:px-6 border-t border-white/5">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col lg:flex-row gap-12 items-center">
+        <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 items-center">
           <div className="lg:w-5/12">
             <SectionLabel>{t.restLabel}</SectionLabel>
             <SectionTitle>{t.restTitle}</SectionTitle>
-            <p className="text-slate-400 leading-relaxed mb-6">{t.restDesc}</p>
+            <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">{t.restDesc}</p>
 
-            <div className="flex flex-wrap gap-2 mb-8">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
               {['React 19', 'TypeScript', 'Supabase', 'Tailwind CSS', 'PWA', 'Recharts'].map((tag) => (
                 <TagBadge key={tag} tag={tag} color="indigo" />
               ))}
             </div>
 
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8">
               {t.restFeatures.map((f) => <Bullet key={f} text={f} />)}
             </ul>
 
@@ -695,7 +697,7 @@ function RestaurantSection({ t }) {
                 href="https://andreafabbri97.github.io/restaurant-manager/"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm px-5 py-2.5 rounded-xl font-semibold transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white text-sm px-5 py-2.5 rounded-xl font-semibold transition-colors"
               >
                 <Globe className="w-4 h-4" /> {t.restLiveDemo}
               </a>
@@ -703,7 +705,7 @@ function RestaurantSection({ t }) {
                 href="https://github.com/andreafabbri97/restaurant-manager"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 text-white text-sm px-5 py-2.5 rounded-xl font-semibold transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 active:bg-white/20 text-white text-sm px-5 py-2.5 rounded-xl font-semibold transition-colors"
               >
                 <GitBranch className="w-4 h-4" /> {t.restSource}
               </a>
@@ -725,9 +727,9 @@ function RestaurantSection({ t }) {
 
 function SupSection({ t }) {
   return (
-    <section id="sup" className="py-24 px-6 border-t border-white/5">
+    <section id="sup" className="py-16 sm:py-24 px-4 sm:px-6 border-t border-white/5">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col lg:flex-row-reverse gap-12 items-center">
+        <div className="flex flex-col lg:flex-row-reverse gap-8 sm:gap-12 items-center">
           <div className="lg:w-5/12">
             <SectionLabel>{t.supLabel}</SectionLabel>
             <SectionTitle>
@@ -735,15 +737,15 @@ function SupSection({ t }) {
               <br />
               {t.supTitle2}
             </SectionTitle>
-            <p className="text-slate-400 leading-relaxed mb-6">{t.supDesc}</p>
+            <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">{t.supDesc}</p>
 
-            <div className="flex flex-wrap gap-2 mb-8">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
               {['React', 'TypeScript', 'Supabase', 'Tailwind CSS', 'PWA', 'Vitest'].map((tag) => (
                 <TagBadge key={tag} tag={tag} color="purple" />
               ))}
             </div>
 
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8">
               {t.supFeatures.map((f) => <Bullet key={f} text={f} />)}
             </ul>
 
@@ -752,7 +754,7 @@ function SupSection({ t }) {
                 href="https://andreafabbri97.github.io/sup-manager/"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm px-5 py-2.5 rounded-xl font-semibold transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white text-sm px-5 py-2.5 rounded-xl font-semibold transition-colors"
               >
                 <Globe className="w-4 h-4" /> {t.supLiveDemo}
               </a>
@@ -760,7 +762,7 @@ function SupSection({ t }) {
                 href="https://github.com/andreafabbri97/sup-manager"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 text-white text-sm px-5 py-2.5 rounded-xl font-semibold transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 active:bg-white/20 text-white text-sm px-5 py-2.5 rounded-xl font-semibold transition-colors"
               >
                 <GitBranch className="w-4 h-4" /> {t.supSource}
               </a>
@@ -782,33 +784,31 @@ function SupSection({ t }) {
 
 function ExperienceSection({ t }) {
   return (
-    <section id="experience" className="py-24 px-6 border-t border-white/5">
+    <section id="experience" className="py-16 sm:py-24 px-4 sm:px-6 border-t border-white/5">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-16">
           <SectionLabel>{t.expLabel}</SectionLabel>
           <SectionTitle>{t.expTitle}</SectionTitle>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {t.expItems.map((item) => (
             <div
               key={item.title}
-              className="bg-white/5 border border-white/10 rounded-2xl p-8 card-hover"
+              className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-8 card-hover"
             >
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center shrink-0 mt-0.5">
-                  <item.icon className="w-5 h-5 text-indigo-400" />
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="w-9 sm:w-10 h-9 sm:h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center shrink-0 mt-0.5">
+                  <item.icon className="w-4 sm:w-5 h-4 sm:h-5 text-indigo-400" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="flex flex-wrap items-start justify-between gap-2 mb-1">
-                    <h3 className="text-white font-bold leading-snug">{item.title}</h3>
-                    <span className="text-xs text-slate-500 font-mono whitespace-nowrap">{item.period}</span>
-                  </div>
-                  <p className="text-indigo-300 text-sm font-medium mb-1">{item.org}</p>
-                  <div className="flex items-center gap-1 text-xs text-slate-500 mb-5">
+                  <h3 className="text-white font-bold text-sm sm:text-base leading-snug mb-0.5">{item.title}</h3>
+                  <span className="text-[11px] sm:text-xs text-slate-500 font-mono">{item.period}</span>
+                  <p className="text-indigo-300 text-xs sm:text-sm font-medium mt-1 mb-0.5">{item.org}</p>
+                  <div className="flex items-center gap-1 text-[11px] sm:text-xs text-slate-500 mb-3 sm:mb-5">
                     <MapPin className="w-3 h-3" /> {item.location}
                   </div>
-                  <ul className="space-y-2.5">
+                  <ul className="space-y-2 sm:space-y-2.5">
                     {item.bullets.map((b) => <Bullet key={b} text={b} />)}
                   </ul>
                 </div>
@@ -824,18 +824,18 @@ function ExperienceSection({ t }) {
 function SkillsSection({ t }) {
   const groupColors = ['indigo', 'purple', 'indigo', 'purple']
   return (
-    <section id="skills" className="py-24 px-6 border-t border-white/5">
+    <section id="skills" className="py-16 sm:py-24 px-4 sm:px-6 border-t border-white/5">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-16">
           <SectionLabel>{t.skillsLabel}</SectionLabel>
           <SectionTitle>{t.skillsTitle}</SectionTitle>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
           {t.skillGroups.map((sg, i) => (
-            <div key={sg.group} className="bg-white/5 border border-white/10 rounded-2xl p-6">
-              <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-widest">{sg.group}</h3>
-              <div className="flex flex-wrap gap-2">
+            <div key={sg.group} className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6">
+              <h3 className="text-white font-semibold mb-3 sm:mb-4 text-xs sm:text-sm uppercase tracking-widest">{sg.group}</h3>
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {sg.items.map((item) => (
                   <TagBadge key={item} tag={item} color={groupColors[i % groupColors.length]} />
                 ))}
@@ -850,45 +850,47 @@ function SkillsSection({ t }) {
 
 function ContactSection({ t }) {
   return (
-    <section id="contact" className="py-24 px-6 border-t border-white/5">
+    <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 border-t border-white/5">
       <div className="max-w-2xl mx-auto text-center">
         <SectionLabel>{t.contactLabel}</SectionLabel>
         <SectionTitle>{t.contactTitle}</SectionTitle>
-        <p className="text-slate-400 leading-relaxed mb-10">{t.contactDesc}</p>
-        <div className="flex flex-wrap justify-center gap-4">
+        <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-8 sm:mb-10">{t.contactDesc}</p>
+        <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
           <a
             href="mailto:andreafabbri97@gmail.com"
-            className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+            className="inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white px-5 sm:px-6 py-3 rounded-xl font-semibold transition-colors text-sm sm:text-base"
           >
             <Mail className="w-4 h-4" /> andreafabbri97@gmail.com
           </a>
-          <a
-            href="https://github.com/andreafabbri97"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 text-white px-6 py-3 rounded-xl font-semibold transition-colors"
-          >
-            <GitBranch className="w-4 h-4" /> GitHub
-          </a>
-          <a
-            href="https://www.linkedin.com/in/andrea-fabbri-9873081a6/"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 text-white px-6 py-3 rounded-xl font-semibold transition-colors"
-          >
-            <ExternalLink className="w-4 h-4" /> {t.contactLinkedIn}
-          </a>
-          <a
-            href="https://wa.me/393334765551"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center justify-center bg-[#25D366] hover:bg-[#1ebe5d] text-white w-12 h-12 rounded-xl transition-colors"
-            title="WhatsApp"
-          >
-            <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-          </a>
+          <div className="flex gap-3 sm:gap-4">
+            <a
+              href="https://github.com/andreafabbri97"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 active:bg-white/20 text-white px-5 sm:px-6 py-3 rounded-xl font-semibold transition-colors flex-1 sm:flex-none text-sm sm:text-base"
+            >
+              <GitBranch className="w-4 h-4" /> GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/andrea-fabbri-9873081a6/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 active:bg-white/20 text-white px-5 sm:px-6 py-3 rounded-xl font-semibold transition-colors flex-1 sm:flex-none text-sm sm:text-base"
+            >
+              <ExternalLink className="w-4 h-4" /> {t.contactLinkedIn}
+            </a>
+            <a
+              href="https://wa.me/393334765551"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center bg-[#25D366] hover:bg-[#1ebe5d] active:bg-[#19a84d] text-white w-12 h-12 rounded-xl transition-colors shrink-0"
+              title="WhatsApp"
+            >
+              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -900,111 +902,132 @@ function Navbar({ t, lang, setLang }) {
   const projectAnchors = ['#lenny', '#restaurant', '#sup']
   const [dropOpen, setDropOpen] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const navRef = useRef(null)
 
   const closeMobile = () => setMobileOpen(false)
 
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-xl border-b border-white/5">
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }} className="text-white font-bold text-sm hover:text-indigo-300 transition-colors cursor-pointer">Andrea Fabbri</a>
-        <div className="flex items-center gap-4">
-          {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-5">
-            {/* Projects dropdown */}
-            <div className="relative" onMouseEnter={() => setDropOpen(true)} onMouseLeave={() => setDropOpen(false)}>
-              <button
-                onClick={() => setDropOpen(o => !o)}
-                className="flex items-center gap-1 text-slate-400 hover:text-white text-sm font-medium transition-colors"
-              >
-                {t.navProjects}
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${dropOpen ? 'rotate-180' : ''}`} />
-              </button>
-              {dropOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-44">
-                  <div className="bg-[#13131a] border border-white/10 rounded-xl shadow-xl overflow-hidden">
-                  {t.navProjectItems.map((label, i) => (
-                    <a
-                      key={projectAnchors[i]}
-                      href={projectAnchors[i]}
-                      onClick={() => setDropOpen(false)}
-                      className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
-                    >
-                      {label}
-                    </a>
-                  ))}
-                  </div>
-                </div>
-              )}
-            </div>
-            {/* Other nav links */}
-            {t.nav.map((label, i) => (
-              <a
-                key={anchors[i]}
-                href={anchors[i]}
-                className="text-slate-400 hover:text-white text-sm font-medium transition-colors"
-              >
-                {label}
-              </a>
-            ))}
-          </div>
-          {/* Language switcher */}
-          <div className="flex items-center gap-1.5 ml-3 border-l border-white/10 pl-3">
-            <button
-              onClick={() => setLang('en')}
-              title="English"
-              className={`w-7 h-5 rounded-sm overflow-hidden transition-opacity ${lang === 'en' ? 'opacity-100 ring-1 ring-white/40' : 'opacity-40 hover:opacity-70'}`}
-            >
-              <img src="https://flagcdn.com/au.svg" alt="AU" className="w-full h-full object-cover" />
-            </button>
-            <button
-              onClick={() => setLang('it')}
-              title="Italiano"
-              className={`w-7 h-5 rounded-sm overflow-hidden transition-opacity ${lang === 'it' ? 'opacity-100 ring-1 ring-white/40' : 'opacity-40 hover:opacity-70'}`}
-            >
-              <img src="https://flagcdn.com/it.svg" alt="IT" className="w-full h-full object-cover" />
-            </button>
-          </div>
-          {/* Mobile hamburger */}
-          <button
-            onClick={() => setMobileOpen(o => !o)}
-            className="md:hidden text-slate-300 hover:text-white transition-colors"
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </div>
-      </div>
+  // Close mobile menu on outside tap
+  useEffect(() => {
+    if (!mobileOpen) return
+    const handler = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) closeMobile()
+    }
+    document.addEventListener('pointerdown', handler)
+    return () => document.removeEventListener('pointerdown', handler)
+  }, [mobileOpen])
 
-      {/* Mobile menu */}
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [mobileOpen])
+
+  return (
+    <>
+      {/* Backdrop overlay */}
       {mobileOpen && (
-        <div className="md:hidden bg-[#0a0a0f]/95 backdrop-blur-xl border-t border-white/5">
-          <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-1">
-            <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">{t.navProjects}</p>
-            {t.navProjectItems.map((label, i) => (
-              <a
-                key={projectAnchors[i]}
-                href={projectAnchors[i]}
-                onClick={closeMobile}
-                className="block py-2 pl-3 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+        <div className="fixed inset-0 z-40 bg-black/60 md:hidden" onClick={closeMobile} />
+      )}
+      <nav ref={navRef} className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-xl border-b border-white/5">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
+          <a href="#" onClick={(e) => { e.preventDefault(); closeMobile(); window.scrollTo({ top: 0, behavior: 'smooth' }) }} className="text-white font-bold text-sm hover:text-indigo-300 transition-colors cursor-pointer">Andrea Fabbri</a>
+          <div className="flex items-center gap-3 sm:gap-4">
+            {/* Desktop nav */}
+            <div className="hidden md:flex items-center gap-5">
+              <div className="relative" onMouseEnter={() => setDropOpen(true)} onMouseLeave={() => setDropOpen(false)}>
+                <button
+                  onClick={() => setDropOpen(o => !o)}
+                  className="flex items-center gap-1 text-slate-400 hover:text-white text-sm font-medium transition-colors"
+                >
+                  {t.navProjects}
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${dropOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {dropOpen && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-44">
+                    <div className="bg-[#13131a] border border-white/10 rounded-xl shadow-xl overflow-hidden">
+                    {t.navProjectItems.map((label, i) => (
+                      <a
+                        key={projectAnchors[i]}
+                        href={projectAnchors[i]}
+                        onClick={() => setDropOpen(false)}
+                        className="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
+                      >
+                        {label}
+                      </a>
+                    ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+              {t.nav.map((label, i) => (
+                <a
+                  key={anchors[i]}
+                  href={anchors[i]}
+                  className="text-slate-400 hover:text-white text-sm font-medium transition-colors"
+                >
+                  {label}
+                </a>
+              ))}
+            </div>
+            {/* Language switcher */}
+            <div className="flex items-center gap-1.5 ml-2 sm:ml-3 border-l border-white/10 pl-2 sm:pl-3">
+              <button
+                onClick={() => setLang('en')}
+                title="English"
+                className={`w-7 h-5 rounded-sm overflow-hidden transition-opacity ${lang === 'en' ? 'opacity-100 ring-1 ring-white/40' : 'opacity-40 hover:opacity-70'}`}
               >
-                {label}
-              </a>
-            ))}
-            <div className="border-t border-white/5 my-2" />
-            {t.nav.map((label, i) => (
-              <a
-                key={anchors[i]}
-                href={anchors[i]}
-                onClick={closeMobile}
-                className="block py-2 pl-3 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                <img src="https://flagcdn.com/au.svg" alt="AU" className="w-full h-full object-cover" />
+              </button>
+              <button
+                onClick={() => setLang('it')}
+                title="Italiano"
+                className={`w-7 h-5 rounded-sm overflow-hidden transition-opacity ${lang === 'it' ? 'opacity-100 ring-1 ring-white/40' : 'opacity-40 hover:opacity-70'}`}
               >
-                {label}
-              </a>
-            ))}
+                <img src="https://flagcdn.com/it.svg" alt="IT" className="w-full h-full object-cover" />
+              </button>
+            </div>
+            {/* Mobile hamburger */}
+            <button
+              onClick={() => setMobileOpen(o => !o)}
+              className="md:hidden text-slate-300 hover:text-white transition-colors p-1"
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
         </div>
-      )}
-    </nav>
+
+        {/* Mobile menu */}
+        {mobileOpen && (
+          <div className="md:hidden bg-[#0a0a0f] border-t border-white/5 max-h-[calc(100vh-3.5rem)] overflow-y-auto">
+            <div className="px-4 py-4 flex flex-col gap-1">
+              <p className="text-xs text-slate-500 uppercase tracking-wider mb-1 px-3">{t.navProjects}</p>
+              {t.navProjectItems.map((label, i) => (
+                <a
+                  key={projectAnchors[i]}
+                  href={projectAnchors[i]}
+                  onClick={closeMobile}
+                  className="block py-3 px-3 text-base text-slate-300 active:text-white active:bg-white/5 rounded-lg transition-colors"
+                >
+                  {label}
+                </a>
+              ))}
+              <div className="border-t border-white/5 my-2" />
+              {t.nav.map((label, i) => (
+                <a
+                  key={anchors[i]}
+                  href={anchors[i]}
+                  onClick={closeMobile}
+                  className="block py-3 px-3 text-base text-slate-300 active:text-white active:bg-white/5 rounded-lg transition-colors"
+                >
+                  {label}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </nav>
+    </>
   )
 }
 
@@ -1017,11 +1040,11 @@ export default function App() {
   return (
     <div className="bg-[#0a0a0f] text-slate-300 min-h-screen">
       <Navbar t={t} lang={lang} setLang={setLang} />
-      <main className="pt-16">
+      <main className="pt-14 sm:pt-16">
         <Hero t={t} />
         <div id="projects" className="border-t border-white/5 bg-[#0a0a0f]">
-          <div className="max-w-6xl mx-auto px-6 py-10 text-center">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">{t.navProjects}</h2>
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">{t.navProjects}</h2>
           </div>
         </div>
         <LennySection t={t} lang={lang} />
@@ -1031,7 +1054,7 @@ export default function App() {
         <SkillsSection t={t} />
         <ContactSection t={t} />
       </main>
-      <footer className="border-t border-white/5 py-8 text-center text-xs text-slate-600">
+      <footer className="border-t border-white/5 py-6 sm:py-8 px-4 text-center text-[11px] sm:text-xs text-slate-600">
         {t.footer}
       </footer>
     </div>

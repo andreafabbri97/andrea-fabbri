@@ -32,8 +32,23 @@ body {
   .card-hover {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .card-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+  /* Only apply hover effects on devices with a pointer (not touch) */
+  @media (hover: hover) {
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+    }
+  }
+}
+
+/* Prevent horizontal overflow on mobile */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Better tap highlighting on mobile */
+@media (hover: none) {
+  a, button {
+    -webkit-tap-highlight-color: rgba(99, 102, 241, 0.1);
   }
 }
