@@ -27,8 +27,8 @@ const translations = {
         intelligent automation. I build the software around your business like a tailor-made
         suit, designing every feature for your specific operations.
         My flagship product delivers{' '}
-        <span className="text-white font-semibold">A$60,000+ in annual savings</span>{' '}
-        and a <span className="text-white font-semibold">1,450% ROI</span> to a
+        <span className="text-white font-semibold">A$64,000+ in annual savings</span>{' '}
+        and a <span className="text-white font-semibold">1,550% ROI</span> to a
         live food-delivery operation.
       </>
     ),
@@ -64,7 +64,7 @@ const translations = {
     lennyModulesTitle: 'Operational Modules — Quantified Business Value',
     lennySavingsLabel: 'Total Quantified Annual Savings',
     lennySavingsFooter: (
-      <>Maintenance cost: <span className="text-white font-medium">~A$4,100/yr</span>{' · '}ROI:{' '}<span className="text-emerald-400 font-bold">1,450%</span>{' · '}Time saved:{' '}<span className="text-white font-medium">1,650 hrs/yr</span></>
+      <>Maintenance cost: <span className="text-white font-medium">~A$4,100/yr</span>{' · '}ROI:{' '}<span className="text-emerald-400 font-bold">1,550%</span>{' · '}Time saved:{' '}<span className="text-white font-medium">1,760 hrs/yr</span></>
     ),
     videoLabel1: '[ INSERT: lenny-demo.gif — screen recording ]',
     imgLabel1: '[ INSERT: lenny-sidebar-screenshot.jpg ]',
@@ -76,7 +76,7 @@ const translations = {
     restFeatures: [
       'Multi-tenant SaaS with 3-tier license system (Demo / Standard / Premium) validated against a central license authority',
       'Real-time order management across dine-in, takeaway, and delivery channels',
-      'Split bill engine: manual, alla romana, and per-item modes with SMAC loyalty card tracking',
+      'Split bill engine: manual, alla romana, and per-item modes',
       'EOQ-based inventory with automatic ingredient cost-out on every order',
       'Automated food cost & profit margin calculation per dish',
       'Multi-language (IT/EN), PWA-installable, offline-capable with localStorage fallback',
@@ -131,7 +131,7 @@ const translations = {
           'Sole architect of Lenny Platform — a 778-route ERP used daily in a live food-delivery operation, built through AI-assisted engineering',
 
           'Architected and delivered 29 software modules, eliminating all manual back-office processes',
-          'Quantified A$60,200/yr in operational savings with a documented 1,450% ROI',
+          'Quantified A$64,400/yr in operational savings with a documented 1,550% ROI',
           'Integrated Google Gemini AI, WhatsApp Business API, Firebase Push, Brevo, and AWS RDS',
           'Implemented enterprise-grade security: AES-128 encryption, 8-role RBAC, audit trails, automated backups',
         ],
@@ -225,8 +225,8 @@ const translations = {
         automazione intelligente. Costruisco il software attorno alla tua azienda come un
         abito su misura, progettando ogni funzionalità per le tue specifiche esigenze operative.
         Il mio prodotto di punta genera{' '}
-        <span className="text-white font-semibold">€35.000+ di risparmi annui</span>{' '}
-        e un <span className="text-white font-semibold">ROI del 1.450%</span> per
+        <span className="text-white font-semibold">€37.000+ di risparmi annui</span>{' '}
+        e un <span className="text-white font-semibold">ROI del 1.550%</span> per
         un'operazione di food delivery attiva.
       </>
     ),
@@ -262,7 +262,7 @@ const translations = {
     lennyModulesTitle: 'Moduli Operativi — Valore di Business Quantificato',
     lennySavingsLabel: 'Risparmio Annuo Totale Quantificato',
     lennySavingsFooter: (
-      <>Costo di manutenzione: <span className="text-white font-medium">~€2.400/anno</span>{' · '}ROI:{' '}<span className="text-emerald-400 font-bold">1.450%</span>{' · '}Ore risparmiate:{' '}<span className="text-white font-medium">1.650 ore/anno</span></>
+      <>Costo di manutenzione: <span className="text-white font-medium">~€2.400/anno</span>{' · '}ROI:{' '}<span className="text-emerald-400 font-bold">1.550%</span>{' · '}Ore risparmiate:{' '}<span className="text-white font-medium">1.760 ore/anno</span></>
     ),
     videoLabel1: '[ INSERIRE: lenny-demo.gif — registrazione schermo ]',
     imgLabel1: '[ INSERIRE: lenny-sidebar-screenshot.jpg ]',
@@ -274,7 +274,7 @@ const translations = {
     restFeatures: [
       'SaaS multi-tenant con sistema di licenze a 3 livelli (Demo / Standard / Premium) validato tramite authority centrale',
       'Gestione ordini in tempo reale su canali sala, asporto e consegna',
-      'Motore di divisione conto: manuale, alla romana e per voce con tracciamento tessera fedeltà SMAC',
+      'Motore di divisione conto: manuale, alla romana e per voce',
       'Inventario basato su EOQ con calcolo automatico del food cost per ogni ordine',
       'Calcolo automatico del margine di profitto per piatto',
       'Multilingua (IT/EN), installabile come PWA, funziona offline con fallback localStorage',
@@ -329,7 +329,7 @@ const translations = {
           'Unico architetto della Lenny Platform — ERP con 778 route usato quotidianamente in una operazione food delivery attiva, costruito attraverso ingegneria AI-assistita',
 
           'Progettato e consegnato 29 moduli software, eliminando tutti i processi di back office manuali',
-          'Quantificati €35.000/anno di risparmi operativi con un ROI documentato del 1.450%',
+          'Quantificati €37.420/anno di risparmi operativi con un ROI documentato del 1.550%',
           'Integrazione di Google Gemini AI, WhatsApp Business API, Firebase Push, Brevo e AWS RDS',
           'Sicurezza enterprise: crittografia AES-128, RBAC 8 ruoli, audit trail, backup automatici',
         ],
@@ -412,8 +412,8 @@ const lennyMetrics = (lang) => [
   { label: lang === 'it' ? 'Tabelle Database' : 'Database Tables', value: '131+', icon: Database },
   { label: lang === 'it' ? 'Moduli Software' : 'Software Modules', value: '29', icon: Layers },
   { label: lang === 'it' ? 'Partner Ristoranti' : 'Restaurant Partners', value: '47+', icon: Users },
-  { label: lang === 'it' ? 'Ore Risparmiate / Anno' : 'Hours Saved / Year', value: '1,650', icon: Clock },
-  { label: 'ROI', value: '1,450%', icon: TrendingUp },
+  { label: lang === 'it' ? 'Ore Risparmiate / Anno' : 'Hours Saved / Year', value: '1,760', icon: Clock },
+  { label: 'ROI', value: '1,550%', icon: TrendingUp },
 ]
 
 const lennyModules = (lang) => {
@@ -457,7 +457,7 @@ const lennyModules = (lang) => {
       description: it
         ? 'Campagne email (Brevo) + WhatsApp con segmentazione automatica RFM dei clienti estratta direttamente dal database ordini — niente Mailchimp o liste manuali.'
         : 'Email (Brevo) + WhatsApp campaigns with automatic RFM customer segmentation sourced directly from the order database — no Mailchimp or manual lists required.',
-      saving: it ? '€580/anno' : 'A$1,000/yr',
+      saving: it ? '€3.000/anno' : 'A$5,160/yr',
     },
     {
       icon: Shield,
@@ -664,7 +664,7 @@ function LennySection({ t, lang }) {
 
         <div className="bg-gradient-to-br from-indigo-600/20 to-purple-700/20 border border-indigo-500/30 rounded-2xl p-5 sm:p-8 text-center glow">
           <p className="text-slate-400 text-xs uppercase tracking-widest mb-2">{t.lennySavingsLabel}</p>
-          <p className="text-3xl sm:text-5xl font-black text-white mb-2 sm:mb-3">{lang === 'it' ? '€35.000' : 'A$60,200'}</p>
+          <p className="text-3xl sm:text-5xl font-black text-white mb-2 sm:mb-3">{lang === 'it' ? '€37.420' : 'A$64,400'}</p>
           <p className="text-slate-400 text-xs sm:text-sm">{t.lennySavingsFooter}</p>
         </div>
       </div>
