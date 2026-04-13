@@ -107,6 +107,7 @@ const translations = {
     // B2Work
     b2workLabel: 'Marketplace MVP · Side Project',
     b2workTitle: 'B2Work',
+    b2workBeta: 'In Development',
     b2workDesc: 'A marketplace platform connecting hirers with freelance and occasional workers — waiters, baristas, housekeepers, runners. Built as a fully functional MVP with real-time search, verified profiles, protected payments, and OAuth sign-in.',
     b2workFeatures: [
       'Worker discovery with location-based search and rating system',
@@ -320,6 +321,7 @@ const translations = {
     // B2Work
     b2workLabel: 'Marketplace MVP · Side Project',
     b2workTitle: 'B2Work',
+    b2workBeta: 'In Sviluppo',
     b2workDesc: 'Una piattaforma marketplace che connette chi assume con lavoratori freelance e occasionali — camerieri, baristi, colf, runner. Costruita come MVP completamente funzionale con ricerca in tempo reale, profili verificati, pagamenti protetti e accesso OAuth.',
     b2workFeatures: [
       'Ricerca lavoratori geolocalizzata con sistema di valutazione',
@@ -819,7 +821,16 @@ function B2WorkSection({ t }) {
         <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 items-center">
           <div className="lg:w-5/12">
             <SectionLabel>{t.b2workLabel}</SectionLabel>
-            <SectionTitle>{t.b2workTitle}</SectionTitle>
+            <div className="flex items-center gap-3 [&_h2]:mb-0">
+              <SectionTitle>{t.b2workTitle}</SectionTitle>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-400 border border-amber-500/25">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400"></span>
+                </span>
+                {t.b2workBeta}
+              </span>
+            </div>
             <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">{t.b2workDesc}</p>
 
             <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
