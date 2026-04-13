@@ -14,7 +14,7 @@ const translations = {
     // Navbar
     nav: ['Experience', 'Skills', 'Contact'],
     navProjects: 'Projects',
-    navProjectItems: ['Lenny Platform', 'Restaurant SaaS', 'SUP Manager'],
+    navProjectItems: ['Lenny Platform', 'Restaurant SaaS', 'SUP Manager', 'B2Work'],
 
     // Hero
     heroStatus: 'Open to opportunities',
@@ -103,6 +103,20 @@ const translations = {
     supSource: 'Source Code',
     videoLabel3: '[ INSERT: sup-manager-demo.gif ]',
     imgLabel3: '[ INSERT: sup-manager-screenshot.jpg ]',
+
+    // B2Work
+    b2workLabel: 'Marketplace MVP · Side Project',
+    b2workTitle: 'B2Work',
+    b2workDesc: 'A marketplace platform connecting hirers with freelance and occasional workers — waiters, baristas, housekeepers, runners. Built as a fully functional MVP with real-time search, verified profiles, protected payments, and OAuth sign-in.',
+    b2workFeatures: [
+      'Worker discovery with location-based search and rating system',
+      'Verified profiles with role badges and availability status',
+      'OAuth authentication (Google, Facebook) via Supabase Auth',
+      'Gig publishing flow for hirers with category filtering',
+      'Protected payment infrastructure and response-time guarantees',
+      'Responsive landing page with dark theme and mobile-first design',
+    ],
+    b2workSource: 'Source Code',
 
     // Experience
     expLabel: 'Background',
@@ -212,7 +226,7 @@ const translations = {
     // Navbar
     nav: ['Esperienza', 'Competenze', 'Contatti'],
     navProjects: 'Progetti',
-    navProjectItems: ['Lenny Platform', 'Restaurant SaaS', 'SUP Manager'],
+    navProjectItems: ['Lenny Platform', 'Restaurant SaaS', 'SUP Manager', 'B2Work'],
 
     // Hero
     heroStatus: 'Disponibile',
@@ -301,6 +315,20 @@ const translations = {
     supSource: 'Codice Sorgente',
     videoLabel3: '[ INSERIRE: sup-manager-demo.gif ]',
     imgLabel3: '[ INSERIRE: sup-manager-screenshot.jpg ]',
+
+    // B2Work
+    b2workLabel: 'Marketplace MVP · Side Project',
+    b2workTitle: 'B2Work',
+    b2workDesc: 'Una piattaforma marketplace che connette chi assume con lavoratori freelance e occasionali — camerieri, baristi, colf, runner. Costruita come MVP completamente funzionale con ricerca in tempo reale, profili verificati, pagamenti protetti e accesso OAuth.',
+    b2workFeatures: [
+      'Ricerca lavoratori geolocalizzata con sistema di valutazione',
+      'Profili verificati con badge di ruolo e stato di disponibilità',
+      'Autenticazione OAuth (Google, Facebook) tramite Supabase Auth',
+      'Flusso di pubblicazione offerte per chi assume con filtri per categoria',
+      'Infrastruttura pagamenti protetti e garanzie sui tempi di risposta',
+      'Landing page responsive con tema scuro e design mobile-first',
+    ],
+    b2workSource: 'Codice Sorgente',
 
     // Experience
     expLabel: 'Percorso',
@@ -782,6 +810,51 @@ function SupSection({ t }) {
   )
 }
 
+function B2WorkSection({ t }) {
+  return (
+    <section id="b2work" className="py-16 sm:py-24 px-4 sm:px-6 border-t border-white/5">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 items-center">
+          <div className="lg:w-5/12">
+            <SectionLabel>{t.b2workLabel}</SectionLabel>
+            <SectionTitle>{t.b2workTitle}</SectionTitle>
+            <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">{t.b2workDesc}</p>
+
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
+              {['Next.js 15', 'TypeScript', 'Supabase', 'Tailwind CSS', 'Shadcn/UI'].map((tag) => (
+                <TagBadge key={tag} tag={tag} color="indigo" />
+              ))}
+            </div>
+
+            <ul className="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8">
+              {t.b2workFeatures.map((f) => <Bullet key={f} text={f} />)}
+            </ul>
+
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="https://github.com/andreafabbri97/B2Work"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 active:bg-white/20 text-white text-sm px-5 py-2.5 rounded-xl font-semibold transition-colors"
+              >
+                <GitBranch className="w-4 h-4" /> {t.b2workSource}
+              </a>
+            </div>
+          </div>
+
+          <div className="lg:w-7/12 w-full">
+            <img
+              src="images/B2Work-screenshot.jpg"
+              alt="B2Work marketplace screenshot"
+              className="w-full rounded-2xl border border-white/10 shadow-2xl shadow-black/60"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function ExperienceSection({ t }) {
   return (
     <section id="experience" className="py-16 sm:py-24 px-4 sm:px-6 border-t border-white/5">
@@ -899,7 +972,7 @@ function ContactSection({ t }) {
 
 function Navbar({ t, lang, setLang }) {
   const anchors = ['#experience', '#skills', '#contact']
-  const projectAnchors = ['#lenny', '#restaurant', '#sup']
+  const projectAnchors = ['#lenny', '#restaurant', '#sup', '#b2work']
   const [dropOpen, setDropOpen] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const navRef = useRef(null)
@@ -1051,6 +1124,7 @@ export default function App() {
         <LennySection t={t} lang={lang} />
         <RestaurantSection t={t} />
         <SupSection t={t} />
+        <B2WorkSection t={t} />
         <ExperienceSection t={t} />
         <SkillsSection t={t} />
         <ContactSection t={t} />
