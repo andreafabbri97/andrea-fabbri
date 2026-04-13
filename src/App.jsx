@@ -111,7 +111,7 @@ const translations = {
     b2workFeatures: [
       'Worker discovery with location-based search and rating system',
       'Verified profiles with role badges and availability status',
-      'OAuth authentication (Google, Facebook) via Supabase Auth',
+      'OAuth authentication (Google) via Supabase Auth',
       'Gig publishing flow for hirers with category filtering',
       'Protected payment infrastructure and response-time guarantees',
       'Responsive landing page with dark theme and mobile-first design',
@@ -324,7 +324,7 @@ const translations = {
     b2workFeatures: [
       'Ricerca lavoratori geolocalizzata con sistema di valutazione',
       'Profili verificati con badge di ruolo e stato di disponibilità',
-      'Autenticazione OAuth (Google, Facebook) tramite Supabase Auth',
+      'Autenticazione OAuth (Google) tramite Supabase Auth',
       'Flusso di pubblicazione offerte per chi assume con filtri per categoria',
       'Infrastruttura pagamenti protetti e garanzie sui tempi di risposta',
       'Landing page responsive con tema scuro e design mobile-first',
