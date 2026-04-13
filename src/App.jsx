@@ -116,6 +116,7 @@ const translations = {
       'Protected payment infrastructure and response-time guarantees',
       'Responsive landing page with dark theme and mobile-first design',
     ],
+    b2workLiveDemo: 'Live Demo',
     b2workSource: 'Source Code',
 
     // Experience
@@ -328,6 +329,7 @@ const translations = {
       'Infrastruttura pagamenti protetti e garanzie sui tempi di risposta',
       'Landing page responsive con tema scuro e design mobile-first',
     ],
+    b2workLiveDemo: 'Demo Live',
     b2workSource: 'Codice Sorgente',
 
     // Experience
@@ -831,6 +833,14 @@ function B2WorkSection({ t }) {
             </ul>
 
             <div className="flex flex-wrap gap-3">
+              <a
+                href="https://andreafabbri97.github.io/B2Work/"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white text-sm px-5 py-2.5 rounded-xl font-semibold transition-colors"
+              >
+                <Globe className="w-4 h-4" /> {t.b2workLiveDemo}
+              </a>
               <a
                 href="https://github.com/andreafabbri97/B2Work"
                 target="_blank"
