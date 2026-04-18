@@ -1014,13 +1014,11 @@ function Navbar({ t, lang, setLang }) {
   return (
     <>
       {/* Backdrop overlay — blocks all interaction with content behind */}
-      {mobileOpen && (
-        <div
-          className="fixed inset-0 z-40 bg-black/60 md:hidden"
-          onClick={(e) => { e.stopPropagation(); closeMobile() }}
-          onTouchEnd={handleBackdropTouch}
-        />
-      )}
+      <div
+        className={`fixed inset-0 z-40 bg-black/60 md:hidden transition-opacity duration-300 ease-in-out ${mobileOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        onClick={(e) => { e.stopPropagation(); closeMobile() }}
+        onTouchEnd={handleBackdropTouch}
+      />
       <nav ref={navRef} className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
           <a href="#" onClick={(e) => { e.preventDefault(); closeMobile(); window.scrollTo({ top: 0, behavior: 'smooth' }) }} className="text-white font-bold text-sm hover:text-indigo-300 transition-colors cursor-pointer">Andrea Fabbri</a>
@@ -1090,9 +1088,12 @@ function Navbar({ t, lang, setLang }) {
           </div>
         </div>
 
-        {/* Mobile menu */}
-        {mobileOpen && (
-          <div className="md:hidden bg-[#0a0a0f] border-t border-white/5 max-h-[calc(100vh-3.5rem)] overflow-y-auto">
+        {/* Mobile menu — wrapper clips horizontal overflow during slide animation */}
+        <div className="md:hidden overflow-x-hidden">
+          <div
+            className={`bg-[#0a0a0f] border-t border-white/5 max-h-[calc(100vh-3.5rem)] overflow-y-auto transform transition-transform duration-300 ease-in-out ${mobileOpen ? 'translate-x-0' : 'translate-x-full pointer-events-none'}`}
+            aria-hidden={!mobileOpen}
+          >
             <div className="px-4 py-4 flex flex-col gap-1">
               <p className="text-xs text-slate-500 uppercase tracking-wider mb-1 px-3">{t.navProjects}</p>
               {t.navProjectItems.map((label, i) => (
@@ -1100,6 +1101,7 @@ function Navbar({ t, lang, setLang }) {
                   key={projectAnchors[i]}
                   href={projectAnchors[i]}
                   onClick={closeMobile}
+                  tabIndex={mobileOpen ? 0 : -1}
                   className="block py-3 px-3 text-base text-slate-300 active:text-white active:bg-white/5 rounded-lg transition-colors"
                 >
                   {label}
@@ -1111,6 +1113,7 @@ function Navbar({ t, lang, setLang }) {
                   key={anchors[i]}
                   href={anchors[i]}
                   onClick={closeMobile}
+                  tabIndex={mobileOpen ? 0 : -1}
                   className="block py-3 px-3 text-base text-slate-300 active:text-white active:bg-white/5 rounded-lg transition-colors"
                 >
                   {label}
@@ -1118,7 +1121,7 @@ function Navbar({ t, lang, setLang }) {
               ))}
             </div>
           </div>
-        )}
+        </div>
       </nav>
     </>
   )
