@@ -644,9 +644,7 @@ function Hero({ t }) {
         </div>
       </div>
 
-      <div className="absolute bottom-4 sm:bottom-10 left-1/2 -translate-x-1/2 text-slate-600 animate-bounce">
-        <ChevronDown className="w-6 h-6" />
-      </div>
+      <ChevronDown className="absolute bottom-4 sm:bottom-10 inset-x-0 mx-auto w-6 h-6 text-slate-600 animate-bounce" />
     </section>
   )
 }
