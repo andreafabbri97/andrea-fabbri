@@ -74,7 +74,7 @@ const translations = {
     pryorTitle: 'PRYOR',
     pryorBeta: 'Closed Beta',
     pryorTagline: 'The CRM that knows what to do next.',
-    pryorDesc: 'A B2B sales CRM built for SaaS Account Executives. Every morning it reads your pipeline and surfaces the 3–5 highest-leverage moves to make today — with the reasoning behind each one. Powered by Claude and a proprietary inverse-of-intent Risk engine that detects when prospects are losing the capacity to buy.',
+    pryorDesc: "A B2B sales CRM purpose-built for SaaS Account Executives who want to think about deals, not update Salesforce. Every morning PRYOR reads the entire pipeline, scores deal momentum in real time, and surfaces the 3–5 highest-leverage moves to make today — with the explicit reasoning behind each play, drafted directly in your voice. At its core sits a proprietary inverse-of-intent Risk engine: while traditional CRMs only track buying signals, PRYOR also detects when prospects are losing the capacity to buy — champion departures via Gmail bounce detection, rate hikes from live FRED data, regulatory shifts pulled daily from the US Federal Register. Sequences auto-exit on reply, the network map reveals stakeholders nobody briefed you on, and a full Gmail client lives inside the app so you never context-switch.",
     pryorFeatures: [
       "Today's Plays — Claude-ranked daily AE actions with explainable reasoning",
       'Risk module — auto-detects champion departures, rate hikes, regulatory changes via FRED + Federal Register + Gmail bounce detection',
@@ -304,7 +304,7 @@ const translations = {
     pryorTitle: 'PRYOR',
     pryorBeta: 'Closed Beta',
     pryorTagline: 'Il CRM che sa cosa fare dopo.',
-    pryorDesc: "Un CRM B2B costruito per Account Executive SaaS. Ogni mattina legge la pipeline ed evidenzia le 3–5 azioni a maggior leva da fare oggi — con il ragionamento dietro a ciascuna. Alimentato da Claude e da un motore di Rischio proprietario \"inverso-intent\" che rileva quando un prospect sta perdendo la capacità di acquistare.",
+    pryorDesc: "Un CRM B2B costruito su misura per Account Executive SaaS che vogliono ragionare sui deal, non aggiornare Salesforce. Ogni mattina PRYOR legge l'intera pipeline, valuta in tempo reale il momentum di ogni trattativa e mette in cima le 3–5 azioni a maggior leva da fare oggi — con il ragionamento esplicito dietro a ciascuna, scritte già nel tuo tono di voce. Al centro c'è un motore di Rischio proprietario \"inverso-intent\": mentre i CRM tradizionali tracciano solo i segnali di acquisto, PRYOR rileva anche quando un prospect sta perdendo la capacità di comprare — abbandono champion tramite rilevamento bounce Gmail, rialzi tassi da feed live FRED, cambi regolamentari dal Federal Register americano. Le sequenze escono automaticamente quando arriva una risposta, la network map svela stakeholder che nessuno ti aveva mai presentato, e un client Gmail completo vive dentro l'app — niente più context-switch.",
     pryorFeatures: [
       "Today's Plays — azioni AE quotidiane classificate da Claude con motivazione esplicita",
       'Modulo Rischio — rileva automaticamente abbandono champion, rialzi tassi, cambi regolamentari tramite FRED + Federal Register + rilevamento bounce Gmail',
