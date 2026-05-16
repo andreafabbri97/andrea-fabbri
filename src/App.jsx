@@ -1285,7 +1285,7 @@ function Navbar({ t, lang, setLang }) {
 
         {/* Mobile menu — absolute so it doesn't reserve layout space while mounted;
             wrapper clips horizontal overflow during slide animation */}
-        <div className="md:hidden absolute top-full left-0 right-0 overflow-x-hidden">
+        <div className={`md:hidden absolute top-full left-0 right-0 overflow-x-hidden ${mobileOpen ? '' : 'pointer-events-none'}`}>
           <div
             className={`bg-[#0a0a0f] border-t border-white/5 max-h-[calc(100vh-3.5rem)] overflow-y-auto transform transition-transform duration-300 ease-in-out ${mobileOpen ? 'translate-x-0' : 'translate-x-full pointer-events-none'}`}
             aria-hidden={!mobileOpen}
