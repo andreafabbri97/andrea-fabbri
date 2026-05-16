@@ -862,7 +862,7 @@ function PryorSection({ t, lang }) {
           <div>
             <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">{t.pryorOverviewTitle}</h3>
             <p className="text-slate-400 text-sm leading-relaxed mb-4 sm:mb-6">{t.pryorOverviewDesc}</p>
-            <div className="space-y-2.5">
+            <div className="space-y-2.5 mb-6 sm:mb-8">
               {t.pryorFeatures.map((f) => (
                 <div key={f} className="flex items-start gap-2 text-sm text-slate-300">
                   <Zap className="w-3.5 h-3.5 text-sky-400 mt-0.5 shrink-0" />
@@ -870,6 +870,14 @@ function PryorSection({ t, lang }) {
                 </div>
               ))}
             </div>
+            <a
+              href="https://pryor-eight.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-400 active:bg-sky-600 text-slate-900 text-sm px-5 py-2.5 rounded-xl font-semibold transition-colors"
+            >
+              <Globe className="w-4 h-4" /> {t.pryorLiveDemo}
+            </a>
           </div>
           <img
             src="images/pryor-screenshot.jpg"
@@ -879,21 +887,10 @@ function PryorSection({ t, lang }) {
         </div>
 
         <h3 className="text-lg sm:text-xl font-bold text-white mb-6 sm:mb-8 text-center">{t.pryorModulesTitle}</h3>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mb-8 sm:mb-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {pryorModules(lang).map((m) => (
             <PryorModuleCard key={m.title} {...m} />
           ))}
-        </div>
-
-        <div className="flex justify-center">
-          <a
-            href="https://pryor-eight.vercel.app/"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-400 active:bg-sky-600 text-slate-900 text-sm px-5 py-2.5 rounded-xl font-semibold transition-colors"
-          >
-            <Globe className="w-4 h-4" /> {t.pryorLiveDemo}
-          </a>
         </div>
       </div>
     </section>
