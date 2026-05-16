@@ -95,10 +95,6 @@ const translations = {
       'Installable PWA — manifest + service worker, mobile-first AE workspace',
     ],
     pryorModulesTitle: 'Product Modules — What Each One Solves',
-    pryorTaglineLabel: 'Closed Beta · Product Status',
-    pryorTaglineFoot: (
-      <>Live at <span className="text-white font-medium">pryor-eight.vercel.app</span>{' · '}Stack:{' '}<span className="text-white font-medium">Next.js 16 + Neon + Gemini</span>{' · '}Invite-only beta with manual 24-hour waitlist review</>
-    ),
     pryorLiveDemo: 'View Landing & Waitlist',
 
     // Restaurant
@@ -341,10 +337,6 @@ const translations = {
       'PWA installabile — manifest + service worker, workspace AE mobile-first',
     ],
     pryorModulesTitle: 'Moduli del Prodotto — Cosa Risolve Ognuno',
-    pryorTaglineLabel: 'Closed Beta · Stato del Prodotto',
-    pryorTaglineFoot: (
-      <>Live su <span className="text-white font-medium">pryor-eight.vercel.app</span>{' · '}Stack:{' '}<span className="text-white font-medium">Next.js 16 + Neon + Gemini</span>{' · '}Beta invite-only con review manuale waitlist entro 24h</>
-    ),
     pryorLiveDemo: 'Landing & Waitlist',
 
     // Restaurant
@@ -893,13 +885,7 @@ function PryorSection({ t, lang }) {
           ))}
         </div>
 
-        <div className="bg-gradient-to-br from-sky-500/20 to-cyan-600/20 border border-sky-500/30 rounded-2xl p-5 sm:p-8 text-center glow">
-          <p className="text-slate-400 text-xs uppercase tracking-widest mb-2">{t.pryorTaglineLabel}</p>
-          <p className="text-2xl sm:text-4xl font-black text-white mb-2 sm:mb-3 italic">{t.pryorTagline}</p>
-          <p className="text-slate-400 text-xs sm:text-sm">{t.pryorTaglineFoot}</p>
-        </div>
-
-        <div className="mt-8 sm:mt-10 flex justify-center">
+        <div className="flex justify-center">
           <a
             href="https://pryor-eight.vercel.app/"
             target="_blank"
