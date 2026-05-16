@@ -74,15 +74,31 @@ const translations = {
     pryorTitle: 'PRYOR',
     pryorBeta: 'Closed Beta',
     pryorTagline: 'The CRM that knows what to do next.',
-    pryorDesc: "A B2B sales CRM purpose-built for SaaS Account Executives who want to think about deals, not update Salesforce. Every morning PRYOR reads the entire pipeline, scores deal momentum in real time, and surfaces the 3–5 highest-leverage moves to make today — with the explicit reasoning behind each play, drafted directly in your voice. At its core sits a proprietary inverse-of-intent Risk engine: while traditional CRMs only track buying signals, PRYOR also detects when prospects are losing the capacity to buy — champion departures via Gmail bounce detection, rate hikes from live FRED data, regulatory shifts pulled daily from the US Federal Register. Sequences auto-exit on reply, the network map reveals stakeholders nobody briefed you on, and a full Gmail client lives inside the app so you never context-switch.",
+    pryorIntro: (
+      <>
+        An AI-native B2B sales CRM engineered from scratch and{' '}
+        <span className="text-white font-semibold">currently in private beta</span>.
+        {' '}Built on the conviction that{' '}
+        <span className="text-white font-semibold">
+          the next closed deal is already in your pipeline — you just don't know which one yet
+        </span>. Powered by Google Gemini and live macro / regulatory / email feeds, PRYOR decides what to do next on every deal so AEs can think about deals instead of updating Salesforce.
+      </>
+    ),
+    pryorOverviewTitle: 'Platform Overview',
+    pryorOverviewDesc: "PRYOR is the first sales workspace that fuses Google Gemini with structured external data feeds to deliver a daily 'highest-value action' verdict per deal. Every component — from the morning play generation to the in-app Gmail client to the cron-driven risk-signal ingestion — was designed to keep the AE's attention on the deals, not on data entry.",
     pryorFeatures: [
-      "Today's Plays — Claude-ranked daily AE actions with explainable reasoning",
-      'Risk module — auto-detects champion departures, rate hikes, regulatory changes via FRED + Federal Register + Gmail bounce detection',
-      'Native Gmail integration — read, send, sequences with reply detection',
-      'Network map — stakeholder graph and relationship intelligence per deal',
-      'Multi-step sequences with daily Vercel cron sender and auto-exit on reply',
-      'Kanban pipeline, live KPI dashboard, CSV import from other CRMs',
+      'Stack: Next.js 16 (App Router) + React 19 + TypeScript on Vercel',
+      'Neon serverless Postgres with Drizzle ORM and Drizzle Studio migrations',
+      'Auth.js v5 — GitHub OAuth + Resend magic-link + database sessions',
+      'Vercel Cron orchestration for daily sequences and risk-feed ingestion',
+      'Google Gemini API for the Today\'s Plays judgment engine',
+      'Installable PWA — manifest + service worker, mobile-first AE workspace',
     ],
+    pryorModulesTitle: 'Product Modules — What Each One Solves',
+    pryorTaglineLabel: 'Closed Beta · Product Status',
+    pryorTaglineFoot: (
+      <>Live at <span className="text-white font-medium">pryor-eight.vercel.app</span>{' · '}Stack:{' '}<span className="text-white font-medium">Next.js 16 + Neon + Gemini</span>{' · '}Invite-only beta with manual 24-hour waitlist review</>
+    ),
     pryorLiveDemo: 'View Landing & Waitlist',
 
     // Restaurant
@@ -304,15 +320,31 @@ const translations = {
     pryorTitle: 'PRYOR',
     pryorBeta: 'Closed Beta',
     pryorTagline: 'Il CRM che sa cosa fare dopo.',
-    pryorDesc: "Un CRM B2B costruito su misura per Account Executive SaaS che vogliono ragionare sui deal, non aggiornare Salesforce. Ogni mattina PRYOR legge l'intera pipeline, valuta in tempo reale il momentum di ogni trattativa e mette in cima le 3–5 azioni a maggior leva da fare oggi — con il ragionamento esplicito dietro a ciascuna, scritte già nel tuo tono di voce. Al centro c'è un motore di Rischio proprietario \"inverso-intent\": mentre i CRM tradizionali tracciano solo i segnali di acquisto, PRYOR rileva anche quando un prospect sta perdendo la capacità di comprare — abbandono champion tramite rilevamento bounce Gmail, rialzi tassi da feed live FRED, cambi regolamentari dal Federal Register americano. Le sequenze escono automaticamente quando arriva una risposta, la network map svela stakeholder che nessuno ti aveva mai presentato, e un client Gmail completo vive dentro l'app — niente più context-switch.",
+    pryorIntro: (
+      <>
+        Un CRM B2B AI-native progettato da zero e{' '}
+        <span className="text-white font-semibold">attualmente in beta privata</span>.
+        {' '}Costruito sulla convinzione che{' '}
+        <span className="text-white font-semibold">
+          il prossimo deal chiuso è già nella tua pipeline — semplicemente non sai ancora quale
+        </span>. Alimentato da Google Gemini e da feed live macro / regolatori / email, PRYOR decide cosa fare dopo su ogni trattativa così l'AE può ragionare sui deal invece di aggiornare Salesforce.
+      </>
+    ),
+    pryorOverviewTitle: 'Panoramica della Piattaforma',
+    pryorOverviewDesc: "PRYOR è il primo workspace di vendita che fonde Google Gemini con feed di dati esterni strutturati per consegnare ogni giorno il verdetto 'azione a maggior valore' su ogni deal. Ogni componente — dalla generazione delle plays mattutine al client Gmail in-app fino all'ingestione cron-driven dei segnali di rischio — è progettato per tenere l'attenzione dell'AE sui deal, non sull'inserimento dati.",
     pryorFeatures: [
-      "Today's Plays — azioni AE quotidiane classificate da Claude con motivazione esplicita",
-      'Modulo Rischio — rileva automaticamente abbandono champion, rialzi tassi, cambi regolamentari tramite FRED + Federal Register + rilevamento bounce Gmail',
-      'Integrazione Gmail nativa — lettura, invio, sequenze con rilevamento risposte',
-      'Network map — grafo degli stakeholder e intelligence relazionale per ogni deal',
-      'Sequenze multi-step con invio giornaliero via Vercel cron e auto-uscita su risposta',
-      'Pipeline Kanban, dashboard KPI live, import CSV da altri CRM',
+      'Stack: Next.js 16 (App Router) + React 19 + TypeScript su Vercel',
+      'Neon Postgres serverless con Drizzle ORM e migrazioni via Drizzle Studio',
+      'Auth.js v5 — OAuth GitHub + Resend magic-link + sessioni su database',
+      'Orchestrazione cron Vercel per sequenze giornaliere e ingestione feed di rischio',
+      'API Google Gemini per il motore decisionale Today\'s Plays',
+      'PWA installabile — manifest + service worker, workspace AE mobile-first',
     ],
+    pryorModulesTitle: 'Moduli del Prodotto — Cosa Risolve Ognuno',
+    pryorTaglineLabel: 'Closed Beta · Stato del Prodotto',
+    pryorTaglineFoot: (
+      <>Live su <span className="text-white font-medium">pryor-eight.vercel.app</span>{' · '}Stack:{' '}<span className="text-white font-medium">Next.js 16 + Neon + Gemini</span>{' · '}Beta invite-only con review manuale waitlist entro 24h</>
+    ),
     pryorLiveDemo: 'Landing & Waitlist',
 
     // Restaurant
@@ -534,6 +566,66 @@ const lennyModules = (lang) => {
   ]
 }
 
+const pryorMetrics = (lang) => {
+  const it = lang === 'it'
+  return [
+    { label: it ? 'Plays IA Giornaliere / AE' : 'Daily AI Plays / AE', value: '5', icon: Bot, color: 'sky' },
+    { label: it ? 'Tipi di Segnale Rischio' : 'Risk Signal Types', value: '8', icon: Shield, color: 'sky' },
+    { label: it ? 'Feed Dati Live' : 'Live Data Sources', value: '3', icon: Database, color: 'sky' },
+    { label: it ? 'Moduli di Prodotto' : 'Product Modules', value: '12', icon: Layers, color: 'sky' },
+    { label: it ? 'Cron Job Giornalieri' : 'Daily Cron Jobs', value: '2', icon: Clock, color: 'sky' },
+    { label: it ? 'Motore IA' : 'AI Engine', value: 'Gemini', icon: Cpu, color: 'sky' },
+  ]
+}
+
+const pryorModules = (lang) => {
+  const it = lang === 'it'
+  return [
+    {
+      icon: Bot,
+      title: "Today's Plays",
+      description: it
+        ? "Google Gemini legge l'intera pipeline durante la notte e classifica le 5 azioni AE a maggior leva da fare oggi — con ragionamento esplicito e bozze di risposta pre-scritte nel tono di voce dell'Account Executive."
+        : "Google Gemini reads the full pipeline overnight and ranks the 5 highest-leverage AE actions for the day — with explainable reasoning and draft replies pre-written in the Account Executive's tone of voice.",
+    },
+    {
+      icon: Shield,
+      title: it ? 'Motore Rischio — Inverso dell\'Intent' : 'Risk Engine — Inverse of Intent',
+      description: it
+        ? 'Mentre gli altri CRM tracciano solo i segnali d\'acquisto, PRYOR rileva anche gli eventi che distruggono i deal in silenzio: abbandono champion (via rilevamento bounce Gmail), rialzi tassi (feed live FRED), cambi regolamentari (Federal Register USA). Severità calcolata automaticamente.'
+        : "While other CRMs track only buying signals, PRYOR detects the events that quietly destroy deals: champion departures (via Gmail bounce detection), rate hikes (live FRED feed), regulatory shifts (US Federal Register). Severity scored automatically.",
+    },
+    {
+      icon: Mail,
+      title: it ? 'Sequenze con Auto-Uscita' : 'Sequences with Auto-Exit',
+      description: it
+        ? 'Costruttore di outreach multi-step inviato da un cron Vercel giornaliero. Nel momento in cui il prospect risponde, la sequenza esce in modo pulito — niente più "scusa, ignora l\'ultima email".'
+        : "Multi-step outreach builder dispatched by a daily Vercel cron. The moment a prospect replies, the sequence exits cleanly — no more 'sorry, ignore that last email' moments.",
+    },
+    {
+      icon: Users,
+      title: 'Network Map',
+      description: it
+        ? 'Grafo degli stakeholder per ogni account. Rivela i veri decisori, le relazioni tra di loro e le lacune nella copertura che diventano blocker in fase di closing.'
+        : 'Stakeholder graph per account. Surfaces the actual decision-makers, the relationships between them, and the coverage gaps that turn into blockers at close.',
+    },
+    {
+      icon: ExternalLink,
+      title: it ? 'Client Gmail Nativo' : 'Native Gmail Client',
+      description: it
+        ? "Esperienza Gmail completa integrata nel CRM: cartelle, compose, allegati, archive — sulla casella OAuth dell'admin, perché l'AE non esca mai dal workflow di vendita."
+        : "Full Gmail experience embedded inside the CRM — folders, compose, attachments, archive — running on the admin's OAuth-connected mailbox so AEs never context-switch out of the sales workflow.",
+    },
+    {
+      icon: BarChart2,
+      title: it ? 'Pipeline & Analytics Live' : 'Pipeline & Live Analytics',
+      description: it
+        ? 'Kanban drag-to-stage abbinato a una dashboard KPI in tempo reale: velocity dei deal, tassi di conversione, densità di signal per account. L\'import CSV rende la migrazione da Salesforce banale.'
+        : 'Drag-to-stage Kanban paired with a real-time KPI dashboard: deal velocity, conversion rates, signal density per account. CSV import keeps migrating from Salesforce trivial.',
+    },
+  ]
+}
+
 // ─── UI Primitives ───────────────────────────────────────────────────────────
 
 function SectionLabel({ children }) {
@@ -553,12 +645,25 @@ function SectionTitle({ children }) {
   )
 }
 
-function MetricCard({ label, value, icon: Icon }) {
+function MetricCard({ label, value, icon: Icon, color = 'indigo' }) {
+  const iconColor = color === 'sky' ? 'text-sky-400' : 'text-indigo-400'
   return (
     <div className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-3 sm:p-5 text-center card-hover">
-      <Icon className="w-4 sm:w-5 h-4 sm:h-5 text-indigo-400 mx-auto mb-2 sm:mb-3" />
+      <Icon className={`w-4 sm:w-5 h-4 sm:h-5 ${iconColor} mx-auto mb-2 sm:mb-3`} />
       <div className="text-lg sm:text-2xl font-bold text-white mb-0.5 sm:mb-1">{value}</div>
       <div className="text-[10px] sm:text-xs text-slate-400 leading-snug">{label}</div>
+    </div>
+  )
+}
+
+function PryorModuleCard({ icon: Icon, title, description }) {
+  return (
+    <div className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 card-hover">
+      <div className="w-9 sm:w-10 h-9 sm:h-10 rounded-xl bg-sky-500/20 flex items-center justify-center shrink-0 mb-3 sm:mb-4">
+        <Icon className="w-4 sm:w-5 h-4 sm:h-5 text-sky-400" />
+      </div>
+      <h3 className="text-white font-semibold text-sm sm:text-base mb-1.5 sm:mb-2">{title}</h3>
+      <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">{description}</p>
     </div>
   )
 }
@@ -735,55 +840,74 @@ function LennySection({ t, lang }) {
   )
 }
 
-function PryorSection({ t }) {
+function PryorSection({ t, lang }) {
   return (
     <section id="pryor" className="py-16 sm:py-24 px-4 sm:px-6 border-t border-white/5">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col lg:flex-row-reverse gap-8 sm:gap-12 items-center">
-          <div className="lg:w-5/12">
-            <SectionLabel>{t.pryorLabel}</SectionLabel>
-            <div className="flex items-center gap-3 [&_h2]:mb-0">
-              <SectionTitle>{t.pryorTitle}</SectionTitle>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-sky-500/15 text-sky-300 border border-sky-500/25">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-400"></span>
-                </span>
-                {t.pryorBeta}
+        <div className="text-center mb-10 sm:mb-16">
+          <SectionLabel>{t.pryorLabel}</SectionLabel>
+          <div className="flex items-center justify-center flex-wrap gap-3 [&_h2]:mb-0 mb-3 sm:mb-4">
+            <SectionTitle>{t.pryorTitle}</SectionTitle>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-sky-500/15 text-sky-300 border border-sky-500/25">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-400"></span>
               </span>
-            </div>
-            <p className="text-sky-300/90 text-sm sm:text-base font-medium italic mb-3 sm:mb-4">{t.pryorTagline}</p>
-            <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">{t.pryorDesc}</p>
+              {t.pryorBeta}
+            </span>
+          </div>
+          <p className="text-sky-300/90 text-base sm:text-lg font-medium italic mb-4 sm:mb-5">{t.pryorTagline}</p>
+          <p className="text-slate-400 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">{t.pryorIntro}</p>
+        </div>
 
-            <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
-              {['Next.js 16', 'React 19', 'TypeScript', 'Neon Postgres', 'Drizzle ORM', 'Claude AI', 'Vercel Cron'].map((tag) => (
-                <TagBadge key={tag} tag={tag} color="sky" />
+        <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-4 mb-10 sm:mb-16">
+          {pryorMetrics(lang).map((m) => (
+            <MetricCard key={m.label} {...m} />
+          ))}
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8 sm:gap-10 mb-10 sm:mb-16 items-center">
+          <div>
+            <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">{t.pryorOverviewTitle}</h3>
+            <p className="text-slate-400 text-sm leading-relaxed mb-4 sm:mb-6">{t.pryorOverviewDesc}</p>
+            <div className="space-y-2.5">
+              {t.pryorFeatures.map((f) => (
+                <div key={f} className="flex items-start gap-2 text-sm text-slate-300">
+                  <Zap className="w-3.5 h-3.5 text-sky-400 mt-0.5 shrink-0" />
+                  {f}
+                </div>
               ))}
             </div>
-
-            <ul className="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8">
-              {t.pryorFeatures.map((f) => <Bullet key={f} text={f} />)}
-            </ul>
-
-            <div className="flex flex-wrap gap-3">
-              <a
-                href="https://pryor-eight.vercel.app/"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-400 active:bg-sky-600 text-slate-900 text-sm px-5 py-2.5 rounded-xl font-semibold transition-colors"
-              >
-                <Globe className="w-4 h-4" /> {t.pryorLiveDemo}
-              </a>
-            </div>
           </div>
+          <img
+            src="images/pryor-screenshot.jpg"
+            alt="PRYOR sales CRM landing"
+            className="w-full rounded-2xl border border-white/10"
+          />
+        </div>
 
-          <div className="lg:w-7/12 w-full">
-            <img
-              src="images/pryor-screenshot.jpg"
-              alt="PRYOR sales CRM screenshot"
-              className="w-full rounded-2xl border border-white/10 shadow-2xl shadow-black/60"
-            />
-          </div>
+        <h3 className="text-lg sm:text-xl font-bold text-white mb-6 sm:mb-8 text-center">{t.pryorModulesTitle}</h3>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mb-8 sm:mb-12">
+          {pryorModules(lang).map((m) => (
+            <PryorModuleCard key={m.title} {...m} />
+          ))}
+        </div>
+
+        <div className="bg-gradient-to-br from-sky-500/20 to-cyan-600/20 border border-sky-500/30 rounded-2xl p-5 sm:p-8 text-center glow">
+          <p className="text-slate-400 text-xs uppercase tracking-widest mb-2">{t.pryorTaglineLabel}</p>
+          <p className="text-2xl sm:text-4xl font-black text-white mb-2 sm:mb-3 italic">{t.pryorTagline}</p>
+          <p className="text-slate-400 text-xs sm:text-sm">{t.pryorTaglineFoot}</p>
+        </div>
+
+        <div className="mt-8 sm:mt-10 flex justify-center">
+          <a
+            href="https://pryor-eight.vercel.app/"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-400 active:bg-sky-600 text-slate-900 text-sm px-5 py-2.5 rounded-xl font-semibold transition-colors"
+          >
+            <Globe className="w-4 h-4" /> {t.pryorLiveDemo}
+          </a>
         </div>
       </div>
     </section>
@@ -1233,7 +1357,7 @@ export default function App() {
           </div>
         </div>
         <LennySection t={t} lang={lang} />
-        <PryorSection t={t} />
+        <PryorSection t={t} lang={lang} />
         <RestaurantSection t={t} />
         <SupSection t={t} />
         <B2WorkSection t={t} />
