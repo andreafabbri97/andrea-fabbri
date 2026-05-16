@@ -14,7 +14,7 @@ const translations = {
     // Navbar
     nav: ['Experience', 'Skills', 'Contact'],
     navProjects: 'Projects',
-    navProjectItems: ['Lenny Platform', 'Restaurant SaaS', 'SUP Manager', 'B2Work'],
+    navProjectItems: ['Lenny Platform', 'PRYOR', 'Restaurant SaaS', 'SUP Manager', 'B2Work'],
 
     // Hero
     heroStatus: 'Open to opportunities',
@@ -68,6 +68,22 @@ const translations = {
     ),
     videoLabel1: '[ INSERT: lenny-demo.gif — screen recording ]',
     imgLabel1: '[ INSERT: lenny-sidebar-screenshot.jpg ]',
+
+    // PRYOR
+    pryorLabel: 'AI-Native SaaS · B2B Sales CRM',
+    pryorTitle: 'PRYOR',
+    pryorBeta: 'Closed Beta',
+    pryorTagline: 'The CRM that knows what to do next.',
+    pryorDesc: 'A B2B sales CRM built for SaaS Account Executives. Every morning it reads your pipeline and surfaces the 3–5 highest-leverage moves to make today — with the reasoning behind each one. Powered by Claude and a proprietary inverse-of-intent Risk engine that detects when prospects are losing the capacity to buy.',
+    pryorFeatures: [
+      "Today's Plays — Claude-ranked daily AE actions with explainable reasoning",
+      'Risk module — auto-detects champion departures, rate hikes, regulatory changes via FRED + Federal Register + Gmail bounce detection',
+      'Native Gmail integration — read, send, sequences with reply detection',
+      'Network map — stakeholder graph and relationship intelligence per deal',
+      'Multi-step sequences with daily Vercel cron sender and auto-exit on reply',
+      'Kanban pipeline, live KPI dashboard, CSV import from other CRMs',
+    ],
+    pryorLiveDemo: 'View Landing & Waitlist',
 
     // Restaurant
     restLabel: 'SaaS Product · Public Repository',
@@ -228,7 +244,7 @@ const translations = {
     // Navbar
     nav: ['Esperienza', 'Competenze', 'Contatti'],
     navProjects: 'Progetti',
-    navProjectItems: ['Lenny Platform', 'Restaurant SaaS', 'SUP Manager', 'B2Work'],
+    navProjectItems: ['Lenny Platform', 'PRYOR', 'Restaurant SaaS', 'SUP Manager', 'B2Work'],
 
     // Hero
     heroStatus: 'Disponibile',
@@ -282,6 +298,22 @@ const translations = {
     ),
     videoLabel1: '[ INSERIRE: lenny-demo.gif — registrazione schermo ]',
     imgLabel1: '[ INSERIRE: lenny-sidebar-screenshot.jpg ]',
+
+    // PRYOR
+    pryorLabel: 'SaaS AI-Native · CRM Sales B2B',
+    pryorTitle: 'PRYOR',
+    pryorBeta: 'Closed Beta',
+    pryorTagline: 'Il CRM che sa cosa fare dopo.',
+    pryorDesc: "Un CRM B2B costruito per Account Executive SaaS. Ogni mattina legge la pipeline ed evidenzia le 3–5 azioni a maggior leva da fare oggi — con il ragionamento dietro a ciascuna. Alimentato da Claude e da un motore di Rischio proprietario \"inverso-intent\" che rileva quando un prospect sta perdendo la capacità di acquistare.",
+    pryorFeatures: [
+      "Today's Plays — azioni AE quotidiane classificate da Claude con motivazione esplicita",
+      'Modulo Rischio — rileva automaticamente abbandono champion, rialzi tassi, cambi regolamentari tramite FRED + Federal Register + rilevamento bounce Gmail',
+      'Integrazione Gmail nativa — lettura, invio, sequenze con rilevamento risposte',
+      'Network map — grafo degli stakeholder e intelligence relazionale per ogni deal',
+      'Sequenze multi-step con invio giornaliero via Vercel cron e auto-uscita su risposta',
+      'Pipeline Kanban, dashboard KPI live, import CSV da altri CRM',
+    ],
+    pryorLiveDemo: 'Landing & Waitlist',
 
     // Restaurant
     restLabel: 'Prodotto SaaS · Repository Pubblico',
@@ -562,6 +594,7 @@ function TagBadge({ tag, color = 'indigo' }) {
     indigo: 'text-indigo-300 bg-indigo-500/10 border-indigo-500/20',
     purple: 'text-purple-300 bg-purple-500/10 border-purple-500/20',
     slate: 'text-slate-300 bg-slate-500/10 border-slate-500/20',
+    sky: 'text-sky-300 bg-sky-500/10 border-sky-500/20',
   }
   return (
     <span className={`text-xs font-semibold border px-3 py-1 rounded-full ${styles[color] ?? styles.indigo}`}>
@@ -696,6 +729,61 @@ function LennySection({ t, lang }) {
           <p className="text-slate-400 text-xs uppercase tracking-widest mb-2">{t.lennySavingsLabel}</p>
           <p className="text-3xl sm:text-5xl font-black text-white mb-2 sm:mb-3">{lang === 'it' ? '€37.420' : 'A$64,400'}</p>
           <p className="text-slate-400 text-xs sm:text-sm">{t.lennySavingsFooter}</p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function PryorSection({ t }) {
+  return (
+    <section id="pryor" className="py-16 sm:py-24 px-4 sm:px-6 border-t border-white/5">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-col lg:flex-row-reverse gap-8 sm:gap-12 items-center">
+          <div className="lg:w-5/12">
+            <SectionLabel>{t.pryorLabel}</SectionLabel>
+            <div className="flex items-center gap-3 [&_h2]:mb-0">
+              <SectionTitle>{t.pryorTitle}</SectionTitle>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-sky-500/15 text-sky-300 border border-sky-500/25">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-400"></span>
+                </span>
+                {t.pryorBeta}
+              </span>
+            </div>
+            <p className="text-sky-300/90 text-sm sm:text-base font-medium italic mb-3 sm:mb-4">{t.pryorTagline}</p>
+            <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">{t.pryorDesc}</p>
+
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
+              {['Next.js 16', 'React 19', 'TypeScript', 'Neon Postgres', 'Drizzle ORM', 'Claude AI', 'Vercel Cron'].map((tag) => (
+                <TagBadge key={tag} tag={tag} color="sky" />
+              ))}
+            </div>
+
+            <ul className="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8">
+              {t.pryorFeatures.map((f) => <Bullet key={f} text={f} />)}
+            </ul>
+
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="https://pryor-eight.vercel.app/"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-400 active:bg-sky-600 text-slate-900 text-sm px-5 py-2.5 rounded-xl font-semibold transition-colors"
+              >
+                <Globe className="w-4 h-4" /> {t.pryorLiveDemo}
+              </a>
+            </div>
+          </div>
+
+          <div className="lg:w-7/12 w-full">
+            <img
+              src="images/pryor-screenshot.jpg"
+              alt="PRYOR sales CRM screenshot"
+              className="w-full rounded-2xl border border-white/10 shadow-2xl shadow-black/60"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -991,7 +1079,7 @@ function ContactSection({ t }) {
 
 function Navbar({ t, lang, setLang }) {
   const anchors = ['#experience', '#skills', '#contact']
-  const projectAnchors = ['#lenny', '#restaurant', '#sup', '#b2work']
+  const projectAnchors = ['#lenny', '#pryor', '#restaurant', '#sup', '#b2work']
   const [dropOpen, setDropOpen] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const navRef = useRef(null)
@@ -1145,6 +1233,7 @@ export default function App() {
           </div>
         </div>
         <LennySection t={t} lang={lang} />
+        <PryorSection t={t} />
         <RestaurantSection t={t} />
         <SupSection t={t} />
         <B2WorkSection t={t} />
