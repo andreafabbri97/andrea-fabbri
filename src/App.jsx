@@ -590,11 +590,11 @@ const lennyModules = (lang) => {
       saving: 'PWA',
     },
     {
-      icon: MapPin,
-      title: it ? 'Partnership La Serenissima' : 'La Serenissima Partnership',
+      icon: Zap,
+      title: it ? 'Conferma Ordine WhatsApp + Offerta Giornale' : 'WhatsApp Order Confirmation + Newspaper Offer',
       description: it
-        ? 'Automazione commerciale per l\'edicola partner: un cron intercetta i nuovi ordini e invia al cliente un ringraziamento WhatsApp con l\'offerta del PDF del giornale del giorno — consegnato se risponde "SÌ". Con circuit breaker sul volume, blacklist numeri interni e idempotenza per ordine.'
-        : 'A commercial automation for the partner newsstand: a cron intercepts new orders and sends the customer a WhatsApp thank-you with an offer for the day\'s newspaper PDF — delivered if they reply "YES". Includes a daily-volume circuit breaker, internal-number blacklist, and per-order idempotency.',
+        ? 'Automazione WhatsApp post-ordine a doppia modalità: un cron intercetta i nuovi ordini e invia automaticamente al cliente la conferma dell\'ordine (numero, indirizzo, fascia di consegna). Opzionalmente, nello stesso messaggio, propone in regalo il PDF del giornale del giorno di un\'edicola partner — consegnato se il cliente risponde "SÌ". Con circuit breaker sul volume, blacklist dei numeri interni e idempotenza per ordine.'
+        : 'A dual-mode post-order WhatsApp automation: a cron intercepts new orders and automatically sends the customer their order confirmation (number, address, delivery window). Optionally, the same message offers a free PDF of the day\'s newspaper from a partner newsstand — delivered if the customer replies "YES". Includes a daily-volume circuit breaker, internal-number blacklist, and per-order idempotency.',
       saving: it ? 'Nuovo' : 'New',
     },
   ]
