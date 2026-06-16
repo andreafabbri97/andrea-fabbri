@@ -51,13 +51,14 @@ const translations = {
       </>
     ),
     lennyOverviewTitle: 'Platform Overview',
-    lennyOverviewDesc: 'The platform handles everything from driver scheduling and payroll to partner billing, multi-channel marketing, and real-time business intelligence — all in a single production-grade interface.',
+    lennyOverviewDesc: 'The platform now handles everything from driver scheduling and payroll to partner billing, AI-generated marketing, an integrated email client, and Gemini-Vision invoice OCR — all the way to real-time business intelligence, in a single production-grade interface used daily in a live operation.',
     lennyFeatures: [
-      '778 API routes across 29 integrated modules',
-      '8 automated cron jobs running 24/7 without human intervention',
-      '7 third-party integrations: WhatsApp, Gemini AI, Firebase, Brevo, AWS RDS…',
+      '990+ API routes across 35+ integrated modules',
+      '12 automated cron jobs running 24/7 without human intervention',
+      '10+ integrations: WhatsApp, Google Gemini (chat + Vision OCR), Claude, Firebase, Brevo, Meta & Google Ads…',
+      'Two production PWAs distributed to external drivers and restaurant partners',
       'Real-time WebSocket updates via Pusher for live operational dashboards',
-      'Automated database backup to protect against attacks and data loss',
+      'Automated multi-layer database backup with 90-day retention',
       'and more…',
     ],
     lennyScreenshotTitle: 'Dashboard Screenshot',
@@ -172,7 +173,7 @@ const translations = {
         period: 'Jun 2023 — Present',
         location: 'Borgo Maggiore, San Marino · Hybrid',
         bullets: [
-          'Sole architect of Lenny Platform — a 778-route ERP used daily in a live food-delivery operation, built through AI-assisted engineering',
+          'Sole architect of Lenny Platform — a 990+ route ERP used daily in a live food-delivery operation, built through AI-assisted engineering',
 
           'Architected and delivered 29 software modules, eliminating all manual back-office processes',
           'Quantified A$64,400/yr in operational savings with a documented 1,550% ROI',
@@ -293,13 +294,14 @@ const translations = {
       </>
     ),
     lennyOverviewTitle: 'Panoramica della Piattaforma',
-    lennyOverviewDesc: "La piattaforma gestisce tutto: dalla pianificazione dei turni driver e la busta paga, alla fatturazione dei partner, al marketing multicanale e alla business intelligence in tempo reale — tutto in un'unica interfaccia di livello enterprise.",
+    lennyOverviewDesc: "La piattaforma gestisce ora tutto: dalla pianificazione turni driver e busta paga, alla fatturazione partner, al marketing generato con AI, a un client email integrato e all'OCR fatture con Gemini Vision — fino alla business intelligence in tempo reale, in un'unica interfaccia enterprise usata ogni giorno in un'operazione live.",
     lennyFeatures: [
-      '778 route API distribuite su 29 moduli integrati',
-      '8 cron job automatizzati attivi 24/7 senza intervento umano',
-      '7 integrazioni di terze parti: WhatsApp, Gemini AI, Firebase, Brevo, AWS RDS…',
+      '990+ route API distribuite su 35+ moduli integrati',
+      '12 cron job automatizzati attivi 24/7 senza intervento umano',
+      '10+ integrazioni: WhatsApp, Google Gemini (chat + Vision OCR), Claude, Firebase, Brevo, Meta & Google Ads…',
+      'Due PWA in produzione distribuite a driver e ristoranti partner esterni',
       'Aggiornamenti WebSocket in tempo reale via Pusher per dashboard operative live',
-      'Backup automatico del database per protezione da attacchi e perdite di dati',
+      'Backup database automatico multi-strato con retention 90 giorni',
       'e altro…',
     ],
     lennyScreenshotTitle: 'Screenshot della Dashboard',
@@ -414,7 +416,7 @@ const translations = {
         period: 'Giu 2023 — Presente',
         location: 'Borgo Maggiore, San Marino · Ibrido',
         bullets: [
-          'Unico architetto della Lenny Platform — ERP con 778 route usato quotidianamente in una operazione food delivery attiva, costruito attraverso ingegneria AI-assistita',
+          'Unico architetto della Lenny Platform — ERP con 990+ route usato quotidianamente in una operazione food delivery attiva, costruito attraverso ingegneria AI-assistita',
 
           'Progettato e consegnato 29 moduli software, eliminando tutti i processi di back office manuali',
           'Quantificati €37.420/anno di risparmi operativi con un ROI documentato del 1.550%',
@@ -496,11 +498,11 @@ const translations = {
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 const lennyMetrics = (lang) => [
-  { label: lang === 'it' ? 'Route Operative' : 'Operational Routes', value: '778', icon: Cpu },
-  { label: lang === 'it' ? 'Tabelle Database' : 'Database Tables', value: '131+', icon: Database },
-  { label: lang === 'it' ? 'Moduli Software' : 'Software Modules', value: '29', icon: Layers },
+  { label: lang === 'it' ? 'Route Operative' : 'Operational Routes', value: '990+', icon: Cpu },
+  { label: lang === 'it' ? 'Tabelle Database' : 'Database Tables', value: '150+', icon: Database },
+  { label: lang === 'it' ? 'Moduli Software' : 'Software Modules', value: '35+', icon: Layers },
   { label: lang === 'it' ? 'Partner Ristoranti' : 'Restaurant Partners', value: '47+', icon: Users },
-  { label: lang === 'it' ? 'Ore Risparmiate / Anno' : 'Hours Saved / Year', value: '1,760', icon: Clock },
+  { label: lang === 'it' ? 'Cron Job 24/7' : '24/7 Cron Jobs', value: '12', icon: Clock },
   { label: 'ROI', value: '1,550%', icon: TrendingUp },
 ]
 
@@ -554,6 +556,46 @@ const lennyModules = (lang) => {
         ? 'Crittografia credenziali AES-128 (Fernet) at rest, RBAC con 8 ruoli e permessi granulari, protezione CSRF, prevenzione SQL injection, audit trail GDPR e backup automatici multi-strato con retention 90 giorni.'
         : 'AES-128 (Fernet) credential encryption at rest, 8-role RBAC with granular permissions, CSRF protection, SQL injection prevention, GDPR audit trail, and automated multi-layer backups with 90-day retention.',
       saving: it ? 'Conformità' : 'Compliance',
+    },
+    {
+      icon: Cpu,
+      title: it ? 'Marketing AI Copilot' : 'Marketing AI Copilot',
+      description: it
+        ? 'Genera contenuti multicanale (Instagram, Facebook, email, WhatsApp, ads) da 9 playbook tematici con brand-voice few-shot sui post storici Lenny. Guardrail deterministici bloccano claim falsi; il routing sceglie Gemini (gratis) o Claude (premium a budget). Le campagne Meta e Google Ads nascono sempre in pausa, con approvazione umana.'
+        : 'Generates multichannel content (Instagram, Facebook, email, WhatsApp, ads) from 9 themed playbooks with few-shot brand voice trained on Lenny\'s historical posts. Deterministic guardrails block false claims; a router picks Gemini (free) or Claude (premium, budget-capped). Meta & Google Ads campaigns are always created paused, with human approval.',
+      saving: it ? 'AI-Native' : 'AI-Native',
+    },
+    {
+      icon: Briefcase,
+      title: it ? 'OCR Fatture + Scadenzario' : 'Invoice OCR + Payables',
+      description: it
+        ? 'Gemini Vision (con fallback Tesseract) legge le fatture ricevute — fornitore, date, scadenza, tipologia documento e mesi di riferimento. Sincronizzazione bidirezionale con lo scadenzario: l\'upload auto-spunta i pagamenti 🤖 e quando le scadenze risultano saldate la fattura si marca automaticamente come pagata.'
+        : 'Gemini Vision (Tesseract fallback) reads received invoices — supplier, dates, due date, document type, and reference months. Two-way sync with the payables ledger: an upload auto-checks the matching payments 🤖, and once those are settled the invoice is auto-marked as paid.',
+      saving: 'OCR',
+    },
+    {
+      icon: Mail,
+      title: it ? 'Client Email Integrato' : 'Integrated Email Client',
+      description: it
+        ? 'Webmail IMAP/SMTP completa dentro il gestionale, distinta dal marketing: account multipli con auto-detect del provider, badge non letti real-time, allegati, firme e bozze. Invio via relay HTTP su Plesk (bypass del blocco SMTP) e sanificazione HTML anti-XSS/anti-tracking in entrata.'
+        : 'A full IMAP/SMTP webmail inside the ERP, separate from marketing: multiple accounts with provider auto-detect, real-time unread badges, attachments, signatures, and drafts. Outbound via an HTTP relay on Plesk (bypassing the SMTP block) with anti-XSS/anti-tracking HTML sanitization on inbound mail.',
+      saving: it ? 'Nuovo' : 'New',
+    },
+    {
+      icon: ExternalLink,
+      title: it ? 'Aree Driver & Ristorante (PWA)' : 'Driver & Restaurant Areas (PWA)',
+      description: it
+        ? 'Due portali self-service mobile-first ora in produzione e distribuiti ai collaboratori esterni con credenziali dedicate (inviate via WhatsApp). I driver vedono turni, ore, incassi e ferie; i ristoranti partner conteggi, ordini, menu e upload fatture con multi-sede. Sostituiscono i fogli Google.'
+        : 'Two mobile-first self-service portals now in production and rolled out to external collaborators with dedicated credentials (sent over WhatsApp). Drivers see shifts, hours, takings, and leave; partner restaurants get statements, orders, menus, and invoice upload with multi-location support. They replace the old Google Sheets.',
+      saving: 'PWA',
+    },
+    {
+      icon: MapPin,
+      title: it ? 'Partnership La Serenissima' : 'La Serenissima Partnership',
+      description: it
+        ? 'Automazione commerciale per l\'edicola partner: un cron intercetta i nuovi ordini e invia al cliente un ringraziamento WhatsApp con l\'offerta del PDF del giornale del giorno — consegnato se risponde "SÌ". Con circuit breaker sul volume, blacklist numeri interni e idempotenza per ordine.'
+        : 'A commercial automation for the partner newsstand: a cron intercepts new orders and sends the customer a WhatsApp thank-you with an offer for the day\'s newspaper PDF — delivered if they reply "YES". Includes a daily-volume circuit breaker, internal-number blacklist, and per-order idempotency.',
+      saving: it ? 'Nuovo' : 'New',
     },
   ]
 }
