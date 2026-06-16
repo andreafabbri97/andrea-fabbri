@@ -504,6 +504,7 @@ const lennyMetrics = (lang) => [
   { label: lang === 'it' ? 'Partner Ristoranti' : 'Restaurant Partners', value: '47+', icon: Users },
   { label: lang === 'it' ? 'Cron Job 24/7' : '24/7 Cron Jobs', value: '12', icon: Clock },
   { label: 'ROI', value: '1,550%', icon: TrendingUp },
+  { label: lang === 'it' ? 'Costo AI (Gemini)' : 'AI Cost (Gemini)', value: '€0', icon: Bot },
 ]
 
 const lennyModules = (lang) => {
@@ -831,7 +832,7 @@ function LennySection({ t, lang }) {
           <p className="text-slate-400 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">{t.lennyIntro}</p>
         </div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-4 mb-10 sm:mb-16">
+        <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-2.5 sm:gap-4 mb-10 sm:mb-16">
           {lennyMetrics(lang).map((m) => (
             <MetricCard key={m.label} {...m} />
           ))}
