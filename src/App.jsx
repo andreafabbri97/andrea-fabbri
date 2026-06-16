@@ -527,10 +527,10 @@ const lennyModules = (lang) => {
     },
     {
       icon: Bot,
-      title: it ? 'Assistente AI Dati Integrato' : 'Embedded AI Data Assistant',
+      title: it ? 'Chat AI sui Dati' : 'AI Data Chat',
       description: it
-        ? 'Google Gemini con function calling interroga il database live in linguaggio naturale. Il personale non tecnico ottiene risposte immediate — senza SQL, senza aspettare report.'
-        : 'Google Gemini with function calling queries the live database in natural language. Non-technical staff get instant answers — no SQL, no waiting for reports.',
+        ? 'Chat conversazionale che, via function calling, interroga il database live in linguaggio naturale: Google Gemini come motore primario (costo 0) e Claude come opzione premium. Il personale non tecnico ottiene risposte immediate — senza SQL, senza aspettare report.'
+        : 'A conversational chat that queries the live database in natural language via function calling: Google Gemini as the primary engine (zero cost) and Claude as a premium option. Non-technical staff get instant answers — no SQL, no waiting for reports.',
       saving: it ? '€5.300/anno' : 'A$9,100/yr',
     },
     {
@@ -567,11 +567,11 @@ const lennyModules = (lang) => {
     },
     {
       icon: Briefcase,
-      title: it ? 'OCR Fatture + Scadenzario' : 'Invoice OCR + Payables',
+      title: it ? 'Lettura Fatture AI + Scadenzario' : 'AI Invoice Reading + Payables',
       description: it
-        ? 'Gemini Vision (con fallback Tesseract) legge le fatture ricevute — fornitore, date, scadenza, tipologia documento e mesi di riferimento. Sincronizzazione bidirezionale con lo scadenzario: l\'upload auto-spunta i pagamenti 🤖 e quando le scadenze risultano saldate la fattura si marca automaticamente come pagata.'
-        : 'Gemini Vision (Tesseract fallback) reads received invoices — supplier, dates, due date, document type, and reference months. Two-way sync with the payables ledger: an upload auto-checks the matching payments 🤖, and once those are settled the invoice is auto-marked as paid.',
-      saving: 'OCR',
+        ? 'Gemini Vision legge le fatture ricevute a costo zero (tier gratuito, con fallback automatico a OCR Tesseract quando la quota giornaliera è esaurita): estrae fornitore, date, scadenza, tipologia documento e mesi di riferimento. Sincronizzazione bidirezionale con lo scadenzario — l\'upload auto-spunta i pagamenti 🤖 e, quando le scadenze risultano saldate, la fattura si marca automaticamente come pagata.'
+        : 'Gemini Vision reads received invoices at zero cost (free tier, with automatic fallback to Tesseract OCR when the daily quota runs out): it extracts supplier, dates, due date, document type, and reference months. Two-way sync with the payables ledger — an upload auto-checks the matching payments 🤖 and, once they\'re settled, the invoice is auto-marked as paid.',
+      saving: it ? 'Costo 0' : 'Zero cost',
     },
     {
       icon: Mail,
