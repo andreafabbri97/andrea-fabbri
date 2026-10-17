@@ -42,6 +42,16 @@ Not everything I build is for clients. These run my own work and free time — a
 - [LoL Coach](https://andreafabbri97.github.io/andrea-fabbri/#lol-coach): Game analytics. Match analysis for me and six friends. Built with Riot API, Claude Code, Vercel, PWA.
 - [QuestZip](https://andreafabbri97.github.io/andrea-fabbri/#questzip): Tabletop games. D&D 5e campaign manager for my group. Built with Next.js 16, TypeScript, Neon Postgres, Drizzle, Auth.js, PartyKit, Playwright.
 
+## Services
+
+- [Custom business software, built around how you work](https://andreafabbri97.github.io/andrea-fabbri/custom-business-software/) (Italian: https://andreafabbri97.github.io/andrea-fabbri/it/gestionale-su-misura/): Custom management software for small and mid-sized businesses: it replaces spreadsheets, paper and software that does not fit. Freelance management engineer based in San Marino, working remotely worldwide.
+- [Software for restaurants, pizzerias and food delivery](https://andreafabbri97.github.io/andrea-fabbri/restaurant-software/) (Italian: https://andreafabbri97.github.io/andrea-fabbri/it/gestionale-ristoranti-pizzerie/): Custom software for restaurants, pizzerias and food delivery: orders, oven time slots, drivers, food cost and margins. Systems in production, built by a freelance management engineer.
+- [Software for chauffeur and transfer services](https://andreafabbri97.github.io/andrea-fabbri/chauffeur-transfer-software/) (Italian: https://andreafabbri97.github.io/andrea-fabbri/it/software-ncc-transfer/): Booking site and back office for chauffeur, private-hire and transfer services: requests from the phone, rides assigned to drivers, distances calculated on real roads.
+- [Software for construction, earthmoving and building supplies](https://andreafabbri97.github.io/andrea-fabbri/construction-software/) (Italian: https://andreafabbri97.github.io/andrea-fabbri/it/gestionale-edilizia/): Custom software for construction, earthmoving companies and building suppliers: site reports that work offline, labour and machine hours, rates, job summaries and invoices, orders in real units.
+- [Software for accounting firms](https://andreafabbri97.github.io/andrea-fabbri/accounting-firm-software/) (Italian: https://andreafabbri97.github.io/andrea-fabbri/it/gestionale-commercialisti/): Custom accounting software for accounting firms: double-entry journal, financial statements, fixed assets, client deadlines and San Marino's local tax rules, with AI where it saves time.
+- [Websites and online ordering for shops, supermarkets and rentals](https://andreafabbri97.github.io/andrea-fabbri/retail-websites-online-ordering/) (Italian: https://andreafabbri97.github.io/andrea-fabbri/it/siti-negozi-prenota-ritira/): Websites for shops and chains with click-and-collect, WhatsApp orders put in order, flyer and live opening hours, rental management: custom software for local retail.
+- [AI automation, inside the real work](https://andreafabbri97.github.io/andrea-fabbri/ai-automation/) (Italian: https://andreafabbri97.github.io/andrea-fabbri/it/automazione-ia-aziende/): AI automation (Google Gemini, Claude) inside real business processes: reading invoices and PDFs, automatic schedules, a CRM that suggests the next move, assistants that cite their sources.
+
 ## Profiles
 
 - [GitHub](https://github.com/andreafabbri97)
