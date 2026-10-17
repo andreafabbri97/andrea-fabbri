@@ -72,6 +72,21 @@ html {
    out of their column on the laptop and at 1024 px (seen by Andrea on 17/10/2026). */
 .misura { container-type: inline-size; }
 
+/* The page scrollbar, thin like the one in the Second Brain dashboard's window: a round thumb that darkens
+   under the pointer, on a transparent track (Andrea, 17/10/2026). Only with a mouse: on the phone the system
+   draws its own. Chrome and Firefox read the standard properties; the -webkit- ones are for Safari. */
+@media (hover: hover) and (pointer: fine) {
+  html {
+    --pollice: color-mix(in srgb, rgb(var(--inchiostro)) 28%, rgb(var(--carta)));
+    scrollbar-width: thin;
+    scrollbar-color: var(--pollice) transparent;
+  }
+  html::-webkit-scrollbar { width: 10px; height: 10px; }
+  html::-webkit-scrollbar-track { background: transparent; }
+  html::-webkit-scrollbar-thumb { background: var(--pollice); border-radius: 999px; }
+  html::-webkit-scrollbar-thumb:hover { background: rgb(var(--tenue)); }
+}
+
 .contenitore {
   width: 100%;
   max-width: 77.5rem;

@@ -157,6 +157,8 @@ Poche cose, ognuna perché aiuta a capire o a orientarsi:
 - Tutto il resto si muove solo per un gesto: «Mostra di più», il menu, il tema.
 - Con «riduci movimento» nel sistema non si muove niente e la pagina è intera da subito.
 - Hover solo dentro `@media (hover: hover)`; niente riquadro azzurro al tocco (`html`).
+- Barra di scorrimento della pagina sottile, col pollice tondo e il fondo trasparente, come la finestra del cruscotto del
+  Second Brain; solo col mouse (17/10/2026).
 
 ## Cliché evitati (controllati sull'elenco della skill)
 
