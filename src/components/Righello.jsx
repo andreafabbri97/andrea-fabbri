@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
-import { motionAllowed } from './motion'
+import { motionAllowed, RULER_QUERY as QUERY } from './motion'
 
 // The ruler on the right (from the animazioni-scroll skill, simple version): a tick every 1%, a number
 // every 10, and a needle that reads how far down the page you are. Above it, bottom right, the names
 // of the sections stacked: the one you are in stands out, the others are links.
 // Only with a mouse and a wide screen: on the phone and the narrow laptop there is no margin for it.
-const QUERY = '(hover: hover) and (pointer: fine) and (min-width: 1440px)'
 const TOP = 80, BOTTOM = 24
 
 export default function Righello({ sections, label }) {

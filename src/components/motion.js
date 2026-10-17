@@ -1,6 +1,10 @@
 // The motion of the page, following the animazioni-scroll recipes of the Second Brain:
 // content enters once and stays; nothing moves for people who asked the system to reduce motion.
 
+// Where the big ruler on the right fits: a mouse and a wide screen. Elsewhere (phone, tablet, narrow
+// laptop) the short ruler under the top bar takes its place (Avanzamento.jsx).
+export const RULER_QUERY = '(hover: hover) and (pointer: fine) and (min-width: 1440px)'
+
 export const motionAllowed = () =>
   typeof window !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
 

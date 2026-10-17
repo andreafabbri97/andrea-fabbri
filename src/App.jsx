@@ -12,6 +12,7 @@ import { startReveals } from './components/motion'
 import useCurrentProject from './components/useCurrentProject'
 import Striscia from './components/Striscia'
 import Righello from './components/Righello'
+import Avanzamento from './components/Avanzamento'
 
 // Where each project sits in the index of work: "3 of 16" on its frame.
 const POSITIONS = Object.fromEntries(groups.flatMap((g) => g.projects).map((p, i) => [p.id, i + 1]))
@@ -53,6 +54,7 @@ export default function App() {
         <Contact t={t} />
       </main>
       <Righello sections={sections} label={copy.frame.where} />
+      <Avanzamento sections={sections} />
       <footer className="border-t border-linea py-8">
         <p className="contenitore text-sm text-tenue">{t.footer}</p>
       </footer>
