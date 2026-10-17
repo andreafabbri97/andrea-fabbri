@@ -26,11 +26,14 @@ export default function FlagshipExtras({ kind, project, lang }) {
   return (
     <>
       <Modules title={project.modulesTitle} modules={platformModules(lang)} />
-      <div className="mt-12 border-y border-linea py-8 grid md:grid-cols-[auto_minmax(0,1fr)] gap-x-10 gap-y-2 items-end">
+      {/* The last line of the note sits on the baseline of the big figure (last baseline, not the box bottom). */}
+      <div className="mt-12 border-y border-linea py-8 grid md:grid-cols-[auto_minmax(0,1fr)] gap-x-10 gap-y-4 [align-items:last_baseline]">
         <div>
           <p className="text-tenue font-medium mb-1">{project.savingsLabel}</p>
-          <p className="largo cifre text-oro font-extrabold leading-none text-[clamp(3rem,8vw,5.5rem)]"><CountUp value={project.savings} /></p>
-          {project.savingsAlt && <p className="cifre text-oro font-semibold mt-2">{project.savingsAlt}</p>}
+          <p className="flex flex-wrap items-baseline gap-x-4 gap-y-1 text-oro">
+            <span className="largo cifre font-extrabold leading-none text-[clamp(3rem,8vw,5.5rem)]"><CountUp value={project.savings} /></span>
+            {project.savingsAlt && <span className="cifre font-semibold text-lg">{project.savingsAlt}</span>}
+          </p>
         </div>
         <p className="text-tenue leading-relaxed max-w-[34rem]">{project.savingsFooter}</p>
       </div>
