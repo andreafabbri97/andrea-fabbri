@@ -42,3 +42,6 @@ privati. Resta solo la pagina di presentazione di PRYOR; chi vuole trovarlo usa 
 
 Cifre in inglese: dollari americani con gli australiani tra parentesi, convertiti dagli euro (cambio in DESIGN.md).
 Icone e anteprima dei link: `strumenti/icone/`.
+
+Lingua: si apre in italiano se il browser è in italiano, altrimenti in inglese; la scelta fatta con EN/IT resta salvata
+nel browser (`af-lingua-scelta`). Fino al 17/10/2026 si apriva sempre in inglese.

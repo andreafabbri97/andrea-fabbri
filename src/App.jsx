@@ -18,14 +18,32 @@ import Avanzamento from './components/Avanzamento'
 const POSITIONS = Object.fromEntries(groups.flatMap((g) => g.projects).map((p, i) => [p.id, i + 1]))
 const TOTAL = Object.keys(POSITIONS).length
 
-const LANG_KEY = 'af-lingua'
+// 'af-lingua-scelta' and not 'af-lingua': until 17/10/2026 the site saved the language even when nobody chose it
+// (always English), and that old value would have hidden the browser's language. The old key is removed.
+const LANG_KEY = 'af-lingua-scelta'
+try { localStorage.removeItem('af-lingua') } catch { /* private mode */ }
 
+// The language: the one chosen with the EN/IT switch if there is one, otherwise the browser's. Italian browsers
+// get Italian, every other language English (Andrea, 17/10/2026: the site speaks to people abroad too).
+const browserLang = () => {
+  const langs = (typeof navigator !== 'undefined' && (navigator.languages?.length ? navigator.languages : [navigator.language])) || []
+  return langs.some((l) => String(l).toLowerCase().startsWith('it')) ? 'it' : 'en'
+}
 const readLang = () => {
-  try { return localStorage.getItem(LANG_KEY) === 'it' ? 'it' : 'en' } catch { return 'en' }
+  try {
+    const saved = localStorage.getItem(LANG_KEY)
+    if (saved === 'it' || saved === 'en') return saved
+  } catch { /* private mode: no saved choice */ }
+  return browserLang()
 }
 
 export default function App() {
-  const [lang, setLang] = useState(readLang)
+  const [lang, setLangState] = useState(readLang)
+  // Saved only when someone picks a language with the switch: the automatic one follows the browser.
+  const setLang = (next) => {
+    setLangState(next)
+    try { localStorage.setItem(LANG_KEY, next) } catch { /* private mode: the choice lasts this visit */ }
+  }
   const t = siteCopy[lang]
   const copy = copyFor(lang)
   const current = useCurrentProject()
@@ -39,7 +57,6 @@ export default function App() {
 
   useEffect(() => {
     document.documentElement.lang = lang
-    try { localStorage.setItem(LANG_KEY, lang) } catch { /* private mode: English next time */ }
   }, [lang])
 
   return (
