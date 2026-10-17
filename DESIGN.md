@@ -83,7 +83,7 @@ Due famiglie, scelte per contrasto di **larghezza** (non grazie contro bastoni):
    tracciano all'avvio e scorrono piano con la pagina. Sul telefono sfumano verso l'alto per non stare sotto il
    testo, e la scritta della vetta non c'è.
    Sul telefono e sul tablet la vetta si sposta accanto all'ultimo pulsante dell'apertura (misurato sulla pagina),
-   perché sotto ci sarebbe l'indice; l'indice è un vetro smerigliato (fondo al 45% e sfocatura di 1,5 px: con 75% e 12 px le curve sparivano), così le curve si
+   perché sotto ci sarebbe l'indice; l'indice è un vetro smerigliato (fondo al 55% e sfocatura di 2,5 px, scelti da Andrea: con 75% e 12 px le curve sparivano, con 45% e 1,5 px si vedevano un po' troppo), così le curve si
    intravedono anche sotto. La sfumatura in alto è in rem (14rem), non in percentuale: l'apertura sul telefono è lunga.
 3. **La struttura si vede:** binari ai lati della colonna, crocette dove le righe li incontrano, cornici con la
    barra in alto («Schema · settore» e «3 di 16», cioè il posto nell'indice), numeri in una fila a bordi

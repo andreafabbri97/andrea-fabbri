@@ -7,7 +7,7 @@ export default function ProjectIndex({ copy }) {
   const total = groups.reduce((n, g) => n + g.projects.length, 0)
   let row = 0
   return (
-    <nav id="work" aria-label={copy.index.title} className="bg-foglio/45 backdrop-blur-[1.5px] border border-linea rounded-2xl">
+    <nav id="work" aria-label={copy.index.title} className="bg-foglio/55 backdrop-blur-[2.5px] border border-linea rounded-2xl">
       <div className="flex items-baseline justify-between gap-4 px-5 sm:px-6 pt-5 pb-3">
         <h2 className="titolo text-xl font-bold text-inchiostro">{copy.index.title}</h2>
         <span className="cifre text-sm text-tenue">{total} {copy.index.projects}</span>
