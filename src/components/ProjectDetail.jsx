@@ -1,5 +1,5 @@
 import { useId, useRef, useState } from 'react'
-import { ChevronDown, ExternalLink } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import Collapsible from './Collapsible'
 import StatusBadge from './StatusBadge'
 import FlagshipExtras from './FlagshipExtras'
@@ -33,7 +33,7 @@ function Metrics({ metrics, label }) {
 }
 
 export default function ProjectDetail({ project, meta, copy, note, lang, position, total }) {
-  const { tone, tags, links, extras, hue } = meta
+  const { tone, tags, extras, hue } = meta
   const { label, title, tagline, desc, features, metrics, challenge } = project
   const [open, setOpen] = useState(false)
   const moreId = useId()
@@ -106,8 +106,8 @@ export default function ProjectDetail({ project, meta, copy, note, lang, positio
           </Collapsible>
         )}
 
-        <div className="flex flex-wrap items-center gap-3 mt-7">
-          {hasMore && (
+        {hasMore && (
+          <div className="flex flex-wrap items-center gap-3 mt-7">
             <button
               type="button"
               onClick={toggle}
@@ -118,13 +118,8 @@ export default function ProjectDetail({ project, meta, copy, note, lang, positio
               {open ? copy.labels.showLess : copy.labels.showMore}
               <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${open ? 'rotate-180' : ''}`} aria-hidden />
             </button>
-          )}
-          {links?.live && (
-            <a href={links.live} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-inchiostro text-carta font-semibold">
-              <ExternalLink className="w-4 h-4" aria-hidden /> {project.links.live}
-            </a>
-          )}
-        </div>
+          </div>
+        )}
       </div>
 
       {extras && <FlagshipExtras kind={extras} project={project} lang={lang} />}

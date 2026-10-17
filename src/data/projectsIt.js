@@ -80,7 +80,6 @@ export const projectsIt = {
       ],
       challenge: null,
       modulesTitle: 'I moduli del prodotto e cosa risolve ognuno',
-      links: { live: 'Presentazione e lista d\'attesa' },
     },
     restaurant: {
       label: 'Software per ristoranti',

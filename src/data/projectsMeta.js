@@ -1,6 +1,6 @@
-// What does not change with the language: id (also the page anchor), status, stack,
-// links and extra blocks. No live demos and no source code: the programs sit behind a login and the
-// repositories are private (Andrea, 17/10/2026). PRYOR keeps its public presentation page. The words live in projectsEn.js / projectsIt.js.
+// What does not change with the language: id (also the page anchor), status, stack
+// and extra blocks. No live demos and no source code: the programs sit behind a login and the
+// repositories are private (Andrea, 17/10/2026). No link to PRYOR's presentation page either (Andrea, 17/10/2026). The words live in projectsEn.js / projectsIt.js.
 // tone: live = in production · building = in development · demo = working demo · beta = closed beta
 // badge: which status word to show (defaults to the tone)
 // hue: the color of the project's sector (OKLCH hue, 0-360). Light and dark themes pick the lightness.
@@ -16,7 +16,6 @@ export const groups = [
       {
         id: 'pryor', hue: 295, tone: 'beta',
         tags: ['Next.js 16', 'React 19', 'TypeScript', 'Neon Postgres', 'Drizzle', 'Auth.js', 'Google Gemini', 'PWA'], extras: 'pryor',
-        links: { live: 'https://pryor-eight.vercel.app/' },
       },
     ],
   },

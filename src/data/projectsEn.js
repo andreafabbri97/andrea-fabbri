@@ -81,7 +81,6 @@ export const projectsEn = {
       ],
       challenge: null,
       modulesTitle: 'Product modules and what each one solves',
-      links: { live: 'View landing and waitlist' },
     },
     restaurant: {
       label: 'Restaurant software',
