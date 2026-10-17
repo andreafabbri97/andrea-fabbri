@@ -111,3 +111,22 @@ body {
   .hover-testo:hover { color: rgb(var(--inchiostro)); }
   .hover-sottolinea:hover { text-decoration-color: currentColor; }
 }
+
+/* Reveal (see components/motion.js): only when the script switched it on with .anima. */
+.anima [data-reveal]:not([data-visto]) {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(8px);
+}
+.anima [data-reveal] {
+  transition: opacity 0.9s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.9s cubic-bezier(0.215, 0.61, 0.355, 1), filter 0.9s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+/* Once arrived, no filter left in the style: a leftover blur(0) makes text render worse on Windows. */
+.anima [data-reveal][data-visto] { filter: none; }
+
+/* The project you are reading, in the top bar. */
+@keyframes cambia {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+.cambia { animation: cambia 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; }

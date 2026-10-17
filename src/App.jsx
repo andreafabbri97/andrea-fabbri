@@ -8,6 +8,8 @@ import Contact from './components/Contact'
 import { siteCopy } from './data/siteCopy'
 import { copyFor } from './data/projectsCopy'
 import { groups } from './data/projectsMeta'
+import { startReveals } from './components/motion'
+import useCurrentProject from './components/useCurrentProject'
 
 const LANG_KEY = 'af-lingua'
 
@@ -19,6 +21,9 @@ export default function App() {
   const [lang, setLang] = useState(readLang)
   const t = siteCopy[lang]
   const copy = copyFor(lang)
+  const current = useCurrentProject()
+
+  useEffect(() => startReveals(), [])
 
   useEffect(() => {
     document.documentElement.lang = lang
@@ -27,7 +32,7 @@ export default function App() {
 
   return (
     <>
-      <Navbar t={t} lang={lang} setLang={setLang} />
+      <Navbar t={t} lang={lang} setLang={setLang} current={current ? { id: current, title: copy.projects[current].title } : null} />
       <main>
         <Hero t={t} copy={copy} />
         {groups.map((g) => <ProjectGroup key={g.id} group={g} copy={copy} lang={lang} />)}

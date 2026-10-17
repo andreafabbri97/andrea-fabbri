@@ -8,7 +8,7 @@ export default function Contact({ t }) {
     <section id="contact" className="border-t border-linea py-16 sm:py-28">
       <div className="contenitore grid lg:grid-cols-12 gap-x-14 gap-y-8">
         <div className="lg:col-span-7">
-          <h2 className="titolo text-[clamp(2.5rem,7vw,5rem)] font-extrabold text-inchiostro leading-[0.98] mb-6">{t.contactTitle}</h2>
+          <h2 data-reveal className="titolo text-[clamp(2.5rem,7vw,5rem)] font-extrabold text-inchiostro leading-[0.98] mb-6">{t.contactTitle}</h2>
           <p className="text-tenue text-lg leading-relaxed max-w-[38rem]">{t.contactDesc}</p>
         </div>
         <div className="lg:col-span-5 lg:pt-4 flex flex-col gap-4">

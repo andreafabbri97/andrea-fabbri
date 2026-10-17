@@ -4,7 +4,7 @@ import ThemeToggle from './ThemeToggle'
 
 // The bar on top: name, sections, language and theme. On the phone the sections open in a sheet;
 // while it is open the page underneath does not scroll (the root is locked, not the body).
-export default function Navbar({ t, lang, setLang }) {
+export default function Navbar({ t, lang, setLang, current }) {
   const [open, setOpen] = useState(false)
   const links = [
     { href: '#work', label: t.ui.work },
@@ -54,8 +54,21 @@ export default function Navbar({ t, lang, setLang }) {
       aria-hidden
     />
     <header className={`fixed top-0 inset-x-0 z-50 backdrop-blur-md border-b border-linea transition-colors ${open ? 'bg-carta' : 'bg-carta/85'}`}>
-      <div className="contenitore h-16 flex items-center justify-between gap-4">
-        <a href="#top" className="titolo text-lg font-extrabold text-inchiostro">Andrea Fabbri</a>
+      <div className="contenitore h-16 flex items-center justify-between gap-4 md:grid md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
+        {/* The name, and next to it (under it on the phone) the project being read. */}
+        <div className="min-w-0 flex flex-col lg:flex-row lg:items-baseline lg:gap-3">
+          <a href="#top" className="titolo text-lg font-extrabold text-inchiostro whitespace-nowrap leading-tight">Andrea Fabbri</a>
+          {current && (
+            <a
+              key={current.id}
+              href={`#${current.id}`}
+              className="cambia min-w-0 truncate text-xs lg:text-[0.95rem] font-medium text-azzurro lg:max-w-none leading-tight"
+            >
+              <span className="hidden lg:inline text-linea mr-3" aria-hidden>/</span>
+              {current.title}
+            </a>
+          )}
+        </div>
 
         <nav className="hidden md:flex items-center gap-7" aria-label={t.ui.sections}>
           {links.map((l) => (
@@ -63,7 +76,7 @@ export default function Navbar({ t, lang, setLang }) {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-end gap-2">
           <div className="hidden sm:block">{LangSwitch}</div>
           <ThemeToggle labels={t.ui.theme} />
           <button

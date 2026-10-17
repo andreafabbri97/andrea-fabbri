@@ -80,10 +80,21 @@ Telefono (390)                 Portatile (≈1520)                          4K (
 
 ## Movimento
 
-- Un solo momento che parte da solo: all'apertura il nome sale e l'indice si compone riga per riga
-  (ricetta «Ingresso del titolo» della skill `animazioni-scroll`, con CSS: niente librerie in più).
+Ricette della skill `animazioni-scroll` del Second Brain, rifatte senza librerie (`src/components/motion.js`).
+Poche cose, ognuna perché aiuta a capire o a orientarsi:
+
+- **Apertura** (l'unico momento che parte da solo): il nome sale e l'indice dei lavori si compone riga per riga.
+- **I numeri contano** la prima volta che compaiono (1,4 s, curva che rallenta alla fine), compreso il risparmio di
+  Lenny. Il valore vero è quello scritto nella pagina e quello letto dai lettori di schermo; il conteggio scrive
+  il testo direttamente, senza stato di React a ogni fotogramma. I valori senza un numero solo (`16/16`, `WCAG AA`)
+  restano fermi.
+- **I titoli dei gruppi e delle sezioni entrano** una volta sola: 28 px più in basso, sfocati di 8 px, 0,9 s, quando
+  arrivano all'85% dello schermo. Solo quelli: non ogni blocco. Alla fine niente `filter` rimasto (su Windows
+  peggiora il testo).
+- **La barra in alto dice dove sei**: accanto al nome (sotto, sul telefono) il progetto che stai leggendo, che
+  cambia con una dissolvenza breve. I link restano fermi al centro (griglia a tre colonne).
 - Tutto il resto si muove solo per un gesto: «Mostra di più», il menu, il tema.
-- Con «riduci movimento» nel sistema non si muove niente.
+- Con «riduci movimento» nel sistema non si muove niente e la pagina è intera da subito.
 - Hover solo dentro `@media (hover: hover)`; niente riquadro azzurro al tocco (`html`).
 
 ## Cliché evitati (controllati sull'elenco della skill)

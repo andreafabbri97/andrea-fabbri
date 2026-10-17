@@ -3,6 +3,7 @@ import { ChevronDown, ExternalLink, GitBranch } from 'lucide-react'
 import Collapsible from './Collapsible'
 import StatusBadge from './StatusBadge'
 import FlagshipExtras from './FlagshipExtras'
+import CountUp from './CountUp'
 
 // One project, always the same model so they compare at a glance: sector, title, status, one
 // line, description, numbers, stack, then the features. The first two features stay visible;
@@ -20,7 +21,7 @@ function Metrics({ metrics, label }) {
         {metrics.map((m) => (
           <div key={m.label} className="bg-foglio p-4 sm:p-5">
             <dt className="sr-only">{m.label}</dt>
-            <dd className={`titolo cifre text-3xl sm:text-4xl font-bold leading-none mb-2 ${m.money ? 'text-oro' : 'text-inchiostro'}`}>{m.value}</dd>
+            <dd className={`titolo cifre text-3xl sm:text-4xl font-bold leading-none mb-2 ${m.money ? 'text-oro' : 'text-inchiostro'}`}><CountUp value={m.value} /></dd>
             <dd className="text-sm text-tenue leading-snug">{m.label}</dd>
           </div>
         ))}

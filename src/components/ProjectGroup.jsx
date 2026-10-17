@@ -7,7 +7,7 @@ export default function ProjectGroup({ group, copy, lang }) {
   return (
     <section id={`group-${group.id}`} className="border-t border-linea">
       <div className="contenitore">
-        <div className="pt-16 sm:pt-24 max-w-[48rem]">
+        <div data-reveal className="pt-16 sm:pt-24 max-w-[48rem]">
           <h2 className="titolo text-[clamp(2.25rem,6vw,4rem)] font-extrabold text-inchiostro leading-[1] mb-4">{header.title}</h2>
           <p className="text-tenue text-lg leading-relaxed">{header.intro}</p>
         </div>
