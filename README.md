@@ -46,3 +46,11 @@ Icone e anteprima dei link: `strumenti/icone/`.
 
 Lingua: si apre in italiano se il browser è in italiano, altrimenti in inglese; la scelta fatta con EN/IT resta salvata
 nel browser (`af-lingua-scelta`). Fino al 17/10/2026 si apriva sempre in inglese.
+
+## Motori di ricerca (17/10/2026)
+
+Il sito non blocca l'indicizzazione. In `index.html` ci sono il collegamento canonico e la scheda «Person»
+(JSON-LD, coi profili GitHub e LinkedIn); la mappa del sito è `public/sitemap.xml`. Il file
+`public/<chiave>.txt` è la chiave di IndexNow, con cui il sito è stato segnalato a Bing e Yandex:
+non va tolto. Per Google serve Google Search Console, dall'account di Andrea: verifica col meta tag
+`google-site-verification` in `index.html`, poi invio di `sitemap.xml`.
