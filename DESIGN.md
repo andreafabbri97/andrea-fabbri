@@ -96,7 +96,8 @@ Due famiglie, scelte per contrasto di **larghezza** (non grazie contro bastoni):
    tutti e due i righelli.
    Dove non ci sta (telefono, tablet, portatile stretto) c'è il righello corto (`Avanzamento.jsx`, 17/10/2026,
    chiesto da Andrea): una linea sottile sul bordo basso della barra in alto che si riempie leggendo, con una
-   tacca alta dove inizia ogni sezione e una bassa dove inizia ogni progetto. Senza percentuale: sotto la barra
+   tacca alta dove inizia ogni sezione e una bassa dove inizia ogni progetto, nel colore del suo settore come sul
+   righello grande (chiesto da Andrea lo stesso giorno: prima erano grigie). Senza percentuale: sotto la barra
    coprirebbe il testo.
 5. **Contrasto di caratteri:** vedi sopra.
 
