@@ -15,17 +15,17 @@ export const render = (lang) => renderToString(<App lang={lang} />)
 
 const META = {
   en: {
-    title: 'Andrea Fabbri — Management Engineer & AI Automation',
-    description: 'Andrea Fabbri, management engineer based in San Marino, working remotely worldwide: custom management software, ERPs and AI automation that replace manual operations. Sixteen systems, most of them in daily use.',
+    title: 'Andrea Fabbri — Freelance Management Engineer & AI Automation',
+    description: 'Andrea Fabbri, freelance management engineer based in San Marino, working remotely worldwide: custom management software, ERPs and AI automation that replace manual operations. Sixteen systems, most of them in daily use.',
     ogDescription: 'Production software that replaces manual operations: sixteen systems, most of them in daily use.',
-    jobTitle: 'Management Engineer, AI & Automation',
+    jobTitle: 'Freelance Management Engineer, AI & Automation',
     locale: 'en_US',
   },
   it: {
-    title: 'Andrea Fabbri — Ingegnere gestionale, IA e automazione',
-    description: 'Andrea Fabbri, ingegnere gestionale con base a San Marino, lavora da remoto in tutto il mondo: gestionali su misura, ERP e automazioni con l\'intelligenza artificiale che sostituiscono il lavoro manuale. Sedici sistemi, quasi tutti in uso ogni giorno.',
+    title: 'Andrea Fabbri — Ingegnere gestionale freelance, IA e automazione',
+    description: 'Andrea Fabbri, ingegnere gestionale freelance con base a San Marino, lavora da remoto in tutto il mondo: gestionali su misura, ERP e automazioni con l\'intelligenza artificiale che sostituiscono il lavoro manuale. Sedici sistemi, quasi tutti in uso ogni giorno.',
     ogDescription: 'Software in produzione che sostituisce il lavoro manuale: sedici sistemi, quasi tutti in uso ogni giorno.',
-    jobTitle: 'Ingegnere gestionale, IA e automazione',
+    jobTitle: 'Ingegnere gestionale freelance, IA e automazione',
     locale: 'it_IT',
   },
 }

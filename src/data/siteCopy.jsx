@@ -19,10 +19,10 @@ export const siteCopy = {
     navProjects: 'Projects',
 
     // Hero
-    heroStatus: 'Open to opportunities worldwide · remote',
+    heroStatus: 'Freelance · available for new projects',
     heroTitle1: 'Andrea',
     heroTitle2: 'Fabbri',
-    heroSubtitle: 'Management engineer and AI automation specialist',
+    heroSubtitle: 'Freelance management engineer and AI automation specialist',
     heroDesc: (
       <>
         I engineer business-critical platforms that replace manual operations with
@@ -135,11 +135,11 @@ export const siteCopy = {
     contactTitle: (
       <>Let&apos;s build something<br />that scales.</>
     ),
-    contactDesc: "I'm actively seeking working opportunities for myself to grow — particularly roles where automation, data engineering, and operational excellence intersect. Based in San Marino, I work remotely with clients anywhere and I'm happy to travel. If you need someone who ships production-grade systems, let's talk.",
+    contactDesc: "I work as a freelancer: I design and build software around your business, from studying how your team works to a system in use every day, invoiced, with a direct relationship and no middlemen. Based in San Marino, I work remotely with clients anywhere and I'm happy to travel. If something in your business is still done by hand, or your software does not fit the way you work, let's talk.",
     contactLinkedIn: 'LinkedIn',
 
     // Footer
-    footer: '© 2026 Andrea Fabbri, management engineer based in San Marino, working worldwide. Built with React and Tailwind CSS.',
+    footer: '© 2026 Andrea Fabbri, freelance management engineer based in San Marino, working worldwide. Built with React and Tailwind CSS.',
   },
 
   it: {
@@ -157,10 +157,10 @@ export const siteCopy = {
     navProjects: 'Progetti',
 
     // Hero
-    heroStatus: 'Disponibile in tutto il mondo · da remoto',
+    heroStatus: 'Freelance · disponibile per nuovi progetti',
     heroTitle1: 'Andrea',
     heroTitle2: 'Fabbri',
-    heroSubtitle: 'Ingegnere gestionale, specialista in IA e automazione',
+    heroSubtitle: 'Ingegnere gestionale freelance, specialista in IA e automazione',
     heroDesc: (
       <>
         Sviluppo piattaforme mission-critical che sostituiscono processi manuali con
@@ -271,10 +271,10 @@ export const siteCopy = {
     contactTitle: (
       <>Costruiamo qualcosa<br />che scali.</>
     ),
-    contactDesc: "Cerco attivamente opportunità lavorative per crescere professionalmente — in particolare ruoli in cui automazione, ingegneria dei dati e eccellenza operativa si incontrano. Vivo a San Marino, lavoro da remoto con clienti in tutto il mondo e mi sposto volentieri. Se cerchi qualcuno che consegna sistemi pronti per la produzione, parliamone.",
+    contactDesc: "Lavoro in proprio, da freelance: progetto e realizzo il software attorno alla tua azienda, dallo studio di come lavorate fino al sistema in uso ogni giorno, con fattura e un rapporto diretto, senza intermediari. Vivo a San Marino, lavoro da remoto con clienti in tutto il mondo e mi sposto volentieri. Se nella tua azienda qualcosa si fa ancora a mano, o il tuo software non segue il modo in cui lavorate, parliamone.",
     contactLinkedIn: 'LinkedIn',
 
     // Footer
-    footer: '© 2026 Andrea Fabbri, ingegnere gestionale con base a San Marino, al lavoro in tutto il mondo. Realizzato con React e Tailwind CSS.',
+    footer: '© 2026 Andrea Fabbri, ingegnere gestionale freelance con base a San Marino, al lavoro in tutto il mondo. Realizzato con React e Tailwind CSS.',
   },
 }
