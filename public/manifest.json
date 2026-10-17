@@ -1,12 +1,12 @@
 {
   "name": "Andrea Fabbri — Management Engineer & AI Automation",
   "short_name": "Andrea Fabbri",
-  "description": "Portfolio of Andrea Fabbri, Management Engineer and AI Automation Specialist.",
+  "description": "Portfolio of Andrea Fabbri, Management Engineer from San Marino: production software that replaces manual operations.",
   "start_url": "/andrea-fabbri/",
   "scope": "/andrea-fabbri/",
   "display": "standalone",
-  "background_color": "#0f0f0f",
-  "theme_color": "#863bff",
+  "background_color": "#F3F6F8",
+  "theme_color": "#122130",
   "icons": [
     {
       "src": "pwa-192x192.png",

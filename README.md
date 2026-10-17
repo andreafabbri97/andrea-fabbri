@@ -1,16 +1,37 @@
-# React + Vite
+# Andrea Fabbri — sito personale
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Il biglietto da visita di Andrea: chi è, l'indice di tutti i progetti e, per ognuno, cosa fa e con quali numeri.
+Online su https://andreafabbri97.github.io/andrea-fabbri/
 
-Currently, two official plugins are available:
+## Come si pubblica
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev       # in locale
+npm run deploy    # costruisce e pubblica sul ramo gh-pages (è lui che va online, non main)
+```
 
-## React Compiler
+Il push su `main` salva il codice ma **non** aggiorna il sito: serve `npm run deploy`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Com'è fatto
 
-## Expanding the ESLint configuration
+- Vite + React 19 + Tailwind CSS 3, nessun server.
+- L'aspetto è deciso in [`DESIGN.md`](DESIGN.md): colori, carattere, impaginazione, movimento. Va letto prima di
+  ogni modifica grafica.
+- Tema chiaro, scuro o automatico (bottone in alto), lingua inglese o italiana: tutte e due le scelte restano nel browser.
+- Sopra i 2200 pixel di larghezza (il 4K del fisso) tutta la pagina cresce in proporzione.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Dove stanno i testi
+
+| File | Cosa |
+|---|---|
+| `src/data/projectsMeta.js` | i gruppi, l'ordine dei progetti, stato, tecnologie, schermate, link |
+| `src/data/projectsEn.js`, `projectsIt.js` | i testi di ogni progetto nelle due lingue |
+| `src/data/flagship.js` | i moduli di Lenny e PRYOR |
+| `src/data/siteCopy.jsx` | apertura, esperienza, competenze, contatti, barra in alto |
+
+Un progetto nuovo: una riga in `projectsMeta.js` (nel gruppo giusto) e il suo testo nei due file di lingua.
+Compare da solo nell'indice dei lavori e nella pagina.
+
+🔴 **AniZip (e StreamZip, MusicZip) non si mette e non si cita.** I progetti dei clienti si descrivono senza nome,
+luogo preciso, link o schermate.
