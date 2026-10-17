@@ -3,9 +3,9 @@ import { motionAllowed, pageMarks, RULER_QUERY as QUERY, sameMarks } from './mot
 
 // The ruler on the right (from the animazioni-scroll skill, simple version): a tick every 1%, a number
 // every 10, and a needle that reads how far down the page you are. Above it, bottom right, the names
-// of the sections stacked: the one you are in stands out, the others are links. On the inner side of the
-// scale, where each section starts a long mark, and where each project starts a short one in the color
-// of its sector (asked by Andrea on 17/10/2026, like the short ruler on the phone).
+// of the sections stacked: the one you are in stands out, the others are links. On the scale itself, where
+// each section starts a longer dark mark, and where each project starts one in the color of its sector,
+// over the ticks (asked by Andrea on 17/10/2026; a separate column beside the scale looked messy).
 // Only with a mouse and a wide screen: on the phone and the narrow laptop there is no margin for it.
 const TOP = 80, BOTTOM = 24
 
@@ -35,7 +35,9 @@ export default function Righello({ sections, label }) {
       const pct = Math.round(p * 100)
       if (pct !== lastP && needle.current && track.current) {
         const run = track.current.clientHeight
-        needle.current.style.transform = `translateY(${(p * run).toFixed(1)}px)`
+        // - 50%: the needle is centered on its tick (a plain translateY here used to cancel the class that centers it,
+        // and the needle sat half its height too low, visible at 0%: seen by Andrea on 17/10/2026)
+        needle.current.style.transform = `translateY(calc(${(p * run).toFixed(1)}px - 50%))`
         needle.current.style.transition = smooth ? 'transform 0.15s linear' : 'none'
         reading.current.textContent = `${String(pct).padStart(3, '0')}%`
         lastP = pct
@@ -63,7 +65,7 @@ export default function Righello({ sections, label }) {
 
   return (
     <>
-      <div className="fixed right-0 w-14 z-30 pointer-events-none" style={{ top: TOP, bottom: BOTTOM }} aria-hidden>
+      <div className="fixed right-0 w-11 z-30 pointer-events-none" style={{ top: TOP, bottom: BOTTOM }} aria-hidden>
         <div ref={track} className="relative h-full">
           {Array.from({ length: 101 }, (_, i) => (
             <span key={i} className="absolute right-0 h-px bg-tenue/40"
@@ -73,7 +75,7 @@ export default function Righello({ sections, label }) {
             <span key={i} className="cifre absolute right-6 -translate-y-1/2 text-[10px] text-tenue/70" style={{ top: `${i * 10}%` }}>{i * 10}</span>
           ))}
           {marks.map((m, i) => (
-            <span key={i} className={`absolute -translate-y-1/2 ${m.big ? 'right-[42px] w-3.5 h-[2px] bg-inchiostro/70' : 'right-[44px] w-2 h-[2px] rounded-full'}`}
+            <span key={i} className={`absolute right-0 -translate-y-1/2 h-[2px] ${m.big ? 'w-[22px] bg-inchiostro/80' : 'w-[14px]'}`}
               style={{ top: `${(m.at * 100).toFixed(2)}%`, ...(m.big ? {} : { backgroundColor: `oklch(var(--tinta-l) var(--tinta-c) ${m.hue || 235})` }) }} />
           ))}
           <div ref={needle} className="absolute right-0 top-0 flex items-center gap-1 -translate-y-1/2">
@@ -82,7 +84,7 @@ export default function Righello({ sections, label }) {
           </div>
         </div>
       </div>
-      <nav aria-label={label} className="fixed right-[4.25rem] bottom-6 z-30 flex flex-col items-end gap-0.5">
+      <nav aria-label={label} className="fixed right-14 bottom-6 z-30 flex flex-col items-end gap-0.5">
         {sections.map((s) => (
           <a key={s.id} href={s.href}
             className={`leading-tight transition-all duration-300 ${current === s.id ? 'largo text-lg font-extrabold text-inchiostro' : 'text-[0.8rem] font-medium text-tenue/70 hover-testo'}`}>

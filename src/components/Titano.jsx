@@ -26,24 +26,27 @@ function ring(k) {
 
 const PATHS = Array.from({ length: RINGS }, (_, k) => ring(k))
 
-// On the phone and the tablet the column is one: the summit would end up under the index of work.
-// There it moves to the free space next to the last button of the opening, measured on the page
-// (so it fits any phone), and the drawing keeps its shape: only the rings move, together.
-function summitTarget(svg) {
-  if (window.matchMedia('(min-width: 1024px)').matches) return null
+// Where the summit goes, as a shift of the rings (in drawing units), measured on the page so it fits any screen.
+// Phone and tablet: the column is one and the summit would end up under the index of work, so it moves to the
+// free space next to the last button of the opening. Computer: it stays where it is, unless its name would
+// land on the buttons (a short window, like the installed app on the laptop): then it goes down just enough.
+function summitShift(svg) {
   const row = document.querySelector('[data-bottoni]')
   const last = row && row.lastElementChild
   if (!last) return null
-  const free = row.getBoundingClientRect().right - last.getBoundingClientRect().right
   const box = svg.parentElement.getBoundingClientRect()
-  const b = last.getBoundingClientRect()
-  // free room on the right of the last button, or else just under the buttons, on the right
-  const x = free > 60 ? b.right + free / 2 + 8 : box.left + box.width * 0.72
-  const y = free > 60 ? b.top + b.height / 2 : b.bottom + 70
   const w = box.width, h = svg.getBoundingClientRect().height
   const scale = Math.max(w / 1600, h / 900)
-  const sx = (w - 1600 * scale) / 2 + CX * scale, sy = (h - 900 * scale) / 2 + CY * scale
-  return [((x - box.left) - sx) / scale, ((y - box.top) - sy) / scale]
+  const sx = box.left + (w - 1600 * scale) / 2 + CX * scale, sy = box.top + (h - 900 * scale) / 2 + CY * scale
+  const b = last.getBoundingClientRect()
+  if (window.matchMedia('(min-width: 1024px)').matches) {
+    const lowest = b.bottom + 50 // the summit's name sits at its height: keep it 50 px under the buttons
+    return sy < lowest ? [0, (lowest - sy) / scale] : null
+  }
+  const free = row.getBoundingClientRect().right - b.right
+  const x = free > 60 ? b.right + free / 2 + 8 : box.left + box.width * 0.72
+  const y = free > 60 ? b.top + b.height / 2 : b.bottom + 70
+  return [(x - sx) / scale, (y - sy) / scale]
 }
 
 export default function Titano({ label }) {
@@ -53,7 +56,7 @@ export default function Titano({ label }) {
   useEffect(() => {
     const place = () => {
       if (!ref.current || !rings.current) return
-      const t = summitTarget(ref.current)
+      const t = summitShift(ref.current)
       rings.current.setAttribute('transform', t ? `translate(${t[0].toFixed(1)} ${t[1].toFixed(1)})` : '')
     }
     place()
