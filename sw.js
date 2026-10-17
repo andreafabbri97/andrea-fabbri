@@ -1,4 +1,4 @@
-const CACHE_NAME = 'andrea-fabbri-v1';
+const CACHE_NAME = 'andrea-fabbri-v2';
 
 const PRECACHE_URLS = [
   '/andrea-fabbri/',
