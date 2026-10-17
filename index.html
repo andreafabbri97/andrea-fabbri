@@ -6,14 +6,24 @@
     <link rel="apple-touch-icon" href="/andrea-fabbri/apple-touch-icon.png" />
     <link rel="manifest" href="/andrea-fabbri/manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#863bff" />
+    <meta name="theme-color" content="#F3F6F8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0E1822" media="(prefers-color-scheme: dark)" />
     <title>Andrea Fabbri — Management Engineer & AI Automation</title>
-    <meta name="description" content="Portfolio of Andrea Fabbri, Management Engineer and AI Automation Specialist." />
+    <meta name="description" content="Portfolio of Andrea Fabbri, Management Engineer from San Marino: production software that replaces manual operations." />
+    <!-- Theme before the first paint: the saved choice, or the system one. No flash. -->
+    <script>
+      (function () {
+        var scelta = 'auto';
+        try { scelta = localStorage.getItem('af-tema') || 'auto'; } catch (e) {}
+        var scuro = scelta === 'dark' || (scelta === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.dataset.tema = scuro ? 'dark' : 'light';
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="/andrea-fabbri/assets/index-BxosexOZ.js"></script>
-    <link rel="stylesheet" crossorigin href="/andrea-fabbri/assets/index-enur5m0j.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&display=swap" rel="stylesheet" />
+    <script type="module" crossorigin src="/andrea-fabbri/assets/index-uir-vtLf.js"></script>
+    <link rel="stylesheet" crossorigin href="/andrea-fabbri/assets/index-D9maom4A.css">
   </head>
   <body>
     <div id="root"></div>
