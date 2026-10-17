@@ -29,7 +29,7 @@ export default function FlagshipExtras({ kind, project, lang }) {
       <div className="mt-12 border-y border-linea py-8 grid md:grid-cols-[auto_minmax(0,1fr)] gap-x-10 gap-y-2 items-end">
         <div>
           <p className="text-tenue font-medium mb-1">{project.savingsLabel}</p>
-          <p className="titolo cifre text-oro font-extrabold leading-none text-[clamp(3rem,8vw,5.5rem)]"><CountUp value={project.savings} /></p>
+          <p className="largo cifre text-oro font-extrabold leading-none text-[clamp(3rem,8vw,5.5rem)]"><CountUp value={project.savings} /></p>
         </div>
         <p className="text-tenue leading-relaxed max-w-[34rem]">{project.savingsFooter}</p>
       </div>

@@ -3,9 +3,11 @@ import { MapPin } from 'lucide-react'
 // Experience and education are a real sequence in time, so here the dates lead each row.
 export default function Experience({ t }) {
   return (
-    <section id="experience" className="border-t border-linea py-16 sm:py-24">
-      <div className="contenitore">
-        <h2 data-reveal className="titolo text-[clamp(2.25rem,6vw,4rem)] font-extrabold text-inchiostro leading-[1] mb-10 sm:mb-14">{t.expTitle}</h2>
+    <section id="experience" data-sezione="experience" className="contenitore">
+      <div className="relative sm:border-x border-t border-linea py-16 sm:py-24 sm:px-8 lg:px-10">
+        <span className="mirino hidden sm:block -left-[6px]" aria-hidden />
+        <span className="mirino hidden sm:block -right-[6px]" aria-hidden />
+        <h2 data-reveal className="largo text-[clamp(2.25rem,6vw,4rem)] font-extrabold text-inchiostro leading-[1] mb-10 sm:mb-14">{t.expTitle}</h2>
         <ol className="divide-y divide-linea border-y border-linea">
           {t.expItems.map((item) => (
             <li key={item.title} className="grid lg:grid-cols-12 gap-x-14 gap-y-3 py-8 sm:py-10">

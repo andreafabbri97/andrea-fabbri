@@ -12,6 +12,10 @@ export const projectsEn = {
   },
   badges: { live: 'In production', building: 'In development', demo: 'Working demo', beta: 'Closed beta', daily: 'In daily use', use: 'In use' },
   index: { title: 'Index of work', projects: 'projects' },
+  titano: 'Monte Titano, 739 m',
+  technologies: 'Technologies used across the projects',
+  short: { flagship: 'Flagship', clients: 'Clients', products: 'Products', personal: 'Personal', experience: 'Experience', skills: 'Skills', contact: 'Contact' },
+  frame: { diagram: 'Diagram', screenshot: 'Screenshot', of: 'of', stack: 'Built with', read: 'read', where: 'Where you are' },
   groups: {
     flagship: {
       title: 'Flagship products',

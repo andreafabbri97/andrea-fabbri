@@ -20,14 +20,14 @@ export default function ProjectIndex({ copy }) {
               const p = copy.projects[m.id]
               const delay = 0.3 + row++ * 0.035
               return (
-                <li key={m.id} className="entra-riga" style={{ animationDelay: `${delay}s` }}>
+                <li key={m.id} className="entra-riga" style={{ animationDelay: `${delay}s`, '--hue': m.hue }}>
                   <a
                     href={`#${m.id}`}
                     className="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-4 gap-y-0.5 px-3 py-2.5 rounded-xl hover-sfondo"
                   >
                     <span className="min-w-0">
-                      <span className="block font-semibold text-inchiostro leading-snug">{p.title}</span>
-                      <span className="block text-sm text-tenue leading-snug">{p.label}</span>
+                      <span className="flex items-center gap-2.5 font-semibold text-inchiostro leading-snug"><span className="w-2.5 h-2.5 rounded-sm bg-tinta shrink-0" aria-hidden />{p.title}</span>
+                      <span className="block text-sm text-tenue leading-snug pl-5">{p.label}</span>
                     </span>
                     <StatusBadge tone={m.tone}>{copy.badges[m.badge ?? m.tone]}</StatusBadge>
                   </a>

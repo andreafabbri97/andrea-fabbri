@@ -16,6 +16,11 @@
   --verde: 46 125 79;
   --ambra: 168 103 13;
   --viola: 107 91 168;
+  /* Sector colors: each project sets --hue; the theme sets lightness and chroma. */
+  --tinta-l: 52%;
+  --tinta-c: 0.15;
+  /* The dark frame around drawings and screenshots, in both themes. */
+  --cornice: 15 24 33;
   color-scheme: light;
 }
 
@@ -31,6 +36,9 @@
   --verde: 93 211 158;
   --ambra: 240 179 87;
   --viola: 180 166 240;
+  --tinta-l: 78%;
+  --tinta-c: 0.13;
+  --cornice: 7 13 20;
   color-scheme: dark;
 }
 
@@ -84,6 +92,13 @@ body {
 
 @layer utilities {
   .titolo { font-variation-settings: 'wdth' 88; letter-spacing: -0.02em; }
+  /* The wide face, for the name, the group titles and the numbers: the contrast with the narrow text. */
+  .largo { font-family: 'Anybody', 'Bricolage Grotesque', sans-serif; font-variation-settings: 'wdth' 130; letter-spacing: -0.01em; }
+  .text-tinta { color: oklch(var(--tinta-l) var(--tinta-c) var(--hue, 235)); }
+  .bg-tinta { background-color: oklch(var(--tinta-l) var(--tinta-c) var(--hue, 235)); }
+  .border-tinta { border-color: oklch(var(--tinta-l) var(--tinta-c) var(--hue, 235)); }
+  /* Inside the dark frame the drawing is always light, whatever the theme. */
+  .tinta-chiara { color: oklch(80% 0.14 var(--hue, 235)); }
   .cifre { font-variant-numeric: tabular-nums; }
 }
 
@@ -134,3 +149,26 @@ body {
   to { opacity: 1; transform: none; }
 }
 .cambia { animation: cambia 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* Drawings trace themselves the first time they reach the screen (pathLength = 1 on every stroke). */
+.tratto { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.anima [data-disegna]:not([data-visto]) .tratto { stroke-dashoffset: 1; }
+.anima [data-disegna] .tratto { transition: stroke-dashoffset 1.6s cubic-bezier(0.65, 0, 0.35, 1); transition-delay: calc(var(--i, 0) * 60ms); }
+.anima [data-disegna]:not([data-visto]) .riempi { opacity: 0; }
+.anima [data-disegna] .riempi { transition: opacity 0.6s ease; transition-delay: calc(0.6s + var(--i, 0) * 40ms); }
+
+/* The opening: contour lines of Monte Titano draw themselves once. */
+@keyframes traccia { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.curva { stroke-dasharray: 1; animation: traccia 2.4s cubic-bezier(0.65, 0, 0.35, 1) both; }
+
+/* The strip of technologies: scrolls by itself, stops under the mouse. */
+@keyframes scorre { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.striscia { animation: scorre 70s linear infinite; }
+@media (hover: hover) { .striscia:hover { animation-play-state: paused; } }
+@media (prefers-reduced-motion: reduce) { .striscia { animation: none; } }
+
+/* Crosshairs where a rule meets a rail. */
+.mirino { position: absolute; width: 11px; height: 11px; top: -6px; pointer-events: none; }
+.mirino::before, .mirino::after { content: ''; position: absolute; background: rgb(var(--tenue) / 0.7); }
+.mirino::before { left: 5px; top: 0; width: 1px; height: 11px; }
+.mirino::after { top: 5px; left: 0; height: 1px; width: 11px; }

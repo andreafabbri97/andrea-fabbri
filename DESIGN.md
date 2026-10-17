@@ -43,14 +43,41 @@ Gli stati hanno colore **e** parola: produzione verde (`#2E7D4F` / `#5DD39E`), s
 Tema: segue il sistema; si sceglie chiaro, scuro o automatico dal bottone in alto, come nel cruscotto
 del Second Brain. La scelta resta nel browser.
 
+### Il colore di ogni progetto (17/10/2026)
+
+Ogni progetto ha il colore del suo settore (`hue` in `src/data/projectsMeta.js`, una tinta OKLCH da 0 a 360; il
+tema decide luminosità e saturazione: 52% e 0,15 in chiaro, 78% e 0,13 in scuro). Compare nel quadratino
+dell'indice, nella frase di sintesi, nelle tacche dei numeri, nei pallini delle funzioni e nel disegno.
+Le cornici dei disegni e delle schermate sono scure in tutti e due i temi (`--cornice`): il colore viene dal
+contenuto, l'interfaccia resta sobria.
+
 ## Caratteri
 
-**Bricolage Grotesque**, una famiglia sola (Google Fonts, variabile per peso, larghezza e corpo ottico).
-- Titoli: peso 700-800, larghezza 85-90%, interlinea stretta. Il nome in apertura è grande e fa da
-  immagine: niente sfumature colorate sopra.
-- Testo: peso 400, corpo 17 px sul telefono e 18 px sul computer, righe sotto i 75 caratteri.
-- Cifre: `tabular-nums`, così i numeri dell'indice e dei riquadri si allineano.
-- Etichette in minuscolo con l'iniziale maiuscola, mai in maiuscoletto spaziato.
+Due famiglie, scelte per contrasto di **larghezza** (non grazie contro bastoni):
+- **Anybody** allargato (`wdth` 130, classe `.largo`): il nome in apertura, i titoli dei gruppi e delle sezioni,
+  i numeri. È il gesto forte.
+- **Bricolage Grotesque** (`wdth` 88-100): titoli dei progetti, testo, etichette. Corpo 17 px sul telefono e
+  18 px sul computer, righe sotto i 75 caratteri. Cifre `tabular-nums`.
+- Niente parola in corsivo con le grazie, niente etichette in maiuscolo monospazio: sono i cliché.
+- Il titolo dell'indice resta in Bricolage: la «I» maiuscola di Anybody allargato sembra minuscola.
+
+## Le cinque cose che danno ricchezza (studiate su ArtCraft il 17/10/2026)
+
+1. **Il colore lo portano i contenuti.** Le schermate (Lenny, PRYOR, Restaurant, SUP, B2Work) e, per i progetti
+   privati, un **disegno a linee fatto con quello che il progetto gestisce** (`src/components/drawings/`):
+   le fasce del forno della pizzeria con il tetto di 14, le due strade dell'NCC, la griglia del sostegno, le tre
+   ore dell'impresa di scavi, la partita doppia, le unità di misura del magazzino, i negozi aperti, il codice
+   WhatsApp, il repository del Second Brain, la mappa del coach, il d20. Sono schemi, non dati dei clienti.
+   Si tracciano da soli la prima volta che arrivano sullo schermo.
+2. **Un disegno di sfondo in apertura:** le curve di livello del Monte Titano (739 m, da Wikipedia), che si
+   tracciano all'avvio e scorrono piano con la pagina. Sul telefono sfumano verso l'alto per non stare sotto il
+   testo, e la scritta della vetta non c'è.
+3. **La struttura si vede:** binari ai lati della colonna, crocette dove le righe li incontrano, cornici con la
+   barra in alto («Schema · settore» e «3 di 16», cioè il posto nell'indice), numeri in una fila a bordi
+   disegnati, la striscia che scorre con tutte le tecnologie.
+4. **Movimento legato allo scorrimento** (solo mouse e almeno 1440 pixel): il righello a destra con la
+   percentuale letta, e in basso a destra i nomi delle sezioni impilati, con quella attuale in evidenza.
+5. **Contrasto di caratteri:** vedi sopra.
 
 ## Impaginazione
 

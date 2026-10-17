@@ -5,10 +5,12 @@ const WHATSAPP_PATH = 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-
 // The close: the e-mail address is the biggest thing on the page after the name.
 export default function Contact({ t }) {
   return (
-    <section id="contact" className="border-t border-linea py-16 sm:py-28">
-      <div className="contenitore grid lg:grid-cols-12 gap-x-14 gap-y-8">
+    <section id="contact" data-sezione="contact" className="contenitore">
+      <div className="relative sm:border-x border-t border-linea py-16 sm:py-24 sm:px-8 lg:px-10 grid lg:grid-cols-12 gap-x-14 gap-y-8">
+        <span className="mirino hidden sm:block -left-[6px]" aria-hidden />
+        <span className="mirino hidden sm:block -right-[6px]" aria-hidden />
         <div className="lg:col-span-7">
-          <h2 data-reveal className="titolo text-[clamp(2.5rem,7vw,5rem)] font-extrabold text-inchiostro leading-[0.98] mb-6">{t.contactTitle}</h2>
+          <h2 data-reveal className="largo text-[clamp(2.5rem,7vw,5rem)] font-extrabold text-inchiostro leading-[0.98] mb-6">{t.contactTitle}</h2>
           <p className="text-tenue text-lg leading-relaxed max-w-[38rem]">{t.contactDesc}</p>
         </div>
         <div className="lg:col-span-5 lg:pt-4 flex flex-col gap-4">

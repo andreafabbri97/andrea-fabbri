@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import ProjectGroup from './components/ProjectGroup'
@@ -10,6 +10,12 @@ import { copyFor } from './data/projectsCopy'
 import { groups } from './data/projectsMeta'
 import { startReveals } from './components/motion'
 import useCurrentProject from './components/useCurrentProject'
+import Striscia from './components/Striscia'
+import Righello from './components/Righello'
+
+// Where each project sits in the index of work: "3 of 16" on its frame.
+const POSITIONS = Object.fromEntries(groups.flatMap((g) => g.projects).map((p, i) => [p.id, i + 1]))
+const TOTAL = Object.keys(POSITIONS).length
 
 const LANG_KEY = 'af-lingua'
 
@@ -25,6 +31,11 @@ export default function App() {
 
   useEffect(() => startReveals(), [])
 
+  const sections = useMemo(() => [
+    ...groups.map((g) => ({ id: g.id, href: `#group-${g.id}`, label: copy.short[g.id] })),
+    ...['experience', 'skills', 'contact'].map((id) => ({ id, href: `#${id}`, label: copy.short[id] })),
+  ], [copy])
+
   useEffect(() => {
     document.documentElement.lang = lang
     try { localStorage.setItem(LANG_KEY, lang) } catch { /* private mode: English next time */ }
@@ -35,11 +46,13 @@ export default function App() {
       <Navbar t={t} lang={lang} setLang={setLang} current={current ? { id: current, title: copy.projects[current].title } : null} />
       <main>
         <Hero t={t} copy={copy} />
-        {groups.map((g) => <ProjectGroup key={g.id} group={g} copy={copy} lang={lang} />)}
+        <Striscia label={copy.technologies} />
+        {groups.map((g) => <ProjectGroup key={g.id} group={g} copy={copy} lang={lang} positions={POSITIONS} total={TOTAL} />)}
         <Experience t={t} />
         <Skills t={t} />
         <Contact t={t} />
       </main>
+      <Righello sections={sections} label={copy.frame.where} />
       <footer className="border-t border-linea py-8">
         <p className="contenitore text-sm text-tenue">{t.footer}</p>
       </footer>

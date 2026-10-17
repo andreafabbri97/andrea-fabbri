@@ -18,7 +18,7 @@ export function startReveals() {
       io.unobserve(e.target)
     }
   }, { rootMargin: '0px 0px -15% 0px' })
-  const watch = () => document.querySelectorAll('[data-reveal]:not([data-visto])').forEach((el) => io.observe(el))
+  const watch = () => document.querySelectorAll('[data-reveal]:not([data-visto]), [data-disegna]:not([data-visto])').forEach((el) => io.observe(el))
   watch()
   // Elements that appear later (a language switch re-renders the copy) are picked up too.
   const mo = new MutationObserver(watch)
