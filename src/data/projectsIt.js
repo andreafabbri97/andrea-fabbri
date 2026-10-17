@@ -35,9 +35,9 @@ export const projectsIt = {
     },
   },
   projects: {
-    lenny: {
+    platform: {
       label: 'Food delivery',
-      title: 'Lenny Platform',
+      title: 'Platform',
       tagline: 'L\'equivalente operativo di due dipendenti a tempo pieno, attivi 24 ore su 24',
       desc: 'Un ERP full-stack sviluppato da zero e già adottato da un\'azienda reale di San Marino. Sostituisce un intero ecosistema di fogli Excel e processi manuali: turni e buste paga dei driver, fatturazione ai partner, marketing generato con l\'IA, un client email integrato e la lettura delle fatture con Gemini Vision, fino alla business intelligence in tempo reale, in un\'unica interfaccia usata ogni giorno in un\'attività vera.',
       features: [

@@ -27,7 +27,7 @@ Il push su `main` salva il codice ma **non** aggiorna il sito: serve `npm run de
 |---|---|
 | `src/data/projectsMeta.js` | i gruppi, l'ordine dei progetti, stato, tecnologie, link |
 | `src/data/projectsEn.js`, `projectsIt.js` | i testi di ogni progetto nelle due lingue |
-| `src/data/flagship.js` | i moduli di Lenny e PRYOR |
+| `src/data/flagship.js` | i moduli di Platform e PRYOR |
 | `src/data/siteCopy.jsx` | apertura, esperienza, competenze, contatti, barra in alto |
 
 Un progetto nuovo: una riga in `projectsMeta.js` (nel gruppo giusto), il suo testo nei due file di lingua e il suo disegno

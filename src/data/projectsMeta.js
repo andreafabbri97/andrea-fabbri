@@ -9,8 +9,8 @@ export const groups = [
     id: 'flagship',
     projects: [
       {
-        id: 'lenny', hue: 42, tone: 'live',
-        tags: ['Python', 'Flask', 'MySQL', 'AWS RDS', 'Google Gemini', 'Claude', 'WhatsApp API', 'Pusher', 'PWA'], extras: 'lenny',
+        id: 'platform', hue: 42, tone: 'live',
+        tags: ['Python', 'Flask', 'MySQL', 'AWS RDS', 'Google Gemini', 'Claude', 'WhatsApp API', 'Pusher', 'PWA'], extras: 'platform',
       },
       {
         id: 'pryor', hue: 295, tone: 'beta',

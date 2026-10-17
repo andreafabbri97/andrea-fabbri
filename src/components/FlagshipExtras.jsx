@@ -1,7 +1,7 @@
-import { lennyModules, pryorModules } from '../data/flagship'
+import { platformModules, pryorModules } from '../data/flagship'
 import CountUp from './CountUp'
 
-// The modules of the two flagship products, as a plain list in columns, and Lenny's savings.
+// The modules of the two flagship products, as a plain list in columns, and the platform's savings.
 function Modules({ title, modules }) {
   return (
     <div className="mt-12">
@@ -25,7 +25,7 @@ export default function FlagshipExtras({ kind, project, lang }) {
   if (kind === 'pryor') return <Modules title={project.modulesTitle} modules={pryorModules(lang)} />
   return (
     <>
-      <Modules title={project.modulesTitle} modules={lennyModules(lang)} />
+      <Modules title={project.modulesTitle} modules={platformModules(lang)} />
       <div className="mt-12 border-y border-linea py-8 grid md:grid-cols-[auto_minmax(0,1fr)] gap-x-10 gap-y-2 items-end">
         <div>
           <p className="text-tenue font-medium mb-1">{project.savingsLabel}</p>

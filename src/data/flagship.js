@@ -1,8 +1,8 @@
 import { BarChart2, Bot, Briefcase, Clock, Cpu, Database, DollarSign, ExternalLink, Layers, Mail, Shield, TrendingUp, Users, Zap } from 'lucide-react'
 
-// Moduli e numeri dei due prodotti di punta, Lenny Platform e PRYOR (testi già nelle due lingue).
+// Moduli e numeri dei due prodotti di punta, la piattaforma di food delivery e PRYOR (testi già nelle due lingue).
 
-export const lennyMetrics = (lang) => [
+export const platformMetrics = (lang) => [
   { label: lang === 'it' ? 'Route Operative' : 'Operational Routes', value: '990+', icon: Cpu },
   { label: lang === 'it' ? 'Tabelle Database' : 'Database Tables', value: '150+', icon: Database },
   { label: lang === 'it' ? 'Moduli Software' : 'Software Modules', value: '35+', icon: Layers },
@@ -12,7 +12,7 @@ export const lennyMetrics = (lang) => [
   { label: lang === 'it' ? 'Costo AI (Gemini)' : 'AI Cost (Gemini)', value: lang === 'it' ? '€0' : '$0', icon: Bot },
 ]
 
-export const lennyModules = (lang) => {
+export const platformModules = (lang) => {
   const it = lang === 'it'
   return [
     {
@@ -67,8 +67,8 @@ export const lennyModules = (lang) => {
       icon: Cpu,
       title: it ? 'Marketing AI Copilot' : 'Marketing AI Copilot',
       description: it
-        ? 'Genera contenuti multicanale (Instagram, Facebook, email, WhatsApp, ads) da 9 playbook tematici con brand-voice few-shot sui post storici Lenny. Guardrail deterministici bloccano claim falsi; il routing sceglie Gemini (gratis) o Claude (premium a budget). Le campagne Meta e Google Ads nascono sempre in pausa, con approvazione umana.'
-        : 'Generates multichannel content (Instagram, Facebook, email, WhatsApp, ads) from 9 themed playbooks with few-shot brand voice trained on Lenny\'s historical posts. Deterministic guardrails block false claims; a router picks Gemini (free) or Claude (premium, budget-capped). Meta & Google Ads campaigns are always created paused, with human approval.',
+        ? 'Genera contenuti multicanale (Instagram, Facebook, email, WhatsApp, ads) da 9 playbook tematici con brand-voice few-shot sui post storici dell\'azienda. Guardrail deterministici bloccano claim falsi; il routing sceglie Gemini (gratis) o Claude (premium a budget). Le campagne Meta e Google Ads nascono sempre in pausa, con approvazione umana.'
+        : 'Generates multichannel content (Instagram, Facebook, email, WhatsApp, ads) from 9 themed playbooks with few-shot brand voice trained on the company\'s historical posts. Deterministic guardrails block false claims; a router picks Gemini (free) or Claude (premium, budget-capped). Meta & Google Ads campaigns are always created paused, with human approval.',
       saving: it ? 'AI-Native' : 'AI-Native',
     },
     {

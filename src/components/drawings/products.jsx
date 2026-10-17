@@ -3,9 +3,9 @@ import { Svg, Tratto, Riempi, Griglia, Testo } from './parts'
 // Diagrams of the flagship products and of the own products, drawn from what each one handles.
 // They replace the screenshots: no data from inside the programs, and the same look as the rest.
 
-// Lenny: the 24-hour dial with its twelve automatic jobs, and the platform at the centre of
+// Platform (the food-delivery ERP): the 24-hour dial with its twelve automatic jobs, and the platform at the centre of
 // drivers, partner restaurants, customers and the AI.
-export function Lenny({ label, lang }) {
+export function Platform({ label, lang }) {
   const it = lang === 'it'
   const cx = 120, cy = 150, r = 82
   const ticks = Array.from({ length: 12 }, (_, k) => {

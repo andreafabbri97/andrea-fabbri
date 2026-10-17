@@ -35,9 +35,9 @@ export const projectsEn = {
     },
   },
   projects: {
-    lenny: {
+    platform: {
       label: 'Food delivery operations',
-      title: 'Lenny Platform',
+      title: 'Platform',
       tagline: 'The operational equivalent of two full-time employees, working 24/7',
       desc: 'A full-stack ERP engineered from scratch and already adopted by a real company in San Marino. It replaces an entire ecosystem of spreadsheets and manual processes: driver scheduling and payroll, partner billing, AI-generated marketing, an integrated email client and Gemini-Vision invoice reading, all the way to real-time business intelligence — in a single interface used every day in a live operation.',
       features: [

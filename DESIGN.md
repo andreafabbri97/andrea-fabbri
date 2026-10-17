@@ -67,7 +67,7 @@ Due famiglie, scelte per contrasto di **larghezza** (non grazie contro bastoni):
 
 1. **Il colore lo portano i contenuti.** Per ogni progetto un **disegno a linee fatto con quello che il progetto
    gestisce** (`src/components/drawings/`). Niente schermate (tolte il 17/10/2026, scelto da Andrea): possono mostrare
-   dati dei clienti e ogni gestionale ha una grafica sua, che non si lega al sito. Lenny: il quadrante delle 24 ore con
+   dati dei clienti e ogni gestionale ha una grafica sua, che non si lega al sito. Platform: il quadrante delle 24 ore con
    i 12 cron e l'ERP fra driver, partner, clienti e IA; PRYOR: la pipeline con i segnali di rischio e la mossa di oggi;
    Restaurant: la sala e il conto diviso in tre; SUP: il calendario del giorno per tavola e pedalò; B2Work: il raggio di
    ricerca con i lavoratori dentro. Poi
@@ -119,8 +119,10 @@ Telefono (390)                 Portatile (≈1520)                          Fiss
   Second Brain (nota sulla pagina del cruscotto): 4K con Windows al 125%, finestra 3072 × 1516.
 - Bordo laterale: 16 px sul telefono.
 - I progetti sono tutti dello stesso modello (settore, titolo, stato, frase, descrizione, numeri,
-  funzioni, tecnologie), così si confrontano a colpo d'occhio. I due di punta (Lenny, PRYOR) aggiungono
-  i moduli; Lenny anche il conto dei risparmi.
+  funzioni, tecnologie), così si confrontano a colpo d'occhio. I due di punta (Platform, PRYOR) aggiungono
+  i moduli; Platform anche il conto dei risparmi.
+- Il progetto di punta sul food delivery si chiama solo **Platform** (deciso da Andrea il 17/10/2026): il nome
+  dell'azienda compare solo nelle esperienze lavorative, mai nella parte dei progetti (titolo, ancora `#platform`, testi).
 - Gruppi: Prodotti di punta · Lavori per i clienti · Prodotti e progetti propri · Sistemi personali.
 
 ## Movimento
@@ -130,7 +132,7 @@ Poche cose, ognuna perché aiuta a capire o a orientarsi:
 
 - **Apertura** (l'unico momento che parte da solo): il nome sale e l'indice dei lavori si compone riga per riga.
 - **I numeri contano** la prima volta che compaiono (1,4 s, curva che rallenta alla fine), compreso il risparmio di
-  Lenny. Il valore vero è quello scritto nella pagina e quello letto dai lettori di schermo; il conteggio scrive
+  Platform. Il valore vero è quello scritto nella pagina e quello letto dai lettori di schermo; il conteggio scrive
   il testo direttamente, senza stato di React a ogni fotogramma. I valori senza un numero solo (`16/16`, `WCAG AA`)
   restano fermi.
 - **I titoli dei gruppi e delle sezioni entrano** una volta sola: 28 px più in basso, sfocati di 8 px, 0,9 s, quando
