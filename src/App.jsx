@@ -6,6 +6,7 @@ import {
   DollarSign, Briefcase, GraduationCap,
   MapPin, ArrowRight, Bot, Menu, X,
 } from 'lucide-react'
+import PersonalSection from './PersonalSection'
 
 // ─── i18n ─────────────────────────────────────────────────────────────────────
 
@@ -14,7 +15,7 @@ const translations = {
     // Navbar
     nav: ['Experience', 'Skills', 'Contact'],
     navProjects: 'Projects',
-    navProjectItems: ['Lenny Platform', 'PRYOR', 'Restaurant SaaS', 'SUP Manager', 'B2Work'],
+    navProjectItems: ['Lenny Platform', 'PRYOR', 'Restaurant SaaS', 'SUP Manager', 'B2Work', 'Personal Systems'],
 
     // Hero
     heroStatus: 'Open to opportunities',
@@ -257,7 +258,7 @@ const translations = {
     // Navbar
     nav: ['Esperienza', 'Competenze', 'Contatti'],
     navProjects: 'Progetti',
-    navProjectItems: ['Lenny Platform', 'PRYOR', 'Restaurant SaaS', 'SUP Manager', 'B2Work'],
+    navProjectItems: ['Lenny Platform', 'PRYOR', 'Restaurant SaaS', 'SUP Manager', 'B2Work', 'Sistemi personali'],
 
     // Hero
     heroStatus: 'Disponibile',
@@ -1229,7 +1230,7 @@ function ContactSection({ t }) {
 
 function Navbar({ t, lang, setLang }) {
   const anchors = ['#experience', '#skills', '#contact']
-  const projectAnchors = ['#lenny', '#pryor', '#restaurant', '#sup', '#b2work']
+  const projectAnchors = ['#lenny', '#pryor', '#restaurant', '#sup', '#b2work', '#personal']
   const [dropOpen, setDropOpen] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const navRef = useRef(null)
@@ -1387,6 +1388,7 @@ export default function App() {
         <RestaurantSection t={t} />
         <SupSection t={t} />
         <B2WorkSection t={t} />
+        <PersonalSection lang={lang} />
         <ExperienceSection t={t} />
         <SkillsSection t={t} />
         <ContactSection t={t} />
