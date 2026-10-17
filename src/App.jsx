@@ -13,6 +13,15 @@ import useCurrentProject from './components/useCurrentProject'
 import Striscia from './components/Striscia'
 import Righello from './components/Righello'
 import Avanzamento from './components/Avanzamento'
+import ServicesIndex from './components/ServicesIndex'
+import ServicePage from './components/ServicePage'
+import Footer from './components/Footer'
+import { pathFor } from './data/services'
+import { servicesEn } from './data/servicesEn'
+import { servicesIt } from './data/servicesIt'
+
+const BASE = import.meta.env.BASE_URL
+const servicesCopy = { en: servicesEn, it: servicesIt }
 
 // Where each project sits in the index of work: "3 of 16" on its frame.
 const POSITIONS = Object.fromEntries(groups.flatMap((g) => g.projects).map((p, i) => [p.id, i + 1]))
@@ -23,10 +32,16 @@ const TOTAL = Object.keys(POSITIONS).length
 // paint reads it (scripts/prerender.mjs).
 try { localStorage.removeItem('af-lingua') } catch { /* private mode, or the build */ }
 
-export default function App({ lang }) {
+// page: 'home' or the id of a service (src/data/services.js); each has its address in both languages.
+export default function App({ lang, page = 'home' }) {
   const t = siteCopy[lang]
   const copy = copyFor(lang)
+  const sc = servicesCopy[lang]
   const current = useCurrentProject()
+  const isHome = page === 'home'
+  const home = isHome ? '' : BASE + pathFor(lang)
+  const serviceHref = (id) => BASE + pathFor(lang, id)
+  const alternates = { en: BASE + pathFor('en', page), it: BASE + pathFor('it', page) }
 
   useEffect(() => startReveals(), [])
 
@@ -39,27 +54,33 @@ export default function App({ lang }) {
     return () => cancelAnimationFrame(frame)
   }, [])
 
-  const sections = useMemo(() => [
+  const sections = useMemo(() => (isHome ? [
     ...groups.map((g) => ({ id: g.id, href: `#group-${g.id}`, label: copy.short[g.id] })),
+    { id: 'services', href: '#services', label: sc.home.short },
     ...['experience', 'skills', 'contact'].map((id) => ({ id, href: `#${id}`, label: copy.short[id] })),
-  ], [copy])
+  ] : ['problems', 'solution', 'work', 'process', 'faq', 'contact'].map((id) => ({ id, href: `#${id}`, label: sc.labels.short[id] }))
+  ), [copy, sc, isHome])
 
   return (
     <>
-      <Navbar t={t} lang={lang} current={current ? { id: current, title: copy.projects[current].title } : null} />
-      <main>
-        <Hero t={t} copy={copy} />
-        <Striscia label={copy.technologies} />
-        {groups.map((g) => <ProjectGroup key={g.id} group={g} copy={copy} lang={lang} positions={POSITIONS} total={TOTAL} />)}
-        <Experience t={t} />
-        <Skills t={t} />
-        <Contact t={t} />
-      </main>
+      <Navbar t={t} lang={lang} alternates={alternates} home={home}
+        current={isHome && current ? { id: current, title: copy.projects[current].title } : null} />
+      {isHome ? (
+        <main>
+          <Hero t={t} copy={copy} />
+          <Striscia label={copy.technologies} />
+          {groups.map((g) => <ProjectGroup key={g.id} group={g} copy={copy} lang={lang} positions={POSITIONS} total={TOTAL} />)}
+          <ServicesIndex s={sc} href={serviceHref} />
+          <Experience t={t} />
+          <Skills t={t} />
+          <Contact t={t} />
+        </main>
+      ) : (
+        <ServicePage id={page} s={sc} copy={copy} t={t} lang={lang} home={home} href={serviceHref} />
+      )}
       <Righello sections={sections} label={copy.frame.where} />
       <Avanzamento sections={sections} />
-      <footer className="border-t border-linea py-8">
-        <p className="contenitore text-sm text-tenue">{t.footer}</p>
-      </footer>
+      <Footer t={t} s={sc} href={serviceHref} />
     </>
   )
 }

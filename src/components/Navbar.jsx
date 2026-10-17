@@ -4,22 +4,22 @@ import ThemeToggle from './ThemeToggle'
 
 // The bar on top: name, sections, language and theme. On the phone the sections open in a sheet;
 // while it is open the page underneath does not scroll (the root is locked, not the body).
-// The EN/IT switch links to the other page (one address per language, for the search engines) and saves
-// the choice, so the redirect before the first paint respects it next time. The position on the page goes along.
-const BASE = import.meta.env.BASE_URL
-const PAGE = { en: BASE, it: `${BASE}it/` }
-const choose = (l) => (e) => {
+// The EN/IT switch links to the same page in the other language (one address per language, for the search
+// engines) and saves the choice, so the redirect before the first paint respects it next time. The position
+// on the page goes along. `alternates` are the two addresses of the page; `home` is '' on the home page and
+// the home address on a service page, so the section links lead back to it.
+const choose = (href, l) => (e) => {
   try { localStorage.setItem('af-lingua-scelta', l) } catch { /* private mode: the link still works */ }
-  e.currentTarget.href = PAGE[l] + location.hash
+  e.currentTarget.href = href + location.hash
 }
 
-export default function Navbar({ t, lang, current }) {
+export default function Navbar({ t, lang, current, alternates, home = '' }) {
   const [open, setOpen] = useState(false)
   const links = [
-    { href: '#work', label: t.ui.work },
-    { href: '#experience', label: t.nav[0] },
-    { href: '#skills', label: t.nav[1] },
-    { href: '#contact', label: t.nav[2] },
+    { href: `${home}#work`, label: t.ui.work },
+    { href: `${home}#experience`, label: t.nav[0] },
+    { href: `${home}#skills`, label: t.nav[1] },
+    { href: '#contact', label: t.nav[2] }, // every page ends with the contacts
   ]
 
   useEffect(() => {
@@ -42,10 +42,10 @@ export default function Navbar({ t, lang, current }) {
       {['en', 'it'].map((l) => (
         <a
           key={l}
-          href={PAGE[l]}
+          href={alternates[l]}
           hrefLang={l}
           lang={l}
-          onClick={choose(l)}
+          onClick={choose(alternates[l], l)}
           aria-current={lang === l ? 'page' : undefined}
           className={`inline-flex items-center px-3 h-8 rounded-full uppercase tracking-wide transition-colors ${lang === l ? 'bg-inchiostro text-carta' : 'text-tenue hover-testo'}`}
         >
@@ -68,7 +68,7 @@ export default function Navbar({ t, lang, current }) {
       <div className="contenitore h-16 flex items-center justify-between gap-4 md:grid md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
         {/* The name, and next to it (under it on the phone) the project being read. */}
         <div className="min-w-0 flex flex-col lg:flex-row lg:items-baseline lg:gap-3">
-          <a href="#top" className="titolo text-lg font-extrabold text-inchiostro whitespace-nowrap leading-tight">Andrea Fabbri</a>
+          <a href={home || '#top'} className="titolo text-lg font-extrabold text-inchiostro whitespace-nowrap leading-tight">Andrea Fabbri</a>
           {current && (
             <a
               key={current.id}

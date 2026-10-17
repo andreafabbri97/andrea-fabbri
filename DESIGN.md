@@ -142,6 +142,13 @@ Telefono (390)                 Portatile (≈1520)                          Fiss
 - Il progetto di punta sul food delivery si chiama solo **Platform** (deciso da Andrea il 17/10/2026): il nome
   dell'azienda compare solo nelle esperienze lavorative, mai nella parte dei progetti (titolo, ancora `#platform`, testi).
 - Gruppi: Prodotti di punta · Lavori per i clienti · Prodotti e progetti propri · Sistemi personali.
+- **Pagine dei servizi** (18/10/2026): stesso modello della home, con binari, crocette e caratteri uguali. In apertura il
+  percorso (Home / Servizi / settore), il settore col suo colore, il titolo in Anybody misurato sulla colonna
+  (`min(…, 7,4cqi)`, senza sillabazione: «ri-storanti» col trattino era brutto; misurato senza uscite su 14 pagine
+  e 8 larghezze, da 360 a 3072), la frase, i pulsanti e a destra la cornice col disegno del primo progetto del
+  settore. Poi problema, cosa fa il software, i lavori veri coi loro numeri, come lavoro (i quattro passi
+  numerati: lì sono davvero una sequenza), domande frequenti aperte con un tocco, contatti e altri servizi.
+  In home la griglia «Cosa posso fare per la tua azienda» ha otto riquadri: i sette servizi e «Un altro settore?».
 
 ## Movimento
 

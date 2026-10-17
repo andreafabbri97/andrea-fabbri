@@ -65,6 +65,17 @@ ProfilePage e l'elenco dei sedici lavori). Il prerender scrive anche `sitemap.xm
 alternative) e `llms.txt` (il sito in testo semplice per le IA). Nel `index.html` sorgente quel posto è il
 segnaposto `<!--seo-->`, la pagina è `<!--app-->`: non toglierli, se no la build si ferma.
 
+## Pagine dei servizi (18/10/2026)
+
+Sette pagine, una per cosa che un cliente può comprare, in inglese e in italiano (14 indirizzi): gestionale su
+misura, ristorazione e food delivery, NCC e transfer, edilizia, studi commercialisti, negozi e commercio,
+automazione con l'IA. Elenco, indirizzi, colori e progetti mostrati: `src/data/services.js`; testi:
+`src/data/servicesIt.js` e `servicesEn.js`; pagina: `src/components/ServicePage.jsx`. Ogni cosa scritta lì viene
+dai progetti veri del sito, senza nomi di clienti e senza promesse su prezzi o tempi. In home le collega la
+sezione «Cosa posso fare per la tua azienda» (`ServicesIndex.jsx`) e il piè di pagina di ogni pagina. Il prerender
+le scrive tutte, con i dati strutturati Service, BreadcrumbList e FAQPage, e le mette nella mappa del sito.
+Un servizio nuovo: una riga in `services.js` e i suoi testi nelle due lingue, il resto viene da sé.
+
 Il file `public/<chiave>.txt` è la chiave di IndexNow, con cui il sito è segnalato a Bing e Yandex: non va
 tolto. Google Search Console è attiva dal 18/10/2026 sull'account di Andrea (proprietà con prefisso URL),
 verificata col meta tag `google-site-verification` in `index.html`: non toglierlo.

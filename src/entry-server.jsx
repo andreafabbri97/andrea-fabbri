@@ -3,15 +3,23 @@ import App from './App.jsx'
 import { siteCopy } from './data/siteCopy'
 import { copyFor } from './data/projectsCopy'
 import { groups } from './data/projectsMeta'
+import { services, pathFor } from './data/services'
+import { servicesEn } from './data/servicesEn'
+import { servicesIt } from './data/servicesIt'
 
-// Used only at build time by scripts/prerender.mjs: it writes the whole page, in English at /andrea-fabbri/
-// and in Italian at /andrea-fabbri/it/, so search engines and AI crawlers read the text without running
-// JavaScript (until 18/10/2026 the HTML had 106 words and the Italian version had no address at all).
+// Used only at build time by scripts/prerender.mjs: it writes every page whole, the home page in English at
+// /andrea-fabbri/ and in Italian at /andrea-fabbri/it/, and each service page in both languages, so search
+// engines and AI crawlers read the text without running JavaScript (until 18/10/2026 the HTML had 106 words
+// and the Italian version had no address at all).
 
 export const SITE = 'https://andreafabbri97.github.io/andrea-fabbri/'
-export const urlFor = (lang) => (lang === 'it' ? `${SITE}it/` : SITE)
+export const PAGES = ['home', ...services.map((v) => v.id)]
+export const urlFor = (lang, page = 'home') => SITE + pathFor(lang, page)
+export const pathOf = (lang, page = 'home') => pathFor(lang, page)
 
-export const render = (lang) => renderToString(<App lang={lang} />)
+export const render = (lang, page = 'home') => renderToString(<App lang={lang} page={page} />)
+
+const servicesCopy = { en: servicesEn, it: servicesIt }
 
 const META = {
   en: {
@@ -30,12 +38,16 @@ const META = {
   },
 }
 
-export const metaFor = (lang) => META[lang]
+export const metaFor = (lang, page = 'home') => {
+  if (page === 'home') return META[lang]
+  const p = servicesCopy[lang].pages[page]
+  return { title: p.metaTitle, description: p.metaDescription, ogDescription: p.metaDescription, locale: META[lang].locale }
+}
 
 const allProjects = () => groups.flatMap((g) => g.projects)
 
 // The structured data: who Andrea is (Person), the page about him (ProfilePage) and the list of his work.
-export function jsonLdFor(lang) {
+function homeJsonLd(lang) {
   const t = siteCopy[lang]
   const copy = copyFor(lang)
   const url = urlFor(lang)
@@ -56,6 +68,10 @@ export function jsonLdFor(lang) {
     ],
     knowsAbout: t.skillGroups.filter((g) => !/soft/i.test(g.group)).flatMap((g) => g.items),
     sameAs: ['https://github.com/andreafabbri97', 'https://www.linkedin.com/in/andrea-fabbri-9873081a6/'],
+    makesOffer: services.map((v) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: servicesCopy[lang].pages[v.id].title, url: urlFor(lang, v.id) },
+    })),
   }
   const work = {
     '@type': 'ItemList',
@@ -82,6 +98,44 @@ export function jsonLdFor(lang) {
   }
 }
 
+// A service page: the page, the service offered by Andrea, where it sits (breadcrumb) and its questions.
+function serviceJsonLd(lang, page) {
+  const p = servicesCopy[lang].pages[page]
+  const s = servicesCopy[lang]
+  const url = urlFor(lang, page)
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'WebPage', '@id': url, url, name: p.metaTitle, description: p.metaDescription, inLanguage: lang, about: { '@id': `${url}#service` } },
+      {
+        '@type': 'Service',
+        '@id': `${url}#service`,
+        name: p.title,
+        serviceType: p.label,
+        description: p.lead,
+        url,
+        provider: { '@type': 'Person', '@id': `${SITE}#andrea`, name: 'Andrea Fabbri', url: SITE },
+        areaServed: [{ '@type': 'Country', name: 'San Marino' }, 'Worldwide'],
+        availableLanguage: ['it', 'en'],
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: s.labels.home, item: urlFor(lang) },
+          { '@type': 'ListItem', position: 2, name: s.labels.kicker, item: `${urlFor(lang)}#services` },
+          { '@type': 'ListItem', position: 3, name: p.label, item: url },
+        ],
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: p.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+      },
+    ],
+  }
+}
+
+export const jsonLdFor = (lang, page = 'home') => (page === 'home' ? homeJsonLd(lang) : serviceJsonLd(lang, page))
+
 // llms.txt: the site in plain text for AI assistants (the llmstxt.org convention), built from the same copy.
 export function llmsText() {
   const en = copyFor('en')
@@ -102,6 +156,10 @@ export function llmsText() {
       ...g.projects.map((p) => `- [${en.projects[p.id].title}](${SITE}#${p.id}): ${en.projects[p.id].label}. ${en.projects[p.id].tagline}. Built with ${p.tags.join(', ')}.`),
       '',
     ]),
+    '## Services',
+    '',
+    ...services.map((v) => `- [${servicesEn.pages[v.id].title}](${urlFor('en', v.id)}) (Italian: ${urlFor('it', v.id)}): ${servicesEn.pages[v.id].metaDescription}`),
+    '',
     '## Profiles',
     '',
     '- [GitHub](https://github.com/andreafabbri97)',

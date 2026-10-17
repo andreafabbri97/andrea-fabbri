@@ -15,7 +15,7 @@ const VISIBLE_FEATURES = 2
 // Height of the fixed bar plus some air: where the first revealed feature lands after opening.
 const BAR_CLEARANCE = 88
 
-function Metrics({ metrics, label }) {
+export function Metrics({ metrics, label }) {
   return (
     <dl aria-label={label} className="grid grid-cols-2 md:grid-cols-4 gap-px bg-linea border-y border-linea">
       {metrics.map((m) => (
