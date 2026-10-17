@@ -1,6 +1,15 @@
 // One full section per project, in the same spirit as Restaurant Manager and SUP Manager.
 // These projects are private: instead of the screenshot, the right column holds the key
 // numbers and the problem the project had to solve.
+// Collapsed by default: the first features stay visible, the rest and "the hard part" open with
+// "Show more", so the page does not turn into a wall of text.
+
+import { useId, useRef, useState } from 'react'
+import { ChevronDown } from 'lucide-react'
+
+const VISIBLE_FEATURES = 2
+// Height of the fixed navbar plus some air: where the first revealed feature lands after opening.
+const NAVBAR_CLEARANCE = 88
 
 const badgeTones = {
   live: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/25',
@@ -36,14 +45,58 @@ export function GroupHeader({ id, label, title, intro }) {
   )
 }
 
+function Collapsible({ open, id, children }) {
+  return (
+    <div
+      id={id}
+      inert={!open}
+      className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+    >
+      <div className="overflow-hidden">{children}</div>
+    </div>
+  )
+}
+
+function FeatureItem({ text }) {
+  return (
+    <li className="flex items-start gap-3 text-sm text-slate-300 leading-relaxed">
+      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0" />
+      {text}
+    </li>
+  )
+}
+
 export default function ProjectDetail({ project, meta, badge, labels }) {
   const { icon: Icon, tone, tags } = meta
   const { label, title, tagline, desc, features, metrics, challenge } = project
+  const [open, setOpen] = useState(false)
+  const moreId = useId()
+  const challengeId = useId()
+  const moreRef = useRef(null)
+  const shown = features.slice(0, VISIBLE_FEATURES)
+
+  // The section opens downwards (scroll anchoring is off, or the browser would pin the button and
+  // push the new text up out of sight). On the phone the button sits below the numbers, so the
+  // features it opens can still start above the screen: bring the first one into view.
+  const toggle = () => {
+    const opening = !open
+    setOpen(opening)
+    if (!opening) return
+    requestAnimationFrame(() => {
+      const top = moreRef.current?.getBoundingClientRect().top
+      if (top !== undefined && top < NAVBAR_CLEARANCE) {
+        window.scrollBy({ top: top - NAVBAR_CLEARANCE, behavior: 'smooth' })
+      }
+    })
+  }
+  const hidden = features.slice(VISIBLE_FEATURES)
   return (
-    <section id={meta.id} className="py-14 sm:py-20 px-4 sm:px-6">
+    <section id={meta.id} className="py-14 sm:py-20 px-4 sm:px-6 [overflow-anchor:none]">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 lg:items-start">
-          <div className="lg:w-7/12">
+        {/* Phone: text, numbers, then the button at the bottom. Computer: text and button on the
+            left, numbers on the right. */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-6 sm:gap-y-8">
+          <div className="lg:col-span-7 lg:row-start-1">
             <span className="inline-flex items-center gap-2 text-[11px] sm:text-xs font-semibold tracking-widest uppercase text-indigo-400 mb-3 sm:mb-4">
               <span className="w-6 sm:w-8 h-px bg-indigo-500" />
               {label}
@@ -67,16 +120,16 @@ export default function ProjectDetail({ project, meta, badge, labels }) {
             </div>
 
             <ul className="space-y-2.5 sm:space-y-3">
-              {features.map((f) => (
-                <li key={f} className="flex items-start gap-3 text-sm text-slate-300 leading-relaxed">
-                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0" />
-                  {f}
-                </li>
-              ))}
+              {shown.map((f) => <FeatureItem key={f} text={f} />)}
             </ul>
+            <Collapsible open={open} id={moreId}>
+              <ul ref={moreRef} className="space-y-2.5 sm:space-y-3 pt-2.5 sm:pt-3">
+                {hidden.map((f) => <FeatureItem key={f} text={f} />)}
+              </ul>
+            </Collapsible>
           </div>
 
-          <aside className="lg:w-5/12 w-full lg:sticky lg:top-24">
+          <aside className="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:row-span-2 lg:self-start lg:sticky lg:top-24">
             <div className="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6">
               <p className="text-[11px] uppercase tracking-widest text-slate-500 font-semibold mb-4">{labels.numbers}</p>
               <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-6">
@@ -88,14 +141,27 @@ export default function ProjectDetail({ project, meta, badge, labels }) {
                 ))}
               </div>
               {challenge && (
-                <>
+                <Collapsible open={open} id={challengeId}>
                   <p className="text-[11px] uppercase tracking-widest text-slate-500 font-semibold mb-2">{labels.challenge}</p>
                   <p className="text-slate-300 text-sm leading-relaxed mb-5">{challenge}</p>
-                </>
+                </Collapsible>
               )}
               <p className="text-[11px] uppercase tracking-widest text-slate-600 font-semibold">{labels.private}</p>
             </div>
           </aside>
+
+          <div className="lg:col-span-7 lg:row-start-2 lg:-mt-3">
+            <button
+              type="button"
+              onClick={toggle}
+              aria-expanded={open}
+              aria-controls={challenge ? `${moreId} ${challengeId}` : moreId}
+              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 active:bg-white/20 text-white text-sm px-4 py-2.5 rounded-xl font-semibold transition-colors"
+            >
+              {open ? labels.showLess : labels.showMore}
+              <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
+            </button>
+          </div>
         </div>
       </div>
     </section>

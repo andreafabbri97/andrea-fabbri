@@ -46,9 +46,5 @@ html, body {
   overflow-x: hidden;
 }
 
-/* Better tap highlighting on mobile */
-@media (hover: none) {
-  a, button {
-    -webkit-tap-highlight-color: rgba(99, 102, 241, 0.1);
-  }
-}
+/* No blue tap flash on mobile: the pressed state is drawn by the buttons themselves */
+html { -webkit-tap-highlight-color: transparent; }

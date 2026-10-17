@@ -7,6 +7,8 @@ export const projectsIt = {
     challenge: 'La parte difficile',
     private: 'Progetto privato · nome del cliente riservato',
     privateOwn: 'Progetto privato',
+    showMore: 'Mostra di più',
+    showLess: 'Mostra meno',
   },
   badges: { live: 'In produzione', building: 'In sviluppo', demo: 'Demo funzionante', daily: 'In uso ogni giorno' },
   clients: {
