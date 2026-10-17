@@ -26,8 +26,41 @@ function ring(k) {
 
 const PATHS = Array.from({ length: RINGS }, (_, k) => ring(k))
 
+// On the phone and the tablet the column is one: the summit would end up under the index of work.
+// There it moves to the free space next to the last button of the opening, measured on the page
+// (so it fits any phone), and the drawing keeps its shape: only the rings move, together.
+function summitTarget(svg) {
+  if (window.matchMedia('(min-width: 1024px)').matches) return null
+  const row = document.querySelector('[data-bottoni]')
+  const last = row && row.lastElementChild
+  if (!last) return null
+  const free = row.getBoundingClientRect().right - last.getBoundingClientRect().right
+  const box = svg.parentElement.getBoundingClientRect()
+  const b = last.getBoundingClientRect()
+  // free room on the right of the last button, or else just under the buttons, on the right
+  const x = free > 60 ? b.right + free / 2 + 8 : box.left + box.width * 0.72
+  const y = free > 60 ? b.top + b.height / 2 : b.bottom + 70
+  const w = box.width, h = svg.getBoundingClientRect().height
+  const scale = Math.max(w / 1600, h / 900)
+  const sx = (w - 1600 * scale) / 2 + CX * scale, sy = (h - 900 * scale) / 2 + CY * scale
+  return [((x - box.left) - sx) / scale, ((y - box.top) - sy) / scale]
+}
+
 export default function Titano({ label }) {
   const ref = useRef(null)
+  const rings = useRef(null)
+
+  useEffect(() => {
+    const place = () => {
+      if (!ref.current || !rings.current) return
+      const t = summitTarget(ref.current)
+      rings.current.setAttribute('transform', t ? `translate(${t[0].toFixed(1)} ${t[1].toFixed(1)})` : '')
+    }
+    place()
+    const resize = new ResizeObserver(place)
+    resize.observe(document.body)
+    return () => resize.disconnect()
+  }, [])
 
   useEffect(() => {
     if (!motionAllowed()) return undefined
@@ -46,8 +79,9 @@ export default function Titano({ label }) {
     // The drawing is one screen tall, but the opening can be taller (the index on the 4K desktop): the
     // rings go on past the drawing's box (overflow visible), the layer covers the whole opening and
     // fades out at the bottom instead of ending with a cut.
-    <div className="absolute inset-0 overflow-hidden pointer-events-none [mask-image:linear-gradient(to_bottom,transparent_0,black_45%,black_85%,transparent)] lg:[mask-image:linear-gradient(to_bottom,black_80%,transparent)]" aria-hidden>
+    <div className="absolute inset-0 overflow-hidden pointer-events-none [mask-image:linear-gradient(to_bottom,transparent_0,black_14rem,black_85%,transparent)] lg:[mask-image:linear-gradient(to_bottom,black_80%,transparent)]" aria-hidden>
       <svg ref={ref} viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" className="absolute inset-x-0 top-0 w-full h-[100svh] overflow-visible" fill="none">
+        <g ref={rings}>
         {PATHS.map((d, k) => (
           <path key={k} d={d} pathLength="1" className="curva"
             style={{ animationDelay: `${0.1 + k * 0.08}s` }}
@@ -57,6 +91,7 @@ export default function Titano({ label }) {
         ))}
         <circle cx={CX} cy={CY} r="4" fill="rgb(var(--azzurro))" />
         <text x={CX - 72} y={CY + 5} textAnchor="end" className="hidden lg:block" fontSize="14" fill="rgb(var(--tenue))" fontFamily="'Bricolage Grotesque', sans-serif">{label}</text>
+        </g>
       </svg>
     </div>
   )

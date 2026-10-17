@@ -78,6 +78,9 @@ Due famiglie, scelte per contrasto di **larghezza** (non grazie contro bastoni):
 2. **Un disegno di sfondo in apertura:** le curve di livello del Monte Titano (739 m, da Wikipedia), che si
    tracciano all'avvio e scorrono piano con la pagina. Sul telefono sfumano verso l'alto per non stare sotto il
    testo, e la scritta della vetta non c'è.
+   Sul telefono e sul tablet la vetta si sposta accanto all'ultimo pulsante dell'apertura (misurato sulla pagina),
+   perché sotto ci sarebbe l'indice; l'indice è un vetro smerigliato (fondo al 75% e sfocatura), così le curve si
+   intravedono anche sotto. La sfumatura in alto è in rem (14rem), non in percentuale: l'apertura sul telefono è lunga.
 3. **La struttura si vede:** binari ai lati della colonna, crocette dove le righe li incontrano, cornici con la
    barra in alto («Schema · settore» e «3 di 16», cioè il posto nell'indice), numeri in una fila a bordi
    disegnati, la striscia che scorre con tutte le tecnologie.
@@ -85,7 +88,8 @@ Due famiglie, scelte per contrasto di **larghezza** (non grazie contro bastoni):
    percentuale letta, e in basso a destra i nomi delle sezioni impilati, con quella attuale in evidenza.
    Dove non ci sta (telefono, tablet, portatile stretto) c'è il righello corto (`Avanzamento.jsx`, 17/10/2026,
    chiesto da Andrea): una linea sottile sul bordo basso della barra in alto che si riempie leggendo, con una
-   tacca dove inizia ogni sezione. Senza percentuale: sotto la barra coprirebbe il testo.
+   tacca alta dove inizia ogni sezione e una bassa dove inizia ogni progetto. Senza percentuale: sotto la barra
+   coprirebbe il testo.
 5. **Contrasto di caratteri:** vedi sopra.
 
 ## Icone e anteprima

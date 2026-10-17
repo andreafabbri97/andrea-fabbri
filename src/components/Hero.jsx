@@ -20,7 +20,7 @@ export default function Hero({ t, copy }) {
           </h1>
           <p className="text-xl sm:text-2xl font-semibold text-inchiostro mb-4">{t.heroSubtitle}</p>
           <p className="text-tenue text-lg leading-relaxed max-w-[38rem] mb-8">{t.heroDesc}</p>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3" data-bottoni>
             <a href="#platform" className="inline-flex items-center justify-center h-12 px-6 rounded-full bg-inchiostro text-carta font-semibold">
               {t.heroBtn1}
             </a>
