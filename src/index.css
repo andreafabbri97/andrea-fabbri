@@ -76,12 +76,13 @@ html {
    under the pointer, on a transparent track (Andrea, 17/10/2026). Only with a mouse: on the phone the system
    draws its own. Chrome and Firefox read the standard properties; the -webkit- ones are for Safari. */
 @media (hover: hover) and (pointer: fine) {
-  html {
-    --pollice: color-mix(in srgb, rgb(var(--inchiostro)) 28%, rgb(var(--carta)));
-    scrollbar-width: thin;
-    scrollbar-color: var(--pollice) transparent;
+  html { --pollice: color-mix(in srgb, rgb(var(--inchiostro)) 28%, rgb(var(--carta))); }
+  /* Two separate writings: in Chrome, with scrollbar-width the -webkit- rules are ignored and "thin" stays
+     around 10 px (lesson from Mas o Meno). Firefox gets "thin", Chrome and Safari the 8 px below. */
+  @supports not selector(::-webkit-scrollbar) {
+    html { scrollbar-width: thin; scrollbar-color: var(--pollice) transparent; }
   }
-  html::-webkit-scrollbar { width: 10px; height: 10px; }
+  html::-webkit-scrollbar { width: 8px; height: 8px; }
   html::-webkit-scrollbar-track { background: transparent; }
   html::-webkit-scrollbar-thumb { background: var(--pollice); border-radius: 999px; }
   html::-webkit-scrollbar-thumb:hover { background: rgb(var(--tenue)); }
