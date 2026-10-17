@@ -4,7 +4,16 @@ import ThemeToggle from './ThemeToggle'
 
 // The bar on top: name, sections, language and theme. On the phone the sections open in a sheet;
 // while it is open the page underneath does not scroll (the root is locked, not the body).
-export default function Navbar({ t, lang, setLang, current }) {
+// The EN/IT switch links to the other page (one address per language, for the search engines) and saves
+// the choice, so the redirect before the first paint respects it next time. The position on the page goes along.
+const BASE = import.meta.env.BASE_URL
+const PAGE = { en: BASE, it: `${BASE}it/` }
+const choose = (l) => (e) => {
+  try { localStorage.setItem('af-lingua-scelta', l) } catch { /* private mode: the link still works */ }
+  e.currentTarget.href = PAGE[l] + location.hash
+}
+
+export default function Navbar({ t, lang, current }) {
   const [open, setOpen] = useState(false)
   const links = [
     { href: '#work', label: t.ui.work },
@@ -31,15 +40,17 @@ export default function Navbar({ t, lang, setLang, current }) {
   const LangSwitch = (
     <div className="inline-flex w-fit items-center rounded-full border border-linea p-0.5 text-sm font-semibold" role="group" aria-label={t.ui.language}>
       {['en', 'it'].map((l) => (
-        <button
+        <a
           key={l}
-          type="button"
-          onClick={() => setLang(l)}
-          aria-pressed={lang === l}
-          className={`px-3 h-8 rounded-full uppercase tracking-wide transition-colors ${lang === l ? 'bg-inchiostro text-carta' : 'text-tenue hover-testo'}`}
+          href={PAGE[l]}
+          hrefLang={l}
+          lang={l}
+          onClick={choose(l)}
+          aria-current={lang === l ? 'page' : undefined}
+          className={`inline-flex items-center px-3 h-8 rounded-full uppercase tracking-wide transition-colors ${lang === l ? 'bg-inchiostro text-carta' : 'text-tenue hover-testo'}`}
         >
           {l}
-        </button>
+        </a>
       ))}
     </div>
   )

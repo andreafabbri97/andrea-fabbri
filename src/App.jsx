@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import ProjectGroup from './components/ProjectGroup'
@@ -18,50 +18,35 @@ import Avanzamento from './components/Avanzamento'
 const POSITIONS = Object.fromEntries(groups.flatMap((g) => g.projects).map((p, i) => [p.id, i + 1]))
 const TOTAL = Object.keys(POSITIONS).length
 
-// 'af-lingua-scelta' and not 'af-lingua': until 17/10/2026 the site saved the language even when nobody chose it
-// (always English), and that old value would have hidden the browser's language. The old key is removed.
-const LANG_KEY = 'af-lingua-scelta'
-try { localStorage.removeItem('af-lingua') } catch { /* private mode */ }
+// Until 17/10/2026 the site saved the language under 'af-lingua' even when nobody chose it: the old key goes.
+// The choice made with the EN/IT switch is 'af-lingua-scelta' (Navbar.jsx); the redirect before the first
+// paint reads it (scripts/prerender.mjs).
+try { localStorage.removeItem('af-lingua') } catch { /* private mode, or the build */ }
 
-// The language: the one chosen with the EN/IT switch if there is one, otherwise the browser's. Italian browsers
-// get Italian, every other language English (Andrea, 17/10/2026: the site speaks to people abroad too).
-const browserLang = () => {
-  const langs = (typeof navigator !== 'undefined' && (navigator.languages?.length ? navigator.languages : [navigator.language])) || []
-  return langs.some((l) => String(l).toLowerCase().startsWith('it')) ? 'it' : 'en'
-}
-const readLang = () => {
-  try {
-    const saved = localStorage.getItem(LANG_KEY)
-    if (saved === 'it' || saved === 'en') return saved
-  } catch { /* private mode: no saved choice */ }
-  return browserLang()
-}
-
-export default function App() {
-  const [lang, setLangState] = useState(readLang)
-  // Saved only when someone picks a language with the switch: the automatic one follows the browser.
-  const setLang = (next) => {
-    setLangState(next)
-    try { localStorage.setItem(LANG_KEY, next) } catch { /* private mode: the choice lasts this visit */ }
-  }
+export default function App({ lang }) {
   const t = siteCopy[lang]
   const copy = copyFor(lang)
   const current = useCurrentProject()
 
   useEffect(() => startReveals(), [])
 
+  // Arriving with an anchor (#contact, or the EN/IT switch keeping the place): React rewrites the page the
+  // build wrote, so the browser's own jump is lost. One frame later the page has its height again.
+  useEffect(() => {
+    const id = decodeURIComponent(location.hash.slice(1))
+    if (!id) return undefined
+    const frame = requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ behavior: 'instant' }))
+    return () => cancelAnimationFrame(frame)
+  }, [])
+
   const sections = useMemo(() => [
     ...groups.map((g) => ({ id: g.id, href: `#group-${g.id}`, label: copy.short[g.id] })),
     ...['experience', 'skills', 'contact'].map((id) => ({ id, href: `#${id}`, label: copy.short[id] })),
   ], [copy])
 
-  useEffect(() => {
-    document.documentElement.lang = lang
-  }, [lang])
-
   return (
     <>
-      <Navbar t={t} lang={lang} setLang={setLang} current={current ? { id: current, title: copy.projects[current].title } : null} />
+      <Navbar t={t} lang={lang} current={current ? { id: current, title: copy.projects[current].title } : null} />
       <main>
         <Hero t={t} copy={copy} />
         <Striscia label={copy.technologies} />
