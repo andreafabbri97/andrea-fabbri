@@ -90,6 +90,9 @@ Due famiglie, scelte per contrasto di **larghezza** (non grazie contro bastoni):
    disegnati, la striscia che scorre con tutte le tecnologie.
 4. **Movimento legato allo scorrimento** (solo mouse e almeno 1440 pixel): il righello a destra con la
    percentuale letta, e in basso a destra i nomi delle sezioni impilati, con quella attuale in evidenza.
+   Sul lato interno della scala, una riga lunga dove inizia ogni sezione e una corta nel colore del settore dove inizia
+   ogni progetto (17/10/2026, chiesto da Andrea). Le posizioni le calcola `pageMarks` in `motion.js`, la stessa per
+   tutti e due i righelli.
    Dove non ci sta (telefono, tablet, portatile stretto) c'è il righello corto (`Avanzamento.jsx`, 17/10/2026,
    chiesto da Andrea): una linea sottile sul bordo basso della barra in alto che si riempie leggendo, con una
    tacca alta dove inizia ogni sezione e una bassa dove inizia ogni progetto. Senza percentuale: sotto la barra

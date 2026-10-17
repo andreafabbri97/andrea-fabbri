@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { motionAllowed, RULER_QUERY } from './motion'
+import { motionAllowed, pageMarks, RULER_QUERY, sameMarks } from './motion'
 
 // The short ruler, where the big one on the right does not fit (phone, tablet, narrow laptop): a thin
 // line on the bottom edge of the top bar that fills as you read, a tall tick where each section starts
@@ -21,18 +21,10 @@ export default function Avanzamento({ sections }) {
     if (!enabled) return undefined
     let frame = 0, lastP = -1
     const smooth = motionAllowed()
-    // Where each section starts, as a share of the scroll: measured again when the page changes size
-    // (a "Show more" opened, the phone turned).
+    // Where sections and projects start (motion.js, pageMarks): measured again when the page changes size (a "Show more" opened, the phone turned).
     const place = () => {
-      const max = document.documentElement.scrollHeight - window.innerHeight
-      if (max <= 0) return
-      const at = (el) => Math.min(1, Math.max(0, (el.getBoundingClientRect().top + window.scrollY) / max))
-      // tall ticks where a section starts, short ones where each project starts (Andrea, 17/10/2026)
-      const next = [
-        ...sections.map((s) => document.querySelector(`[data-sezione="${s.id}"]`)).filter(Boolean).map((el) => ({ at: at(el), big: true })),
-        ...[...document.querySelectorAll('[data-sezione] article[id]')].map((el) => ({ at: at(el), big: false })),
-      ]
-      setTicks((prev) => (prev.length === next.length && prev.every((v, i) => Math.abs(v.at - next[i].at) < 0.002) ? prev : next))
+      const next = pageMarks(sections)
+      setTicks((prev) => (sameMarks(prev, next) ? prev : next))
     }
     const measure = () => {
       frame = 0

@@ -52,3 +52,20 @@ export function formatCount({ before, after, sep }, n) {
 
 // easeOutExpo: fast start, long gentle landing — the number "settles".
 export const easeOutExpo = (x) => (x >= 1 ? 1 : 1 - 2 ** (-10 * x))
+
+// Where the sections and the projects start, as a share of the scroll (0 at the top, 1 at the bottom):
+// tall marks for the sections, short ones in the sector color for the projects. Both rulers use it,
+// the big one on the right and the short one under the top bar.
+export function pageMarks(sections) {
+  const max = document.documentElement.scrollHeight - window.innerHeight
+  if (max <= 0) return []
+  const at = (el) => Math.min(1, Math.max(0, (el.getBoundingClientRect().top + window.scrollY) / max))
+  return [
+    ...sections.map((s) => document.querySelector(`[data-sezione="${s.id}"]`)).filter(Boolean)
+      .map((el) => ({ at: at(el), big: true })),
+    ...[...document.querySelectorAll('[data-sezione] article[id]')]
+      .map((el) => ({ at: at(el), big: false, hue: el.style.getPropertyValue('--hue') || '' })),
+  ]
+}
+
+export const sameMarks = (a, b) => a.length === b.length && a.every((v, i) => Math.abs(v.at - b[i].at) < 0.002)

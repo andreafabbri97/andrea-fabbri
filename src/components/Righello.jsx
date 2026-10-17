@@ -1,15 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
-import { motionAllowed, RULER_QUERY as QUERY } from './motion'
+import { motionAllowed, pageMarks, RULER_QUERY as QUERY, sameMarks } from './motion'
 
 // The ruler on the right (from the animazioni-scroll skill, simple version): a tick every 1%, a number
 // every 10, and a needle that reads how far down the page you are. Above it, bottom right, the names
-// of the sections stacked: the one you are in stands out, the others are links.
+// of the sections stacked: the one you are in stands out, the others are links. On the inner side of the
+// scale, where each section starts a long mark, and where each project starts a short one in the color
+// of its sector (asked by Andrea on 17/10/2026, like the short ruler on the phone).
 // Only with a mouse and a wide screen: on the phone and the narrow laptop there is no margin for it.
 const TOP = 80, BOTTOM = 24
 
 export default function Righello({ sections, label }) {
   const [enabled, setEnabled] = useState(() => typeof window !== 'undefined' && window.matchMedia(QUERY).matches)
   const [current, setCurrent] = useState(null)
+  const [marks, setMarks] = useState([])
   const needle = useRef(null)
   const reading = useRef(null)
   const track = useRef(null)
@@ -46,17 +49,21 @@ export default function Righello({ sections, label }) {
       setCurrent((prev) => (prev === found ? prev : found))
     }
     const onScroll = () => { if (!frame) frame = requestAnimationFrame(measure) }
+    const place = () => { const next = pageMarks(sections); setMarks((prev) => (sameMarks(prev, next) ? prev : next)) }
+    const resize = new ResizeObserver(() => { place(); onScroll() })
+    resize.observe(document.body)
+    place()
     measure()
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onScroll)
-    return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); cancelAnimationFrame(frame) }
+    return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); resize.disconnect(); cancelAnimationFrame(frame) }
   }, [enabled, sections])
 
   if (!enabled) return null
 
   return (
     <>
-      <div className="fixed right-0 w-11 z-30 pointer-events-none" style={{ top: TOP, bottom: BOTTOM }} aria-hidden>
+      <div className="fixed right-0 w-14 z-30 pointer-events-none" style={{ top: TOP, bottom: BOTTOM }} aria-hidden>
         <div ref={track} className="relative h-full">
           {Array.from({ length: 101 }, (_, i) => (
             <span key={i} className="absolute right-0 h-px bg-tenue/40"
@@ -65,13 +72,17 @@ export default function Righello({ sections, label }) {
           {Array.from({ length: 11 }, (_, i) => (
             <span key={i} className="cifre absolute right-6 -translate-y-1/2 text-[10px] text-tenue/70" style={{ top: `${i * 10}%` }}>{i * 10}</span>
           ))}
+          {marks.map((m, i) => (
+            <span key={i} className={`absolute -translate-y-1/2 ${m.big ? 'right-[42px] w-3.5 h-[2px] bg-inchiostro/70' : 'right-[44px] w-2 h-[2px] rounded-full'}`}
+              style={{ top: `${(m.at * 100).toFixed(2)}%`, ...(m.big ? {} : { backgroundColor: `oklch(var(--tinta-l) var(--tinta-c) ${m.hue || 235})` }) }} />
+          ))}
           <div ref={needle} className="absolute right-0 top-0 flex items-center gap-1 -translate-y-1/2">
             <span ref={reading} className="cifre text-[10px] font-semibold text-azzurro" />
             <span className="w-7 h-[2px] bg-azzurro" />
           </div>
         </div>
       </div>
-      <nav aria-label={label} className="fixed right-14 bottom-6 z-30 flex flex-col items-end gap-0.5">
+      <nav aria-label={label} className="fixed right-[4.25rem] bottom-6 z-30 flex flex-col items-end gap-0.5">
         {sections.map((s) => (
           <a key={s.id} href={s.href}
             className={`leading-tight transition-all duration-300 ${current === s.id ? 'largo text-lg font-extrabold text-inchiostro' : 'text-[0.8rem] font-medium text-tenue/70 hover-testo'}`}>
