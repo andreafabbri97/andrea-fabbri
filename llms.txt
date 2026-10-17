@@ -1,0 +1,48 @@
+# Andrea Fabbri
+
+> Andrea Fabbri, management engineer based in San Marino, working remotely worldwide: custom management software, ERPs and AI automation that replace manual operations. Sixteen systems, most of them in daily use.
+
+Italian version: https://andreafabbri97.github.io/andrea-fabbri/it/
+
+## Work
+
+### Flagship products
+
+Two products built end to end, from the data model to the people who use them every day.
+
+- [Platform](https://andreafabbri97.github.io/andrea-fabbri/#platform): Food delivery operations. The operational equivalent of two full-time employees, working 24/7. Built with Python, Flask, MySQL, AWS RDS, Google Gemini, Claude, WhatsApp API, Pusher, PWA.
+- [PRYOR](https://andreafabbri97.github.io/andrea-fabbri/#pryor): B2B sales software. The CRM that knows what to do next. Built with Next.js 16, React 19, TypeScript, Neon Postgres, Drizzle, Auth.js, Google Gemini, PWA.
+
+### Built to measure for local businesses
+
+Software made for specific businesses, most of them in San Marino — where there is no VAT but a single-stage tax, no GDPR but a data-protection law of its own, and generic software gets things quietly wrong. Client names are left out on purpose.
+
+- [Pizzeria Management System](https://andreafabbri97.github.io/andrea-fabbri/#pizzeria): Restaurant operations. The whole business of a takeaway and delivery pizzeria, in one system. Built with Next.js 16, React 19, Neon Postgres, Drizzle, Web Push, Leaflet, Vitest, PWA.
+- [Private Hire Booking & Dispatch](https://andreafabbri97.github.io/andrea-fabbri/#chauffeur): Transport. Built to be used from the driver's seat. Built with Next.js 16, React 19, Prisma, Neon Postgres, Tailwind CSS 4, Web Push, OSRM, Valhalla, PWA.
+- [Support-Teacher Timetable Builder](https://andreafabbri97.github.io/andrea-fabbri/#school): Education. One relation, every printout. Built with Next.js 16, React 19, Neon Postgres, Drizzle, Gemini, ExcelJS, pdf-lib.
+- [Earthmoving Company Management](https://andreafabbri97.github.io/andrea-fabbri/#excavation): Construction. From hours on site to the invoice, even without signal. Built with Next.js 16, TypeScript, Neon Postgres, Drizzle, Auth.js, IndexedDB, Playwright, PWA.
+- [Accounting Software for Tax Firms](https://andreafabbri97.github.io/andrea-fabbri/#accounting): Accounting. Local tax rules as first-class citizens. Built with Next.js 16, TypeScript, Neon Postgres, Drizzle, Gemini, Vitest, Playwright, PWA.
+- [Building-Supplies Store & Back Office](https://andreafabbri97.github.io/andrea-fabbri/#building-supplies): B2B trade. Reserve online, collect at the warehouse. Built with Next.js 16, TypeScript, Neon Postgres, Drizzle, Auth.js, Playwright.
+- [Supermarket Chain Website & Back Office](https://andreafabbri97.github.io/andrea-fabbri/#supermarket): Supermarkets. A great local reputation, and no website. Built with Next.js 16, TypeScript, Neon Postgres, Tailwind CSS 4, Web Push, Playwright, axe-core.
+- [Supplements Shop: Showcase & Orders](https://andreafabbri97.github.io/andrea-fabbri/#supplements): Sports nutrition retail. Structuring what the shop already does on WhatsApp. Built with Next.js 16, TypeScript, Neon Postgres, Drizzle, Tailwind CSS 4, Vercel Blob, Playwright.
+
+### Products and side projects
+
+Smaller products of my own: ideas taken from a sketch to a working app.
+
+- [Restaurant Manager](https://andreafabbri97.github.io/andrea-fabbri/#restaurant): Restaurant software. One codebase, many restaurants, plans switched without code. Built with React 19, TypeScript, Supabase, Tailwind CSS, Recharts, PWA.
+- [SUP & Equipment Rental Manager](https://andreafabbri97.github.io/andrea-fabbri/#sup): Water-sports rental. A paper booking book, replaced by a phone. Built with React, TypeScript, Supabase, Tailwind CSS, PWA.
+- [B2Work](https://andreafabbri97.github.io/andrea-fabbri/#b2work): Marketplace for occasional work. Waiters, baristas and runners, found in minutes. Built with Next.js 15, TypeScript, Supabase, Tailwind CSS, shadcn/ui.
+
+### Tools I use every day
+
+Not everything I build is for clients. These run my own work and free time — and they are where I try out the ideas that later end up in production.
+
+- [Second Brain](https://andreafabbri97.github.io/andrea-fabbri/#second-brain): AI operations. Shared memory and control room for my AI coding agents. Built with Claude Code, Node.js, Python, GitHub API, Vercel, Web Push, PWA.
+- [LoL Coach](https://andreafabbri97.github.io/andrea-fabbri/#lol-coach): Game analytics. Match analysis for me and six friends. Built with Riot API, Claude Code, Vercel, PWA.
+- [QuestZip](https://andreafabbri97.github.io/andrea-fabbri/#questzip): Tabletop games. D&D 5e campaign manager for my group. Built with Next.js 16, TypeScript, Neon Postgres, Drizzle, Auth.js, PartyKit, Playwright.
+
+## Profiles
+
+- [GitHub](https://github.com/andreafabbri97)
+- [LinkedIn](https://www.linkedin.com/in/andrea-fabbri-9873081a6/)
