@@ -5,8 +5,8 @@ import { Svg, Tratto, Riempi, Griglia, Testo } from './parts'
 
 // Platform (the food-delivery ERP): the 24-hour dial with its twelve automatic jobs, and the platform at the centre of
 // drivers, partner restaurants, customers and the AI.
-// The labels stay in English in both languages (Andrea, 17/10/2026).
-export function Platform({ label }) {
+export function Platform({ label, lang }) {
+  const it = lang === 'it'
   const cx = 120, cy = 150, r = 82
   const ticks = Array.from({ length: 12 }, (_, k) => {
     const a = (k / 12) * Math.PI * 2 - Math.PI / 2
@@ -14,8 +14,8 @@ export function Platform({ label }) {
   })
   const hub = [340, 150]
   const nodes = [
-    [340, 52, 'drivers'], [446, 150, 'partners'],
-    [340, 248, 'customers'], [244, 150, 'AI'],
+    [340, 52, 'driver'], [446, 150, it ? 'partner' : 'partners'],
+    [340, 248, it ? 'clienti' : 'customers'], [244, 150, it ? 'IA' : 'AI'],
   ]
   return (
     <Svg label={label}>
