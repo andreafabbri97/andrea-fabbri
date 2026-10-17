@@ -27,7 +27,7 @@ export const projectsEn = {
     },
     products: {
       title: 'Products and side projects',
-      intro: 'Smaller products of my own, with live demos and public code.',
+      intro: 'Smaller products of my own: ideas taken from a sketch to a working app.',
     },
     personal: {
       title: 'Tools I use every day',
@@ -99,7 +99,6 @@ export const projectsEn = {
       ],
       metrics: null,
       challenge: null,
-      links: { live: 'Live demo', source: 'Source code' },
     },
     sup: {
       label: 'Water-sports rental',
@@ -116,7 +115,6 @@ export const projectsEn = {
       ],
       metrics: null,
       challenge: null,
-      links: { live: 'Live demo', source: 'Source code' },
     },
     b2work: {
       label: 'Marketplace for occasional work',
@@ -133,7 +131,6 @@ export const projectsEn = {
       ],
       metrics: null,
       challenge: null,
-      links: { live: 'Live demo', source: 'Source code' },
     },
     pizzeria: {
       label: 'Restaurant operations',

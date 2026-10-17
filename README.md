@@ -37,5 +37,8 @@ Compare da solo nell'indice dei lavori e nella pagina.
 🔴 **AniZip (e StreamZip, MusicZip) non si mette e non si cita.** I progetti dei clienti si descrivono senza nome,
 luogo preciso, link o schermate.
 
+Niente link alle demo né al codice (17/10/2026, Andrea): i programmi hanno un accesso e i repository sono
+privati. Resta solo la pagina di presentazione di PRYOR; chi vuole trovarlo usa i pulsanti GitHub in alto e nei contatti.
+
 Cifre in inglese: dollari americani con gli australiani tra parentesi, convertiti dagli euro (cambio in DESIGN.md).
 Icone e anteprima dei link: `strumenti/icone/`.

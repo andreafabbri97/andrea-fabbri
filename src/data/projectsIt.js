@@ -27,7 +27,7 @@ export const projectsIt = {
     },
     products: {
       title: 'Prodotti e progetti miei',
-      intro: 'Prodotti più piccoli, miei, con la demo dal vivo e il codice pubblico.',
+      intro: 'Prodotti più piccoli, miei: idee portate da uno schizzo a un\'app che funziona.',
     },
     personal: {
       title: 'Strumenti che uso ogni giorno',
@@ -98,7 +98,6 @@ export const projectsIt = {
       ],
       metrics: null,
       challenge: null,
-      links: { live: 'Demo dal vivo', source: 'Codice sorgente' },
     },
     sup: {
       label: 'Noleggio sport acquatici',
@@ -115,7 +114,6 @@ export const projectsIt = {
       ],
       metrics: null,
       challenge: null,
-      links: { live: 'Demo dal vivo', source: 'Codice sorgente' },
     },
     b2work: {
       label: 'Lavoro occasionale',
@@ -132,7 +130,6 @@ export const projectsIt = {
       ],
       metrics: null,
       challenge: null,
-      links: { live: 'Demo dal vivo', source: 'Codice sorgente' },
     },
     pizzeria: {
       label: 'Ristorazione',

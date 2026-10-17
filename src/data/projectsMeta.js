@@ -1,5 +1,6 @@
 // What does not change with the language: id (also the page anchor), status, stack,
-// links and extra blocks. The words live in projectsEn.js / projectsIt.js.
+// links and extra blocks. No live demos and no source code: the programs sit behind a login and the
+// repositories are private (Andrea, 17/10/2026). PRYOR keeps its public presentation page. The words live in projectsEn.js / projectsIt.js.
 // tone: live = in production · building = in development · demo = working demo · beta = closed beta
 // badge: which status word to show (defaults to the tone)
 // hue: the color of the project's sector (OKLCH hue, 0-360). Light and dark themes pick the lightness.
@@ -38,17 +39,14 @@ export const groups = [
       {
         id: 'restaurant', hue: 60, tone: 'demo',
         tags: ['React 19', 'TypeScript', 'Supabase', 'Tailwind CSS', 'Recharts', 'PWA'],
-        links: { live: 'https://andreafabbri97.github.io/restaurant-manager/', source: 'https://github.com/andreafabbri97/restaurant-manager' },
       },
       {
         id: 'sup', hue: 200, tone: 'live', badge: 'use',
         tags: ['React', 'TypeScript', 'Supabase', 'Tailwind CSS', 'PWA'],
-        links: { live: 'https://andreafabbri97.github.io/sup-manager/', source: 'https://github.com/andreafabbri97/sup-manager' },
       },
       {
         id: 'b2work', hue: 100, tone: 'building',
         tags: ['Next.js 15', 'TypeScript', 'Supabase', 'Tailwind CSS', 'shadcn/ui'],
-        links: { live: 'https://andreafabbri97.github.io/B2Work/', source: 'https://github.com/andreafabbri97/B2Work' },
       },
     ],
   },
@@ -61,6 +59,3 @@ export const groups = [
     ],
   },
 ]
-
-// Projects with their own public demo or code: no "private project" note under the numbers.
-export const isPublic = (meta) => Boolean(meta.links)

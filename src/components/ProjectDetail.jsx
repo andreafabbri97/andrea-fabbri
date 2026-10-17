@@ -5,7 +5,6 @@ import StatusBadge from './StatusBadge'
 import FlagshipExtras from './FlagshipExtras'
 import CountUp from './CountUp'
 import Frame from './Frame'
-import GithubIcon from './GithubIcon'
 
 // One project, always the same model so they compare at a glance: sector, title, status, one line,
 // description and stack on the left, the frame (the diagram) on the right, the numbers in a
@@ -123,11 +122,6 @@ export default function ProjectDetail({ project, meta, copy, note, lang, positio
           {links?.live && (
             <a href={links.live} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-inchiostro text-carta font-semibold">
               <ExternalLink className="w-4 h-4" aria-hidden /> {project.links.live}
-            </a>
-          )}
-          {links?.source && (
-            <a href={links.source} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 h-11 px-5 rounded-full border border-linea text-inchiostro font-semibold hover-sfondo">
-              <GithubIcon /> {project.links.source}
             </a>
           )}
         </div>
