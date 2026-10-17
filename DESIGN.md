@@ -7,7 +7,8 @@ Vale per ogni modifica grafica successiva.
 
 - **Chi:** Andrea Fabbri, ingegnere gestionale di San Marino che costruisce software operativo per
   aziende vere: sostituisce fogli di calcolo e lavoro a mano con sistemi in produzione.
-- **Chi lo legge:** chi assume (la lingua di partenza è l'inglese, con le cifre in dollari australiani)
+- **Dove lavora:** vive a San Marino ma prende lavori in tutto il mondo, da remoto, e si sposta volentieri (detto da lui il 17/10/2026): il sito non lo presenta come uno sviluppatore solo per San Marino, ed è per questo che è anche in inglese.
+- **Chi lo legge:** chi assume (la lingua di partenza è l'inglese, con le cifre in dollari americani e tra parentesi in australiani, convertite dagli euro al cambio BCE del 16/10/2026: 1 € = 1,1253 US$ = 1,6171 A$)
   e chi potrebbe commissionargli un lavoro.
 - **Il compito della pagina:** in dieci secondi far capire «questa persona porta in produzione sistemi
   che fanno risparmiare soldi», poi lasciar scegliere quale progetto aprire.
@@ -48,8 +49,9 @@ del Second Brain. La scelta resta nel browser.
 Ogni progetto ha il colore del suo settore (`hue` in `src/data/projectsMeta.js`, una tinta OKLCH da 0 a 360; il
 tema decide luminosità e saturazione: 52% e 0,15 in chiaro, 78% e 0,13 in scuro). Compare nel quadratino
 dell'indice, nella frase di sintesi, nelle tacche dei numeri, nei pallini delle funzioni e nel disegno.
-Le cornici dei disegni e delle schermate sono scure in tutti e due i temi (`--cornice`): il colore viene dal
-contenuto, l'interfaccia resta sobria.
+Le cornici dei disegni seguono il tema (`--cornice`, 17/10/2026, su richiesta di Andrea): nel chiaro un foglio bianco
+con le linee nel colore del settore al 54%, nello scuro una cornice scura con le linee all'80%. Prima erano scure in
+tutti e due i temi, e nel chiaro sembravano macchie nere. Il colore viene dal contenuto, l'interfaccia resta sobria.
 
 ## Caratteri
 
@@ -63,8 +65,12 @@ Due famiglie, scelte per contrasto di **larghezza** (non grazie contro bastoni):
 
 ## Le cinque cose che danno ricchezza (studiate su ArtCraft il 17/10/2026)
 
-1. **Il colore lo portano i contenuti.** Le schermate (Lenny, PRYOR, Restaurant, SUP, B2Work) e, per i progetti
-   privati, un **disegno a linee fatto con quello che il progetto gestisce** (`src/components/drawings/`):
+1. **Il colore lo portano i contenuti.** Per ogni progetto un **disegno a linee fatto con quello che il progetto
+   gestisce** (`src/components/drawings/`). Niente schermate (tolte il 17/10/2026, scelto da Andrea): possono mostrare
+   dati dei clienti e ogni gestionale ha una grafica sua, che non si lega al sito. Lenny: il quadrante delle 24 ore con
+   i 12 cron e l'ERP fra driver, partner, clienti e IA; PRYOR: la pipeline con i segnali di rischio e la mossa di oggi;
+   Restaurant: la sala e il conto diviso in tre; SUP: il calendario del giorno per tavola e pedalò; B2Work: il raggio di
+   ricerca con i lavoratori dentro. Poi
    le fasce del forno della pizzeria con il tetto di 14, le due strade dell'NCC, la griglia del sostegno, le tre
    ore dell'impresa di scavi, la partita doppia, le unità di misura del magazzino, i negozi aperti, il codice
    WhatsApp, il repository del Second Brain, la mappa del coach, il d20. Sono schemi, non dati dei clienti.
@@ -79,6 +85,17 @@ Due famiglie, scelte per contrasto di **larghezza** (non grazie contro bastoni):
    percentuale letta, e in basso a destra i nomi delle sezioni impilati, con quella attuale in evidenza.
 5. **Contrasto di caratteri:** vedi sopra.
 
+## Icone e anteprima
+
+- **Icona dell'app** (`pwa-192x192.png`, `pwa-512x512.png`, `apple-touch-icon.png`): «AF» in Anybody largo (wdth 112,
+  peso 850) su fondo scuro, con le curve del Titano dietro e la barretta azzurra. Le lettere stanno nel cerchio sicuro
+  del 40%, quindi la stessa immagine va bene anche come icona «maskable».
+- **Icona della scheda del browser** (`favicon.svg`): solo «AF» e la barretta, più grandi, perché si vede a 16 pixel.
+- **Anteprima dei link condivisi** (`anteprima.jpg`, 1200 × 630, meta `og:` in `index.html`): il nome, il ruolo, «Based in
+  San Marino · working remotely, worldwide» e le curve del Titano.
+- Si rifanno con `strumenti/icone/` (vedi il suo README): le lettere sono tracciati presi dal font con fontTools,
+  non testo, così l'icona non dipende dai caratteri installati.
+
 ## Impaginazione
 
 Allineamento a sinistra ovunque (niente blocchi centrati, tranne nessuno).
@@ -92,7 +109,7 @@ Telefono (390)                 Portatile (≈1520)                          Fiss
 │ indice       │               │ gruppo: titolo + una riga             │
 ├──────────────┤               │ progetto: testo (7) │ numeri (5)      │
 │ progetto     │               │           funzioni in due colonne     │
-│ numeri       │               │           schermata a tutta larghezza │
+│ numeri       │               │           disegno a tutta larghezza  │
 │ mostra di più│               └──────────────────────────────────────┘
 └──────────────┘
 ```

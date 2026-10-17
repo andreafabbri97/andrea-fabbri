@@ -1,5 +1,5 @@
 // What does not change with the language: id (also the page anchor), status, stack,
-// screenshot, links and extra blocks. The words live in projectsEn.js / projectsIt.js.
+// links and extra blocks. The words live in projectsEn.js / projectsIt.js.
 // tone: live = in production · building = in development · demo = working demo · beta = closed beta
 // badge: which status word to show (defaults to the tone)
 // hue: the color of the project's sector (OKLCH hue, 0-360). Light and dark themes pick the lightness.
@@ -10,13 +10,11 @@ export const groups = [
     projects: [
       {
         id: 'lenny', hue: 42, tone: 'live',
-        tags: ['Python', 'Flask', 'MySQL', 'AWS RDS', 'Google Gemini', 'Claude', 'WhatsApp API', 'Pusher', 'PWA'],
-        image: 'images/lenny-platform-screenshot.jpg', extras: 'lenny',
+        tags: ['Python', 'Flask', 'MySQL', 'AWS RDS', 'Google Gemini', 'Claude', 'WhatsApp API', 'Pusher', 'PWA'], extras: 'lenny',
       },
       {
         id: 'pryor', hue: 295, tone: 'beta',
-        tags: ['Next.js 16', 'React 19', 'TypeScript', 'Neon Postgres', 'Drizzle', 'Auth.js', 'Google Gemini', 'PWA'],
-        image: 'images/pryor-screenshot.jpg', extras: 'pryor',
+        tags: ['Next.js 16', 'React 19', 'TypeScript', 'Neon Postgres', 'Drizzle', 'Auth.js', 'Google Gemini', 'PWA'], extras: 'pryor',
         links: { live: 'https://pryor-eight.vercel.app/' },
       },
     ],
@@ -40,19 +38,16 @@ export const groups = [
       {
         id: 'restaurant', hue: 60, tone: 'demo',
         tags: ['React 19', 'TypeScript', 'Supabase', 'Tailwind CSS', 'Recharts', 'PWA'],
-        image: 'images/restaurant-manager-screenshot.jpg',
         links: { live: 'https://andreafabbri97.github.io/restaurant-manager/', source: 'https://github.com/andreafabbri97/restaurant-manager' },
       },
       {
         id: 'sup', hue: 200, tone: 'live', badge: 'use',
         tags: ['React', 'TypeScript', 'Supabase', 'Tailwind CSS', 'PWA'],
-        image: 'images/sup-manager-screenshot.jpg',
         links: { live: 'https://andreafabbri97.github.io/sup-manager/', source: 'https://github.com/andreafabbri97/sup-manager' },
       },
       {
         id: 'b2work', hue: 100, tone: 'building',
         tags: ['Next.js 15', 'TypeScript', 'Supabase', 'Tailwind CSS', 'shadcn/ui'],
-        image: 'images/B2Work-screenshot.jpg',
         links: { live: 'https://andreafabbri97.github.io/B2Work/', source: 'https://github.com/andreafabbri97/B2Work' },
       },
     ],

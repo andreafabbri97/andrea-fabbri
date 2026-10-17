@@ -1,6 +1,7 @@
 import { Mail } from 'lucide-react'
 import ProjectIndex from './ProjectIndex'
 import Titano from './Titano'
+import GithubIcon from './GithubIcon'
 
 // Opening: who I am on the left, the index of everything I built on the right.
 export default function Hero({ t, copy }) {
@@ -26,8 +27,8 @@ export default function Hero({ t, copy }) {
             <a href="#contact" className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full border border-linea bg-carta text-inchiostro font-semibold hover-sfondo">
               <Mail className="w-4 h-4" aria-hidden /> {t.heroBtn3}
             </a>
-            <a href="https://github.com/andreafabbri97" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center h-12 px-6 rounded-full border border-linea bg-carta text-inchiostro font-semibold hover-sfondo">
-              {t.heroBtn2}
+            <a href="https://github.com/andreafabbri97" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full border border-linea bg-carta text-inchiostro font-semibold hover-sfondo">
+              <GithubIcon /> {t.heroBtn2}
             </a>
           </div>
         </div>

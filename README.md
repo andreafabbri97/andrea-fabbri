@@ -25,13 +25,17 @@ Il push su `main` salva il codice ma **non** aggiorna il sito: serve `npm run de
 
 | File | Cosa |
 |---|---|
-| `src/data/projectsMeta.js` | i gruppi, l'ordine dei progetti, stato, tecnologie, schermate, link |
+| `src/data/projectsMeta.js` | i gruppi, l'ordine dei progetti, stato, tecnologie, link |
 | `src/data/projectsEn.js`, `projectsIt.js` | i testi di ogni progetto nelle due lingue |
 | `src/data/flagship.js` | i moduli di Lenny e PRYOR |
 | `src/data/siteCopy.jsx` | apertura, esperienza, competenze, contatti, barra in alto |
 
-Un progetto nuovo: una riga in `projectsMeta.js` (nel gruppo giusto) e il suo testo nei due file di lingua.
+Un progetto nuovo: una riga in `projectsMeta.js` (nel gruppo giusto), il suo testo nei due file di lingua e il suo disegno
+in `src/components/drawings/` (registrato in `drawings/index.js`). Niente schermate: ogni progetto ha un disegno.
 Compare da solo nell'indice dei lavori e nella pagina.
 
 🔴 **AniZip (e StreamZip, MusicZip) non si mette e non si cita.** I progetti dei clienti si descrivono senza nome,
 luogo preciso, link o schermate.
+
+Cifre in inglese: dollari americani con gli australiani tra parentesi, convertiti dagli euro (cambio in DESIGN.md).
+Icone e anteprima dei link: `strumenti/icone/`.

@@ -114,11 +114,11 @@ export function Accounting({ label, lang }) {
       {left.map((w, r) => <Tratto key={`l${r}`} d={`M${W / 2 - 20} ${92 + r * 34} H${W / 2 - 20 - w}`} i={2 + r} width={10} opacity={0.7} />)}
       {right.map((w, r) => <Tratto key={`r${r}`} d={`M${W / 2 + 20} ${92 + r * 34} H${W / 2 + 20 + w}`} i={5 + r} width={10} opacity={0.7} />)}
       <Tratto d="M60 212 H420" i={8} width={1.5} />
-      <Tratto d={`M${W / 2 - 20} 232 H${W / 2 - 240}`} i={9} width={10} />
-      <Tratto d={`M${W / 2 + 20} 232 H${W / 2 + 240}`} i={9} width={10} />
+      <Tratto d={`M${W / 2 - 20} 232 H60`} i={9} width={10} />
+      <Tratto d={`M${W / 2 + 20} 232 H420`} i={9} width={10} />
       <Riempi i={4}>
         <circle cx={W / 2} cy="270" r="13" fill="currentColor" />
-        <path d={`M${W / 2 - 6} 270 l4 4 l8 -9`} stroke="#0f1821" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+        <path d={`M${W / 2 - 6} 270 l4 4 l8 -9`} stroke="rgb(var(--cornice))" strokeWidth="2.5" fill="none" strokeLinecap="round" />
       </Riempi>
     </Svg>
   )

@@ -19,8 +19,13 @@
   /* Sector colors: each project sets --hue; the theme sets lightness and chroma. */
   --tinta-l: 52%;
   --tinta-c: 0.15;
-  /* The dark frame around drawings and screenshots, in both themes. */
-  --cornice: 15 24 33;
+  /* The frame around the drawings follows the theme: a white sheet with lines in the sector color
+     here, a dark frame with light lines in the dark theme. */
+  --cornice: 255 255 255;
+  --cornice-testo: 18 33 48;
+  --cornice-linea: 213 222 230;
+  --disegno-l: 54%;
+  --disegno-c: 0.16;
   color-scheme: light;
 }
 
@@ -39,6 +44,10 @@
   --tinta-l: 78%;
   --tinta-c: 0.13;
   --cornice: 7 13 20;
+  --cornice-testo: 255 255 255;
+  --cornice-linea: 31 46 60;
+  --disegno-l: 80%;
+  --disegno-c: 0.14;
   color-scheme: dark;
 }
 
@@ -98,7 +107,7 @@ body {
   .bg-tinta { background-color: oklch(var(--tinta-l) var(--tinta-c) var(--hue, 235)); }
   .border-tinta { border-color: oklch(var(--tinta-l) var(--tinta-c) var(--hue, 235)); }
   /* Inside the dark frame the drawing is always light, whatever the theme. */
-  .tinta-chiara { color: oklch(80% 0.14 var(--hue, 235)); }
+  .tinta-chiara { color: oklch(var(--disegno-l) var(--disegno-c) var(--hue, 235)); }
   .cifre { font-variant-numeric: tabular-nums; }
 }
 

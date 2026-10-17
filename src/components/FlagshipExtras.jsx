@@ -30,6 +30,7 @@ export default function FlagshipExtras({ kind, project, lang }) {
         <div>
           <p className="text-tenue font-medium mb-1">{project.savingsLabel}</p>
           <p className="largo cifre text-oro font-extrabold leading-none text-[clamp(3rem,8vw,5.5rem)]"><CountUp value={project.savings} /></p>
+          {project.savingsAlt && <p className="cifre text-oro font-semibold mt-2">{project.savingsAlt}</p>}
         </div>
         <p className="text-tenue leading-relaxed max-w-[34rem]">{project.savingsFooter}</p>
       </div>

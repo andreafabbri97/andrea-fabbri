@@ -9,7 +9,7 @@ export const lennyMetrics = (lang) => [
   { label: lang === 'it' ? 'Partner Ristoranti' : 'Restaurant Partners', value: '47+', icon: Users },
   { label: lang === 'it' ? 'Cron Job 24/7' : '24/7 Cron Jobs', value: '12', icon: Clock },
   { label: 'ROI', value: '1,550%', icon: TrendingUp },
-  { label: lang === 'it' ? 'Costo AI (Gemini)' : 'AI Cost (Gemini)', value: '€0', icon: Bot },
+  { label: lang === 'it' ? 'Costo AI (Gemini)' : 'AI Cost (Gemini)', value: lang === 'it' ? '€0' : '$0', icon: Bot },
 ]
 
 export const lennyModules = (lang) => {
@@ -21,7 +21,7 @@ export const lennyModules = (lang) => {
       description: it
         ? 'Raccolta disponibilità self-service, assegnazione automatica, invio massivo WhatsApp e rilevamento conflitti veicoli in tempo reale — elimina 2,5 ore di coordinamento manuale al giorno.'
         : 'Self-service availability collection, auto-assignment, WhatsApp bulk dispatch, and real-time vehicle conflict detection — eliminating 2.5 hrs of manual coordination daily.',
-      saving: it ? '€7.800/anno' : 'A$13,400/yr',
+      saving: it ? '€7.800/anno' : 'US$8,800/yr (A$12,600)',
     },
     {
       icon: Clock,
@@ -29,7 +29,7 @@ export const lennyModules = (lang) => {
       description: it
         ? 'La busta paga viene calcolata dai dati reali degli ordini, non dai turni dichiarati. Elimina un overpayment del 5–10% su 15 driver tramite regole intelligenti sui turni.'
         : 'Payroll calculated from actual order data, not declared shifts. Eliminates a 5–10% overpayment across 15 drivers through intelligent gap and shift boundary rules.',
-      saving: it ? '€8.800/anno' : 'A$15,100/yr',
+      saving: it ? '€8.800/anno' : 'US$9,900/yr (A$14,200)',
     },
     {
       icon: Bot,
@@ -37,7 +37,7 @@ export const lennyModules = (lang) => {
       description: it
         ? 'Chat conversazionale che, via function calling, interroga il database live in linguaggio naturale: Google Gemini come motore primario (costo 0) e Claude come opzione premium. Il personale non tecnico ottiene risposte immediate — senza SQL, senza aspettare report.'
         : 'A conversational chat that queries the live database in natural language via function calling: Google Gemini as the primary engine (zero cost) and Claude as a premium option. Non-technical staff get instant answers — no SQL, no waiting for reports.',
-      saving: it ? '€5.300/anno' : 'A$9,100/yr',
+      saving: it ? '€5.300/anno' : 'US$6,000/yr (A$8,600)',
     },
     {
       icon: DollarSign,
@@ -45,7 +45,7 @@ export const lennyModules = (lang) => {
       description: it
         ? 'Calcolo automatico delle commissioni per 47+ partner con regole multi-livello, workflow strutturato per l\'approvazione delle penali e rendiconti PDF per ristorante.'
         : 'Automated commission calculations for 47+ partners with multi-tier fee rules, structured penalty approval workflows, and per-restaurant PDF statements.',
-      saving: it ? '€2.700/anno' : 'A$4,650/yr',
+      saving: it ? '€2.700/anno' : 'US$3,000/yr (A$4,400)',
     },
     {
       icon: BarChart2,
@@ -53,7 +53,7 @@ export const lennyModules = (lang) => {
       description: it
         ? 'Campagne email (Brevo) + WhatsApp con segmentazione automatica RFM dei clienti estratta direttamente dal database ordini — niente Mailchimp o liste manuali.'
         : 'Email (Brevo) + WhatsApp campaigns with automatic RFM customer segmentation sourced directly from the order database — no Mailchimp or manual lists required.',
-      saving: it ? '€3.000/anno' : 'A$5,160/yr',
+      saving: it ? '€3.000/anno' : 'US$3,400/yr (A$4,900)',
     },
     {
       icon: Shield,

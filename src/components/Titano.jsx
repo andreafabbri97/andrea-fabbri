@@ -43,8 +43,11 @@ export default function Titano({ label }) {
   }, [])
 
   return (
-    <div className="absolute inset-x-0 top-0 h-[100svh] overflow-hidden pointer-events-none [mask-image:linear-gradient(to_bottom,transparent_0,black_45%)] lg:[mask-image:none]" aria-hidden>
-      <svg ref={ref} viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 w-full h-full" fill="none">
+    // The drawing is one screen tall, but the opening can be taller (the index on the 4K desktop): the
+    // rings go on past the drawing's box (overflow visible), the layer covers the whole opening and
+    // fades out at the bottom instead of ending with a cut.
+    <div className="absolute inset-0 overflow-hidden pointer-events-none [mask-image:linear-gradient(to_bottom,transparent_0,black_45%,black_85%,transparent)] lg:[mask-image:linear-gradient(to_bottom,black_80%,transparent)]" aria-hidden>
+      <svg ref={ref} viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" className="absolute inset-x-0 top-0 w-full h-[100svh] overflow-visible" fill="none">
         {PATHS.map((d, k) => (
           <path key={k} d={d} pathLength="1" className="curva"
             style={{ animationDelay: `${0.1 + k * 0.08}s` }}
@@ -53,7 +56,7 @@ export default function Titano({ label }) {
             strokeWidth={k % 4 === 0 ? 1.6 : 1} />
         ))}
         <circle cx={CX} cy={CY} r="4" fill="rgb(var(--azzurro))" />
-        <text x={CX - 12} y={CY - 8} textAnchor="end" className="hidden lg:block" fontSize="14" fill="rgb(var(--tenue))" fontFamily="'Bricolage Grotesque', sans-serif">{label}</text>
+        <text x={CX - 72} y={CY + 5} textAnchor="end" className="hidden lg:block" fontSize="14" fill="rgb(var(--tenue))" fontFamily="'Bricolage Grotesque', sans-serif">{label}</text>
       </svg>
     </div>
   )

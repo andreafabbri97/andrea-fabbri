@@ -15,7 +15,7 @@ export const projectsIt = {
   titano: 'Monte Titano, 739 m',
   technologies: 'Tecnologie usate nei progetti',
   short: { flagship: 'Di punta', clients: 'Clienti', products: 'Prodotti', personal: 'Personali', experience: 'Esperienza', skills: 'Competenze', contact: 'Contatti' },
-  frame: { diagram: 'Schema', screenshot: 'Schermata', of: 'di', stack: 'Fatto con', read: 'letto', where: 'Dove sei' },
+  frame: { diagram: 'Schema', of: 'di', stack: 'Fatto con', read: 'letto', where: 'Dove sei' },
   groups: {
     flagship: {
       title: 'Prodotti di punta',
@@ -55,7 +55,6 @@ export const projectsIt = {
         { value: '1.550%', label: 'ritorno sull\'investimento', money: true },
       ],
       challenge: null,
-      imageAlt: 'Dashboard di Lenny Platform',
       modulesTitle: 'I moduli operativi e il valore di ognuno',
       savingsLabel: 'Risparmio annuo totale quantificato',
       savings: '€37.420',
@@ -81,7 +80,6 @@ export const projectsIt = {
         { value: '12', label: 'moduli di prodotto' },
       ],
       challenge: null,
-      imageAlt: 'Pagina di presentazione di PRYOR',
       modulesTitle: 'I moduli del prodotto e cosa risolve ognuno',
       links: { live: 'Presentazione e lista d\'attesa' },
     },
@@ -100,7 +98,6 @@ export const projectsIt = {
       ],
       metrics: null,
       challenge: null,
-      imageAlt: 'Schermata di Restaurant Manager',
       links: { live: 'Demo dal vivo', source: 'Codice sorgente' },
     },
     sup: {
@@ -118,7 +115,6 @@ export const projectsIt = {
       ],
       metrics: null,
       challenge: null,
-      imageAlt: 'Schermata di SUP Manager',
       links: { live: 'Demo dal vivo', source: 'Codice sorgente' },
     },
     b2work: {
@@ -136,7 +132,6 @@ export const projectsIt = {
       ],
       metrics: null,
       challenge: null,
-      imageAlt: 'Schermata del marketplace B2Work',
       links: { live: 'Demo dal vivo', source: 'Codice sorgente' },
     },
     pizzeria: {

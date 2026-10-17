@@ -19,7 +19,7 @@ export const siteCopy = {
     navProjects: 'Projects',
 
     // Hero
-    heroStatus: 'Open to opportunities',
+    heroStatus: 'Open to opportunities worldwide · remote',
     heroTitle1: 'Andrea',
     heroTitle2: 'Fabbri',
     heroSubtitle: 'Management engineer and AI automation specialist',
@@ -29,7 +29,7 @@ export const siteCopy = {
         intelligent automation. I build the software around your business like a tailor-made
         suit, designing every feature for your specific operations.
         My flagship product delivers{' '}
-        <span className="text-inchiostro font-semibold">A$64,000+ in annual savings</span>{' '}
+        <span className="text-inchiostro font-semibold">US$42,000+ (A$60,000+) in annual savings</span>{' '}
         and a <span className="text-inchiostro font-semibold">1,550% ROI</span> to a
         live food-delivery operation.
       </>
@@ -65,7 +65,7 @@ export const siteCopy = {
           'Sole architect of Lenny Platform — a 990+ route ERP used daily in a live food-delivery operation, built through AI-assisted engineering',
 
           'Architected and delivered 29 software modules, eliminating all manual back-office processes',
-          'Quantified A$64,400/yr in operational savings with a documented 1,550% ROI',
+          'Quantified US$42,100/yr (A$60,500) in operational savings with a documented 1,550% ROI',
           'Integrated Google Gemini AI, WhatsApp Business API, Firebase Push, Brevo, and AWS RDS',
           'Implemented enterprise-grade security: AES-128 encryption, 8-role RBAC, audit trails, automated backups',
         ],
@@ -135,11 +135,11 @@ export const siteCopy = {
     contactTitle: (
       <>Let&apos;s build something<br />that scales.</>
     ),
-    contactDesc: "I'm actively seeking working opportunities for myself to grow — particularly roles where automation, data engineering, and operational excellence intersect. If you need someone who ships production-grade systems, let's talk.",
+    contactDesc: "I'm actively seeking working opportunities for myself to grow — particularly roles where automation, data engineering, and operational excellence intersect. Based in San Marino, I work remotely with clients anywhere and I'm happy to travel. If you need someone who ships production-grade systems, let's talk.",
     contactLinkedIn: 'LinkedIn',
 
     // Footer
-    footer: '© 2026 Andrea Fabbri, management engineer in San Marino. Built with React and Tailwind CSS.',
+    footer: '© 2026 Andrea Fabbri, management engineer based in San Marino, working worldwide. Built with React and Tailwind CSS.',
   },
 
   it: {
@@ -157,7 +157,7 @@ export const siteCopy = {
     navProjects: 'Progetti',
 
     // Hero
-    heroStatus: 'Disponibile',
+    heroStatus: 'Disponibile in tutto il mondo · da remoto',
     heroTitle1: 'Andrea',
     heroTitle2: 'Fabbri',
     heroSubtitle: 'Ingegnere gestionale, specialista in IA e automazione',
@@ -271,10 +271,10 @@ export const siteCopy = {
     contactTitle: (
       <>Costruiamo qualcosa<br />che scali.</>
     ),
-    contactDesc: "Cerco attivamente opportunità lavorative per crescere professionalmente — in particolare ruoli in cui automazione, ingegneria dei dati e eccellenza operativa si incontrano. Se cerchi qualcuno che consegna sistemi pronti per la produzione, parliamone.",
+    contactDesc: "Cerco attivamente opportunità lavorative per crescere professionalmente — in particolare ruoli in cui automazione, ingegneria dei dati e eccellenza operativa si incontrano. Vivo a San Marino, lavoro da remoto con clienti in tutto il mondo e mi sposto volentieri. Se cerchi qualcuno che consegna sistemi pronti per la produzione, parliamone.",
     contactLinkedIn: 'LinkedIn',
 
     // Footer
-    footer: '© 2026 Andrea Fabbri, ingegnere gestionale a San Marino. Realizzato con React e Tailwind CSS.',
+    footer: '© 2026 Andrea Fabbri, ingegnere gestionale con base a San Marino, al lavoro in tutto il mondo. Realizzato con React e Tailwind CSS.',
   },
 }

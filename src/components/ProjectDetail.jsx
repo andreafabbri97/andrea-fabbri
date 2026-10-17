@@ -1,13 +1,14 @@
 import { useId, useRef, useState } from 'react'
-import { ChevronDown, ExternalLink, GitBranch } from 'lucide-react'
+import { ChevronDown, ExternalLink } from 'lucide-react'
 import Collapsible from './Collapsible'
 import StatusBadge from './StatusBadge'
 import FlagshipExtras from './FlagshipExtras'
 import CountUp from './CountUp'
 import Frame from './Frame'
+import GithubIcon from './GithubIcon'
 
 // One project, always the same model so they compare at a glance: sector, title, status, one line,
-// description and stack on the left, the frame (screenshot or diagram) on the right, the numbers in a
+// description and stack on the left, the frame (the diagram) on the right, the numbers in a
 // strip with drawn borders, then the features. The first two features stay visible; the rest and
 // "the hard part" open with "Show more". --hue gives the project its sector color.
 
@@ -126,7 +127,7 @@ export default function ProjectDetail({ project, meta, copy, note, lang, positio
           )}
           {links?.source && (
             <a href={links.source} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 h-11 px-5 rounded-full border border-linea text-inchiostro font-semibold hover-sfondo">
-              <GitBranch className="w-4 h-4" aria-hidden /> {project.links.source}
+              <GithubIcon /> {project.links.source}
             </a>
           )}
         </div>

@@ -15,7 +15,7 @@ export const projectsEn = {
   titano: 'Monte Titano, 739 m',
   technologies: 'Technologies used across the projects',
   short: { flagship: 'Flagship', clients: 'Clients', products: 'Products', personal: 'Personal', experience: 'Experience', skills: 'Skills', contact: 'Contact' },
-  frame: { diagram: 'Diagram', screenshot: 'Screenshot', of: 'of', stack: 'Built with', read: 'read', where: 'Where you are' },
+  frame: { diagram: 'Diagram', of: 'of', stack: 'Built with', read: 'read', where: 'Where you are' },
   groups: {
     flagship: {
       title: 'Flagship products',
@@ -55,11 +55,11 @@ export const projectsEn = {
         { value: '1,550%', label: 'return on investment', money: true },
       ],
       challenge: null,
-      imageAlt: 'Lenny Platform dashboard',
       modulesTitle: 'Operational modules and the value of each',
       savingsLabel: 'Total quantified annual savings',
-      savings: 'A$64,400',
-      savingsFooter: 'Maintenance cost about A$4,100 a year. Return on investment 1,550%. Time saved 1,760 hours a year.',
+      savings: 'US$42,100',
+      savingsAlt: '(A$60,500)',
+      savingsFooter: 'Maintenance cost about US$2,700 (A$3,900) a year. Return on investment 1,550%. Time saved 1,760 hours a year.',
     },
     pryor: {
       label: 'B2B sales software',
@@ -81,7 +81,6 @@ export const projectsEn = {
         { value: '12', label: 'product modules' },
       ],
       challenge: null,
-      imageAlt: 'PRYOR landing page',
       modulesTitle: 'Product modules and what each one solves',
       links: { live: 'View landing and waitlist' },
     },
@@ -100,7 +99,6 @@ export const projectsEn = {
       ],
       metrics: null,
       challenge: null,
-      imageAlt: 'Restaurant Manager screenshot',
       links: { live: 'Live demo', source: 'Source code' },
     },
     sup: {
@@ -118,7 +116,6 @@ export const projectsEn = {
       ],
       metrics: null,
       challenge: null,
-      imageAlt: 'SUP Manager screenshot',
       links: { live: 'Live demo', source: 'Source code' },
     },
     b2work: {
@@ -136,7 +133,6 @@ export const projectsEn = {
       ],
       metrics: null,
       challenge: null,
-      imageAlt: 'B2Work marketplace screenshot',
       links: { live: 'Live demo', source: 'Source code' },
     },
     pizzeria: {
@@ -177,7 +173,7 @@ export const projectsEn = {
         { value: '2', label: 'installable apps' },
         { value: '2', label: 'routing engines compared on every ride' },
         { value: '20 s', label: 'silent live refresh' },
-        { value: '€0', label: 'cost of maps and routing APIs' },
+        { value: '$0', label: 'cost of maps and routing APIs' },
       ],
       challenge: 'Free geocoders rank results by national fame: a famous landmark name pointed to another city and turned an 18 km ride into 330 km. Candidates are now ranked first by the town the customer actually typed, then by the 40 km area the business really serves, and only then by fame. Distances stay marked as estimates and can always be corrected by hand.',
     },
