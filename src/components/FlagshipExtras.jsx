@@ -31,7 +31,7 @@ export default function FlagshipExtras({ kind, project, lang }) {
         <div>
           <p className="text-tenue font-medium mb-1">{project.savingsLabel}</p>
           <p className="flex flex-wrap items-baseline gap-x-4 gap-y-1 text-oro">
-            <span className="largo cifre font-extrabold leading-none text-[clamp(3rem,8vw,5.5rem)]"><CountUp value={project.savings} /></span>
+            <span className="largo cifre font-extrabold leading-none text-[clamp(3rem,8vw,4.5rem)] min-[2200px]:text-[5.5rem]"><CountUp value={project.savings} /></span>
             {project.savingsAlt && <span className="cifre font-semibold text-lg">{project.savingsAlt}</span>}
           </p>
         </div>
