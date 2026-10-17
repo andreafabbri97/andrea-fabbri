@@ -57,7 +57,7 @@ del Second Brain. La scelta resta nel browser.
 Allineamento a sinistra ovunque (niente blocchi centrati, tranne nessuno).
 
 ```
-Telefono (390)                 Portatile (≈1520)                          4K (≈2560 col 150%)
+Telefono (390)                 Portatile (≈1520)                          Fisso 4K (3072 × 1516, Windows al 125%)
 ┌──────────────┐               ┌──────────────────────────────────────┐   come il portatile, con tutto
 │ nome         │               │ nome, ruolo, testo │ indice dei lavori│   in rem e la radice più grande
 │ ruolo, testo │               │ bottoni            │ (16 righe, stato)│   (da 2200 px: 20 px, da 3000: 22)
@@ -70,8 +70,9 @@ Telefono (390)                 Portatile (≈1520)                          4K (
 └──────────────┘
 ```
 
-- Contenitore: 1240 px fino al portatile, poi cresce in `rem` con la radice: a 4K la pagina occupa lo
-  schermo come sul portatile, invece di restare una colonna in mezzo al vuoto.
+- Contenitore: 1240 px fino al portatile, poi cresce in `rem` con la radice: 1920 px a 2560 e 2200 px sul
+  fisso (3072, testo a 22 px, come il cruscotto del Second Brain). La misura del fisso è nella memoria del
+  Second Brain (nota sulla pagina del cruscotto): 4K con Windows al 125%, finestra 3072 × 1516.
 - Bordo laterale: 16 px sul telefono.
 - I progetti sono tutti dello stesso modello (settore, titolo, stato, frase, descrizione, numeri,
   funzioni, tecnologie), così si confrontano a colpo d'occhio. I due di punta (Lenny, PRYOR) aggiungono
