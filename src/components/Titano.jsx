@@ -49,7 +49,7 @@ function summitShift(svg) {
   return [(x - sx) / scale, (y - sy) / scale]
 }
 
-export default function Titano({ label }) {
+export default function Titano() {
   const ref = useRef(null)
   const rings = useRef(null)
 
@@ -93,7 +93,6 @@ export default function Titano({ label }) {
             strokeWidth={k % 4 === 0 ? 1.6 : 1} />
         ))}
         <circle cx={CX} cy={CY} r="4" fill="rgb(var(--azzurro))" />
-        <text x={CX - 72} y={CY + 5} textAnchor="end" className="hidden lg:block" fontSize="14" fill="rgb(var(--tenue))" fontFamily="'Bricolage Grotesque', sans-serif">{label}</text>
         </g>
       </svg>
     </div>

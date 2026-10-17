@@ -12,7 +12,6 @@ export const projectsIt = {
   },
   badges: { live: 'In produzione', building: 'In sviluppo', demo: 'Demo funzionante', beta: 'Beta privata', daily: 'In uso ogni giorno', use: 'In uso' },
   index: { title: 'Indice dei lavori', projects: 'progetti' },
-  titano: 'Monte Titano, 739 m',
   technologies: 'Tecnologie usate nei progetti',
   short: { flagship: 'Di punta', clients: 'Clienti', products: 'Prodotti', personal: 'Personali', experience: 'Esperienza', skills: 'Competenze', contact: 'Contatti' },
   frame: { diagram: 'Schema', of: 'di', stack: 'Fatto con', read: 'letto', where: 'Dove sei' },

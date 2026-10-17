@@ -81,7 +81,8 @@ Due famiglie, scelte per contrasto di **larghezza** (non grazie contro bastoni):
    Si tracciano da soli la prima volta che arrivano sullo schermo.
 2. **Un disegno di sfondo in apertura:** le curve di livello del Monte Titano (739 m, da Wikipedia), che si
    tracciano all'avvio e scorrono piano con la pagina. Sul telefono sfumano verso l'alto per non stare sotto il
-   testo, e la scritta della vetta non c'è.
+   testo. La scritta della vetta («Monte Titano, 739 m») non c'è più nemmeno sul computer (scelto da Andrea il
+   17/10/2026): si capisce dal disegno, e il nome scritto legava troppo il sito a San Marino.
    Sul telefono e sul tablet la vetta si sposta accanto all'ultimo pulsante dell'apertura (misurato sulla pagina),
    perché sotto ci sarebbe l'indice; l'indice è un vetro smerigliato (fondo al 55% e sfocatura di 2,5 px, scelti da Andrea: con 75% e 12 px le curve sparivano, con 45% e 1,5 px si vedevano un po' troppo), così le curve si
    intravedono anche sotto. La sfumatura in alto è in rem (14rem), non in percentuale: l'apertura sul telefono è lunga.

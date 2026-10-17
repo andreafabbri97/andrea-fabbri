@@ -7,7 +7,7 @@ import GithubIcon from './GithubIcon'
 export default function Hero({ t, copy }) {
   return (
     <section id="top" className="relative pt-24 sm:pt-28 lg:pt-32 pb-14 sm:pb-20">
-      <Titano label={copy.titano} />
+      <Titano />
       <div className="relative contenitore grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
         <div className="misura lg:col-span-6 xl:col-span-7 lg:sticky lg:top-28">
           <p className="inline-flex items-center gap-2 text-sm font-medium text-verde mb-6">
