@@ -64,6 +64,12 @@ html {
    dashboard). From 2200 the root grows to 20 px, from 2800 (the desktop) to 22 px. */
 @media (min-width: 2200px) { html { font-size: 125%; } }
 @media (min-width: 2800px) { html { font-size: 137.5%; } }
+/* With a mouse, from 1024 px, everything 10% smaller (Andrea, 18/10/2026: on the laptop and the desktop the
+   site looked right at 90% browser zoom). Laptop 14.4 px, from 2200 18 px, desktop 19.8 px. Phone and tablet
+   stay as they are. */
+@media (hover: hover) and (pointer: fine) and (min-width: 1024px) { html { font-size: 90%; } }
+@media (hover: hover) and (pointer: fine) and (min-width: 2200px) { html { font-size: 112.5%; } }
+@media (hover: hover) and (pointer: fine) and (min-width: 2800px) { html { font-size: 123.75%; } }
 
 /* The content column: 1240 px up to the laptop (1520), then about three quarters of the screen:
    1920 px at 2560, 2200 px on the desktop's 3072. */

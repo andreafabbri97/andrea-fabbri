@@ -8,8 +8,7 @@ Vale per ogni modifica grafica successiva.
 - **Chi:** Andrea Fabbri, ingegnere gestionale di San Marino che costruisce software operativo per
   aziende vere: sostituisce fogli di calcolo e lavoro a mano con sistemi in produzione.
 - **Dove lavora:** vive a San Marino ma prende lavori in tutto il mondo, da remoto, e si sposta volentieri (detto da lui il 17/10/2026): il sito non lo presenta come uno sviluppatore solo per San Marino, ed è per questo che è anche in inglese.
-- **Chi lo legge:** chi assume (la lingua di partenza è l'inglese, con le cifre in dollari americani e tra parentesi in australiani, convertite dagli euro al cambio BCE del 16/10/2026: 1 € = 1,1253 US$ = 1,6171 A$)
-  e chi potrebbe commissionargli un lavoro.
+- **Chi lo legge:** i clienti, cioè le aziende che possono commissionargli un lavoro: Andrea è freelance e fa fattura, non cerca un'assunzione (detto da lui il 18/10/2026). Inglese all'indirizzo principale e italiano su `/it/`, con le cifre inglesi in dollari americani e tra parentesi in australiani, convertite dagli euro al cambio BCE del 16/10/2026: 1 € = 1,1253 US$ = 1,6171 A$.
 - **Il compito della pagina:** in dieci secondi far capire «questa persona porta in produzione sistemi
   che fanno risparmiare soldi», poi lasciar scegliere quale progetto aprire.
 
@@ -133,6 +132,9 @@ Telefono (390)                 Portatile (≈1520)                          Fiss
 - Contenitore: 1240 px fino al portatile, poi cresce in `rem` con la radice: 1920 px a 2560 e 2200 px sul
   fisso (3072, testo a 22 px, come il cruscotto del Second Brain). La misura del fisso è nella memoria del
   Second Brain (nota sulla pagina del cruscotto): 4K con Windows al 125%, finestra 3072 × 1516.
+- **Col mouse, da 1024 px, tutto il 10% più piccolo** (18/10/2026, Andrea: sul portatile e sul fisso il sito gli
+  piaceva di più con lo zoom del browser al 90%): radice 14,4 px sul portatile, 18 px da 2200, 19,8 px sul fisso
+  (`src/index.css`). Telefono e tablet restano com'erano.
 - Bordo laterale: 16 px sul telefono.
 - I progetti sono tutti dello stesso modello (settore, titolo, stato, frase, descrizione, numeri,
   funzioni, tecnologie), così si confrontano a colpo d'occhio. I due di punta (Platform, PRYOR) aggiungono
