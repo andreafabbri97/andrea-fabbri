@@ -67,6 +67,11 @@ html {
 
 /* The content column: 1240 px up to the laptop (1520), then about three quarters of the screen:
    1920 px at 2560, 2200 px on the desktop's 3072. */
+/* A column that big titles measure themselves against (cqi = 1% of its width): «Andrea» in the wide face
+   is 5.5 times its font size and «Costruiamo» 8.7 times, so a size tied to the screen alone pushed them
+   out of their column on the laptop and at 1024 px (seen by Andrea on 17/10/2026). */
+.misura { container-type: inline-size; }
+
 .contenitore {
   width: 100%;
   max-width: 77.5rem;

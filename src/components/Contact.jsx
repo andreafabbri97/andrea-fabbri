@@ -10,8 +10,8 @@ export default function Contact({ t }) {
       <div className="relative sm:border-x border-t border-linea py-16 sm:py-24 sm:px-8 lg:px-10 grid lg:grid-cols-12 gap-x-14 gap-y-8">
         <span className="mirino hidden sm:block -left-[6px]" aria-hidden />
         <span className="mirino hidden sm:block -right-[6px]" aria-hidden />
-        <div className="lg:col-span-7">
-          <h2 data-reveal className="largo text-[clamp(2.5rem,7vw,5rem)] font-extrabold text-inchiostro leading-[0.98] mb-6">{t.contactTitle}</h2>
+        <div className="misura lg:col-span-7">
+          <h2 data-reveal className="largo text-[length:min(clamp(2.5rem,7vw,5rem),11cqi)] font-extrabold text-inchiostro leading-[0.98] mb-6">{t.contactTitle}</h2>
           <p className="text-tenue text-lg leading-relaxed max-w-[38rem]">{t.contactDesc}</p>
         </div>
         <div className="lg:col-span-5 lg:pt-4 flex flex-col gap-4">

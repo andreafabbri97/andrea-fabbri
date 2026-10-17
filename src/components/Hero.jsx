@@ -9,12 +9,12 @@ export default function Hero({ t, copy }) {
     <section id="top" className="relative pt-24 sm:pt-28 lg:pt-32 pb-14 sm:pb-20">
       <Titano label={copy.titano} />
       <div className="relative contenitore grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-        <div className="lg:col-span-6 xl:col-span-7 lg:sticky lg:top-28">
+        <div className="misura lg:col-span-6 xl:col-span-7 lg:sticky lg:top-28">
           <p className="inline-flex items-center gap-2 text-sm font-medium text-verde mb-6">
             <span className="w-2 h-2 rounded-full bg-verde" aria-hidden />
             {t.heroStatus}
           </p>
-          <h1 className="largo font-extrabold text-inchiostro leading-[0.9] text-[clamp(3rem,10vw,7.25rem)] mb-6">
+          <h1 className="largo font-extrabold text-inchiostro leading-[0.9] text-[length:min(clamp(3rem,10vw,7.25rem),17.5cqi)] mb-6">
             <span className="block entra-nome">{t.heroTitle1}</span>
             <span className="block entra-nome" style={{ animationDelay: '0.12s' }}>{t.heroTitle2}</span>
           </h1>

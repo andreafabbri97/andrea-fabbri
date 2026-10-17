@@ -62,6 +62,10 @@ Due famiglie, scelte per contrasto di **larghezza** (non grazie contro bastoni):
   18 px sul computer, righe sotto i 75 caratteri. Cifre `tabular-nums`.
 - Niente parola in corsivo con le grazie, niente etichette in maiuscolo monospazio: sono i cliché.
 - Il titolo dell'indice resta in Bricolage: la «I» maiuscola di Anybody allargato sembra minuscola.
+- I titoli enormi in Anybody (il nome, «Costruiamo qualcosa che scali.») si misurano sulla **loro colonna**, non sullo schermo:
+  la colonna ha `.misura` (container-type) e la grandezza è `min(…, Ncqi)`, con N dalla parola più lunga («Andrea» è 5,5
+  volte la grandezza del carattere, «Costruiamo» 8,7). Con la sola misura dello schermo, sul portatile «Costruiamo» toccava
+  l'email (visto da Andrea il 17/10/2026) e a 1024 il nome usciva di 100 px.
 
 ## Le cinque cose che danno ricchezza (studiate su ArtCraft il 17/10/2026)
 
