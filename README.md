@@ -13,6 +13,12 @@ npm run deploy    # costruisce e pubblica sul ramo gh-pages (è lui che va onlin
 
 Il push su `main` salva il codice ma **non** aggiorna il sito: serve `npm run deploy`.
 
+**Resta su GitHub Pages fino al passaggio a Vercel Pro** (deciso da Andrea il 18/10/2026). Quel giorno si sposta su
+Vercel con un dominio suo (quello gratuito del primo anno di Pro). Finché resta qui, il repository deve rimanere
+**pubblico**: con l'account gratuito GitHub Pages funziona solo con i repository pubblici. Il piano gratuito di Vercel
+non va bene, perché il sito pubblicizza i servizi di Andrea, e per Vercel questo è uso commerciale. I passaggi del
+trasloco sono nella memoria del Second Brain (nota `progetti-da-mostrare`, «Dove sta il sito»).
+
 ## Com'è fatto
 
 - Vite + React 19 + Tailwind CSS 3, nessun server.
