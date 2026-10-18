@@ -67,7 +67,7 @@ function homeJsonLd(lang) {
       { '@type': 'CollegeOrUniversity', name: 'Alma Mater Studiorum – Università di Bologna' },
     ],
     knowsAbout: t.skillGroups.filter((g) => !/soft/i.test(g.group)).flatMap((g) => g.items),
-    sameAs: ['https://github.com/andreafabbri97', 'https://www.linkedin.com/in/andrea-fabbri-9873081a6/'],
+    sameAs: ['https://github.com/andreafabbri97', 'https://www.linkedin.com/in/andreafabbri97/'],
     makesOffer: services.map((v) => ({
       '@type': 'Offer',
       itemOffered: { '@type': 'Service', name: servicesCopy[lang].pages[v.id].title, url: urlFor(lang, v.id) },
@@ -163,7 +163,7 @@ export function llmsText() {
     '## Profiles',
     '',
     '- [GitHub](https://github.com/andreafabbri97)',
-    '- [LinkedIn](https://www.linkedin.com/in/andrea-fabbri-9873081a6/)',
+    '- [LinkedIn](https://www.linkedin.com/in/andreafabbri97/)',
     '',
   ]
   return lines.join('\n')

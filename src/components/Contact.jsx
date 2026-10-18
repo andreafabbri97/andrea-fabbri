@@ -25,7 +25,7 @@ export default function Contact({ t }) {
             <a href="https://github.com/andreafabbri97" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 h-11 px-5 rounded-full border border-linea text-inchiostro font-semibold hover-sfondo">
               <GithubIcon /> GitHub
             </a>
-            <a href="https://www.linkedin.com/in/andrea-fabbri-9873081a6/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 h-11 px-5 rounded-full border border-linea text-inchiostro font-semibold hover-sfondo">
+            <a href="https://www.linkedin.com/in/andreafabbri97/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 h-11 px-5 rounded-full border border-linea text-inchiostro font-semibold hover-sfondo">
               <ExternalLink className="w-4 h-4" aria-hidden /> {t.contactLinkedIn}
             </a>
             <a href="https://wa.me/393334765551" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 h-11 px-5 rounded-full border border-linea text-inchiostro font-semibold hover-sfondo">
