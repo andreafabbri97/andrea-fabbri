@@ -76,6 +76,10 @@ sezione «Cosa posso fare per la tua azienda» (`ServicesIndex.jsx`) e il piè d
 le scrive tutte, con i dati strutturati Service, BreadcrumbList e FAQPage, e le mette nella mappa del sito.
 Un servizio nuovo: una riga in `services.js` e i suoi testi nelle due lingue, il resto viene da sé.
 
+Immagini per la scheda di Google Business Profile (18/10/2026): `strumenti/google-business/`, una per servizio
+(1600 × 1200, 4:3, titolo e disegno del primo progetto del settore), rifatte dalle pagine vere con lo script lì dentro.
+Da rifare quando cambiano titoli o disegni.
+
 Il file `public/<chiave>.txt` è la chiave di IndexNow, con cui il sito è segnalato a Bing e Yandex: non va
 tolto. Google Search Console è attiva dal 18/10/2026 sull'account di Andrea (proprietà con prefisso URL),
 verificata col meta tag `google-site-verification` in `index.html`: non toglierlo.

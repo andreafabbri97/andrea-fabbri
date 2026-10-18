@@ -10,7 +10,7 @@ export const services = [
   { id: 'construction', hue: 78, slug: { en: 'construction-software', it: 'gestionale-edilizia' }, projects: ['excavation', 'building-supplies'] },
   { id: 'accounting', hue: 215, slug: { en: 'accounting-firm-software', it: 'gestionale-commercialisti' }, projects: ['accounting'] },
   { id: 'retail', hue: 130, slug: { en: 'retail-websites-online-ordering', it: 'siti-negozi-prenota-ritira' }, projects: ['supermarket', 'supplements', 'sup'] },
-  { id: 'ai', hue: 295, slug: { en: 'ai-automation', it: 'automazione-ia-aziende' }, projects: ['platform', 'school', 'pryor', 'accounting'] },
+  { id: 'ai', hue: 295, slug: { en: 'ai-automation', it: 'automazione-ia-aziende' }, projects: ['pryor', 'platform', 'school', 'accounting'] },
 ]
 
 export const serviceById = Object.fromEntries(services.map((s) => [s.id, s]))
