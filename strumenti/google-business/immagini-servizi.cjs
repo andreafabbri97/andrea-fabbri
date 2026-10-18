@@ -1,10 +1,12 @@
 // Immagini 4:3 (1600 × 1200) per la scheda di Google Business: per ogni servizio il titolo e il disegno
 // del primo progetto del settore, presi dalla pagina vera del sito (tema chiaro), 18/10/2026.
-// Uso: npm run build, npx vite preview --port 4318, poi node strumenti/google-business/immagini-servizi.js strumenti/google-business
+// Uso: npm run build, npx vite preview --port 4318, poi node strumenti/google-business/immagini-servizi.cjs strumenti/google-business [scuro]
 const { chromium } = require('C:/Users/andre/.claude/cruscotto/trova-playwright.js')
 const path = require('path')
 
 const OUT = process.argv[2]
+const TEMA = process.argv[3] === 'scuro' ? 'dark' : 'light' // facoltativo: «scuro» per il tema scuro (18/10/2026, chiesto da Andrea)
+const SUFFISSO = TEMA === 'dark' ? '-scuro' : ''
 const PAGINE = [
   ['gestionale-su-misura', '1-gestionale-su-misura'],
   ['gestionale-ristoranti-pizzerie', '2-ristoranti-pizzerie'],
@@ -17,8 +19,8 @@ const PAGINE = [
 
 ;(async () => {
   const browser = await chromium.launch()
-  const page = await browser.newPage({ viewport: { width: 1600, height: 1200 }, colorScheme: 'light', reducedMotion: 'reduce' })
-  await page.addInitScript(() => { localStorage.setItem('af-tema', 'light'); localStorage.setItem('af-lingua-scelta', 'it') })
+  const page = await browser.newPage({ viewport: { width: 1600, height: 1200 }, colorScheme: TEMA, reducedMotion: 'reduce' })
+  await page.addInitScript((TEMA_PAGINA) => { localStorage.setItem('af-tema', TEMA_PAGINA); localStorage.setItem('af-lingua-scelta', 'it') }, TEMA)
   for (const [slug, nome] of PAGINE) {
     await page.goto(`http://localhost:4318/andrea-fabbri/it/${slug}/`, { waitUntil: 'networkidle' })
     await page.evaluate(() => document.fonts.ready)
@@ -52,7 +54,7 @@ const PAGINE = [
       if (alto > spazio) figura.style.width = `${Math.floor(figura.getBoundingClientRect().width * spazio / alto)}px`
     })
     await page.waitForTimeout(300)
-    await page.screenshot({ path: path.join(OUT, `${nome}.png`) })
+    await page.screenshot({ path: path.join(OUT, `${nome}${SUFFISSO}.png`) })
   }
   await browser.close()
   console.log('fatto')

@@ -77,7 +77,8 @@ le scrive tutte, con i dati strutturati Service, BreadcrumbList e FAQPage, e le 
 Un servizio nuovo: una riga in `services.js` e i suoi testi nelle due lingue, il resto viene da sé.
 
 Immagini per la scheda di Google Business Profile (18/10/2026): `strumenti/google-business/`, una per servizio
-(1600 × 1200, 4:3, titolo e disegno del primo progetto del settore), rifatte dalle pagine vere con lo script lì dentro.
+(1600 × 1200, 4:3, titolo e disegno del primo progetto del settore), in tema chiaro e scuro (`-scuro.png`), rifatte dalle
+pagine vere con `immagini-servizi.cjs` (`.cjs`: il pacchetto è un modulo ES).
 Da rifare quando cambiano titoli o disegni.
 
 Il file `public/<chiave>.txt` è la chiave di IndexNow, con cui il sito è segnalato a Bing e Yandex: non va
