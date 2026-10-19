@@ -138,6 +138,10 @@ export function startFlow({ canvas, ringPoints, paths, mapping }) {
   measure()
   const resize = new ResizeObserver(measure)
   resize.observe(document.body)
+  // The drawing is one screen tall: when only the window's height changes the body may keep its size, so
+  // the drawing is watched too, or the flow would stay scaled for the old height, off the rings (19/10/2026).
+  const drawing = canvas.parentElement?.querySelector('svg')
+  if (drawing) resize.observe(drawing)
   // The theme can change while the page is open: read the colours again when it does.
   const themes = new MutationObserver(readColours)
   themes.observe(document.documentElement, { attributes: true, attributeFilter: ['data-tema', 'class'] })
@@ -146,5 +150,6 @@ export function startFlow({ canvas, ringPoints, paths, mapping }) {
   frame = requestAnimationFrame(draw)
   return () => {
     cancelAnimationFrame(frame); io.disconnect(); themes.disconnect(); resize.disconnect()
-    scheme.removeEventListener('change', readColours)  }
+    scheme.removeEventListener('change', readColours)
+  }
 }

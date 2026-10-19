@@ -71,6 +71,7 @@ export default function Titano() {
     place()
     const resize = new ResizeObserver(place)
     resize.observe(document.body)
+    resize.observe(ref.current) // one screen tall: it changes with the window's height even when the body does not
     return () => resize.disconnect()
   }, [])
 
