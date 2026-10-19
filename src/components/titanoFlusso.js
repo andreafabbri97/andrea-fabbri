@@ -1,9 +1,9 @@
 // The flow on the Titano rings, drawn on a canvas laid over the drawing. The rings themselves stay a
 // still SVG: before, the flow was CSS animations inside that SVG, and every frame the browser redrew the
 // whole drawing under the mask and the frosted index (on the live site: lag and flicker, 19/10/2026).
-// Here only the moving parts are drawn. While the page is moving the flow stops where it is, so scrolling
-// stays smooth under the frosted bar and index; SCROLL_REST after the last scroll it goes on from the same
-// point, also with the page scrolled (before, 19/10/2026, it ran only at the very top and looked broken).
+// Here only the moving parts are drawn, always, also while the page scrolls (19/10/2026, asked by Andrea:
+// stopping it at the top or while scrolling looked broken; measured on the 4K desktop: 60 fps either way).
+// It pauses only with the opening off screen, and then goes on from the same point.
 // The canvas is measured when the window changes, never while scrolling: resizing a canvas is costly.
 //
 // What moves:
@@ -20,8 +20,6 @@ const SPACING = 620               // one stretch of flow every this many units o
 const WAVE = 9                    // seconds between two signals from the summit
 const WAVE_STEP = 0.17            // seconds the signal takes to go from one ring to the next
 const FADE_IN = 1.6               // seconds the flow takes to appear once the drawing is done
-const SCROLL_REST = 150           // milliseconds without scrolling before the flow moves again
-
 // One ring as a polyline with the distance from its start at every point, to find a stretch by length.
 function measured(pts) {
   const at = [0]
@@ -71,9 +69,8 @@ export function startFlow({ canvas, ringPoints, paths, mapping }) {
 
   let colours = null, frame = 0, visible = true, m = null
   const born = performance.now()
-  // Time spent paused (scrolling or off screen) is left out of the clock, so the flow resumes where it was.
-  let paused = 0, pausedSince = null, scrolledAt = -Infinity
-  const onScroll = () => { scrolledAt = performance.now() }
+  // Time spent off screen is left out of the clock, so the flow resumes where it was.
+  let paused = 0, pausedSince = null
   const readColours = () => {
     const css = getComputedStyle(document.documentElement)
     colours = { line: css.getPropertyValue('--tenue').trim(), signal: css.getPropertyValue('--azzurro').trim() }
@@ -93,7 +90,7 @@ export function startFlow({ canvas, ringPoints, paths, mapping }) {
 
   const draw = (now) => {
     frame = requestAnimationFrame(draw)
-    if (!visible || !m || now - scrolledAt < SCROLL_REST) {
+    if (!visible || !m) {
       if (pausedSince === null) pausedSince = now
       return
     }
@@ -140,11 +137,8 @@ export function startFlow({ canvas, ringPoints, paths, mapping }) {
   themes.observe(document.documentElement, { attributes: true, attributeFilter: ['data-tema', 'class'] })
   const scheme = window.matchMedia('(prefers-color-scheme: dark)')
   scheme.addEventListener('change', readColours)
-  window.addEventListener('scroll', onScroll, { passive: true })
   frame = requestAnimationFrame(draw)
   return () => {
     cancelAnimationFrame(frame); io.disconnect(); themes.disconnect(); resize.disconnect()
-    scheme.removeEventListener('change', readColours)
-    window.removeEventListener('scroll', onScroll)
-  }
+    scheme.removeEventListener('change', readColours)  }
 }
