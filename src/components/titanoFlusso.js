@@ -13,7 +13,7 @@
 //   stretch is a few dashes of different lengths on the same centre, so it fades at both ends.
 
 export const DRAWN = 3.4          // seconds: when the opening drawing is complete and the flow starts
-const SPEED = 600                 // drawing units per second: a little over half the speed the rings are drawn at
+const SPEED = 420                 // drawing units per second (600 until 19/10/2026: too fast, said Andrea)
 const LAYERS = [270, 160, 70]    // lengths of the dashes that make one stretch, longest first
 const LAYER_INK = 0.19            // opacity of each dash: where all of them overlap, the stretch is strongest
 const SPACING = 620               // one stretch of flow every this many units of line
