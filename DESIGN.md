@@ -82,19 +82,21 @@ Due famiglie, scelte per contrasto di **larghezza** (non grazie contro bastoni):
    tracciano all'avvio e scorrono piano con la pagina. Finito il disegno, le linee portano informazione (19/10/2026,
    chiesto da Andrea: «più l'idea del flusso di informazioni», restando minimale). Ogni 9 secondi le righe si illuminano
    in azzurro una dopo l'altra dalla vetta verso l'esterno, come una pulsazione, sfumando (il cerchio che partiva dalla
-   vetta è stato tolto il 19/10/2026, chiesto da Andrea). Lungo sei curve scorrono tratti
-   della linea stessa, nello stesso colore ma più intensi, tutti alla stessa velocità (420 unità al secondo: veloce perché, chiesto da Andrea, «le informazioni devono
+   vetta è stato tolto il 19/10/2026, chiesto da Andrea). Lungo sei curve corrono piccoli impulsi, come la corrente in
+   un nervo (chiesto da Andrea la sera del 19/10/2026: prima erano tratti lunghi 270, uguali ai due capi): ogni impulso
+   è lungo 140, sottile (1 px) e tenue, fatto di quattro trattini che finiscono tutti sulla testa, così la testa è il
+   punto più chiaro e la coda sfuma dietro. Nello stesso colore della linea, tutti alla stessa velocità (420 unità al secondo: veloce perché, chiesto da Andrea, «le informazioni devono
    circolare velocemente»; 600 fino alla sera del 19/10/2026, quando Andrea l'ha trovata troppo veloce) e a distanza
-   regolare, a curve alterne in versi opposti: non pallini azzurri (scelto da Andrea) ma la linea che scorre. Ogni tratto
-   sfuma ai due capi, senza stacco netto: sono quattro trattini di lunghezze diverse con lo stesso centro, ognuno leggero
-   (chiesto da Andrea lo stesso giorno, insieme a più velocità).
+   regolare, a curve alterne in versi opposti: non pallini azzurri (scelto da Andrea) ma la linea che scorre.
    Il segnale e il flusso si disegnano su un `<canvas>` sopra le curve ferme (`titanoFlusso.js`), 60 volte al
    secondo (a 30 il tratto veloce va a scatti). Gira sempre, anche a pagina scorsa e mentre si scorre: fermarlo fuori
    dalla cima, o durante lo scorrimento, sembrava rotto (19/10/2026, chiesto da Andrea); si ferma solo con l'apertura
    fuori dallo schermo e riparte dallo stesso punto. Misurato quel giorno sul fisso, Chrome a finestra intera
    (3072 px): 60 fotogrammi al secondo fermo, in chiaro e in scuro; scorrendo di solito pieni, a volte qualche
    fotogramma saltato (da 0 a 14 su 179, uno alla volta, contro 0-1 a tela spenta), mai lavoro lungo in JavaScript.
-   Le misure valgono solo con Chrome in primo piano: coperto da altre finestre rallenta ogni pagina. La tela si misura solo quando cambia la finestra:
+   Le misure valgono solo con Chrome in primo piano: coperto da altre finestre rallenta ogni pagina. La tela si misura solo quando cambia la finestra,
+   anche solo in altezza (il disegno è alto uno schermo: fino al 19/10/2026 la tela restava tarata sull'altezza
+   vecchia e il flusso finiva fuori dalle curve) e quando la vetta si sposta sotto i pulsanti:
    ridimensionarla a ogni pausa dello scorrimento faceva scattare la pagina. E solo dove non c'è un vetro
    smerigliato sopra (la barra in alto, l'indice): la prima versione, con le animazioni CSS dentro l'SVG, faceva
    rifare al browser tutto il disegno e la sfocatura dei vetri a ogni fotogramma, e online scattava e lampeggiava
