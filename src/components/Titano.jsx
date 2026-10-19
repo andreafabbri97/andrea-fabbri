@@ -1,12 +1,12 @@
 import { useEffect, useRef } from 'react'
 import { motionAllowed } from './motion'
+import { startFlow } from './titanoFlusso'
 
 // Contour lines of a ridge shaped like Monte Titano: long from north-west to south-east, steep on
 // the east side, where the lines crowd together. Drawn once at opening, then they drift slowly with
 // the scroll (a pure function of the scroll position). A stylized drawing, not survey data.
-// Once drawn, the lines carry information: every few seconds a signal leaves the summit and runs out
-// ring by ring, fading as it goes, and the lines themselves flow: stretches of them, a little
-// stronger, run along at one common speed.
+// Once drawn, the lines carry information (titanoFlusso.js, on a canvas over the still rings): every few
+// seconds a signal leaves the summit and runs out ring by ring, and stretches of the lines run along them.
 const RINGS = 13
 const POINTS = 120
 // The summit sits in the free space under the text column, away from the name and the index.
@@ -28,41 +28,9 @@ function ringPoints(k) {
 }
 
 const toPath = (pts) => 'M' + pts.map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`).join(' L') + ' Z'
-const length = (pts) => pts.slice(1).reduce((sum, [x, y], i) => sum + Math.hypot(x - pts[i][0], y - pts[i][1]), 0)
 
 const RING_POINTS = Array.from({ length: RINGS }, (_, k) => ringPoints(k))
 const PATHS = RING_POINTS.map(toPath)
-
-// The flow, in drawing units. A stretch of flow is the line itself, a little stronger (same colour, more ink),
-// so it reads as information running through it. It has no hard edge: it is a few dashes of different
-// lengths laid on the same centre, each faint, so the ink grows towards the middle and fades at both
-// ends. Every stretch moves at the same speed and they come at a regular spacing, so the longer rings
-// carry more of them: a steady flow, not a single dot. Odd rings only, alternating direction, like traffic.
-const DRAWN = 3.4          // seconds: when the opening drawing is complete and the flow starts
-const SPEED = 125          // drawing units per second along a line
-const LAYERS = [280, 190, 115, 55] // lengths of the dashes that make one stretch, longest first
-const LAYER_INK = 0.15     // opacity of each dash: where all of them overlap, the stretch is strongest
-const SPACING = 620        // one stretch of flow every this many units of line
-const WAVE = 9             // seconds between two signals from the summit
-const WAVE_STEP = 0.17     // seconds the signal takes to go from one ring to the next
-const FLOW = RING_POINTS.flatMap((pts, k) => {
-  if (k % 2 === 0 || k === RINGS - 1) return []
-  const len = length(pts)
-  const count = Math.max(1, Math.round(len / SPACING))
-  const gap = 1 / count
-  const forward = k % 4 === 1
-  const start = DRAWN + k * 0.35
-  return [{
-    k, forward, start,
-    duration: len / SPEED,
-    // A shorter dash starts (L0 - L) / 2 further along the line, so all of them share the same centre:
-    // going forward that is earlier in time, going backward later.
-    layers: LAYERS.map((l) => ({
-      dash: `${(l / len).toFixed(4)} ${(gap - l / len).toFixed(4)}`,
-      delay: start + (forward ? -1 : 1) * ((LAYERS[0] - l) / 2) / SPEED,
-    })),
-  }]
-})
 
 // Where the summit goes, as a shift of the rings (in drawing units), measured on the page so it fits any screen.
 // Phone and tablet: the column is one and the summit would end up under the index of work, so it moves to the
@@ -90,11 +58,14 @@ function summitShift(svg) {
 export default function Titano() {
   const ref = useRef(null)
   const rings = useRef(null)
+  const canvas = useRef(null)
+  const shift = useRef(null)
 
   useEffect(() => {
     const place = () => {
       if (!ref.current || !rings.current) return
       const t = summitShift(ref.current)
+      shift.current = t
       rings.current.setAttribute('transform', t ? `translate(${t[0].toFixed(1)} ${t[1].toFixed(1)})` : '')
     }
     place()
@@ -103,12 +74,33 @@ export default function Titano() {
     return () => resize.disconnect()
   }, [])
 
-  // The flow runs only while the opening is on screen: scrolled away, it stops and waits.
+  // The flow on the canvas, in the SVG's coordinates: the drawing's box is one screen tall from the top of
+  // the opening, scaled to cover it (preserveAspectRatio slice), plus the summit shift. The canvas covers only
+  // the part of the opening that is not under frosted glass (the bar at the top, the index of work): a change
+  // under a backdrop blur makes the browser blur it all again, and that was the lag and the flicker.
   useEffect(() => {
-    if (!motionAllowed() || !('IntersectionObserver' in window) || !ref.current) return undefined
-    const io = new IntersectionObserver(([e]) => ref.current?.classList.toggle('fermo', !e.isIntersecting))
-    io.observe(ref.current)
-    return () => io.disconnect()
+    if (!motionAllowed() || !canvas.current || !('IntersectionObserver' in window)) return undefined
+    const mapping = () => {
+      const svg = ref.current, box = canvas.current?.parentElement?.getBoundingClientRect()
+      if (!svg || !box) return null
+      const w = box.width, h = svg.getBoundingClientRect().height
+      const scale = Math.max(w / 1600, h / 900)
+      const [tx, ty] = shift.current || [0, 0]
+      const lift = parseFloat(svg.style.transform.replace(/[^\d.-]/g, '')) || 0 // the scroll drift, same on the canvas
+      const bar = document.querySelector('header')?.getBoundingClientRect()
+      const index = document.getElementById('work')?.getBoundingClientRect()
+      let top = bar ? Math.max(0, bar.bottom - box.top - lift) : 0, right = w, bottom = box.height
+      if (index && index.width) {
+        if (index.left - box.left > w / 3) right = index.left - box.left // computer: the index stands on the right
+        else bottom = Math.min(bottom, index.top - box.top - lift)         // phone: the index comes after the opening
+      }
+      top = Math.round(top)
+      return {
+        left: 0, top, width: Math.round(right), height: Math.round(bottom - top), dpr: 1, scale,
+        x: (w - 1600 * scale) / 2 + tx * scale, y: (h - 900 * scale) / 2 + ty * scale - top,
+      }
+    }
+    return startFlow({ canvas: canvas.current, ringPoints: RING_POINTS, paths: PATHS, centre: [CX, CY], mapping })
   }, [])
 
   useEffect(() => {
@@ -117,7 +109,10 @@ export default function Titano() {
     const move = () => {
       frame = 0
       const y = Math.round(window.scrollY * 0.18)
-      if (y !== last && ref.current) { ref.current.style.transform = `translateY(${y}px)`; last = y }
+      if (y === last) return
+      last = y
+      if (ref.current) ref.current.style.transform = `translateY(${y}px)`
+      if (canvas.current) canvas.current.style.transform = `translateY(${y}px)`
     }
     const onScroll = () => { if (!frame) frame = requestAnimationFrame(move) }
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -138,25 +133,10 @@ export default function Titano() {
             strokeOpacity={k === 0 ? 0.8 : k % 4 === 0 ? 0.32 : 0.15}
             strokeWidth={k % 4 === 0 ? 1.6 : 1} />
         ))}
-        {PATHS.map((d, k) => (
-          <path key={`onda${k}`} d={d} pathLength="1" className="onda"
-            style={{ animationDelay: `${DRAWN + k * WAVE_STEP}s`, animationDuration: `${WAVE}s` }}
-            stroke="rgb(var(--azzurro))" strokeOpacity={(0.55 * (1 - k / RINGS)).toFixed(2)} strokeWidth="1.2" />
-        ))}
-        {FLOW.map((p) => (
-          <g key={`flusso${p.k}`} className="flusso" style={{ animationDelay: `${p.start}s` }}>
-            {p.layers.map((l, i) => (
-              <path key={i} d={PATHS[p.k]} pathLength="1" className={p.forward ? 'scorre-avanti' : 'scorre-indietro'}
-                style={{ animationDuration: `${p.duration.toFixed(1)}s`, animationDelay: `${l.delay.toFixed(2)}s` }}
-                stroke="rgb(var(--tenue))" strokeOpacity={LAYER_INK} strokeWidth="1.3" strokeDasharray={l.dash} strokeLinecap="round" />
-            ))}
-          </g>
-        ))}
-        <circle cx={CX} cy={CY} r="4" className="battito" style={{ animationDelay: `${DRAWN}s`, animationDuration: `${WAVE}s` }}
-          fill="none" stroke="rgb(var(--azzurro))" strokeWidth="1.2" vectorEffect="non-scaling-stroke" />
         <circle cx={CX} cy={CY} r="4" fill="rgb(var(--azzurro))" />
         </g>
       </svg>
+      <canvas ref={canvas} className="absolute left-0 top-0" />
     </div>
   )
 }

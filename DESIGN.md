@@ -85,7 +85,13 @@ Due famiglie, scelte per contrasto di **larghezza** (non grazie contro bastoni):
    della linea stessa, nello stesso colore ma più intensi, tutti alla stessa velocità (125 unità al secondo) e a distanza
    regolare, a curve alterne in versi opposti: non pallini azzurri (scelto da Andrea) ma la linea che scorre. Ogni tratto
    sfuma ai due capi, senza stacco netto: sono quattro trattini di lunghezze diverse con lo stesso centro, ognuno leggero
-   (chiesto da Andrea lo stesso giorno, insieme a più velocità). Si ferma quando
+   (chiesto da Andrea lo stesso giorno, insieme a più velocità).
+   Il segnale e il flusso si disegnano su un `<canvas>` sopra le curve ferme (`titanoFlusso.js`), al massimo 30
+   volte al secondo, fermi mentre si scorre, fuori schermo e a scheda nascosta. E solo dove non c'è un vetro
+   smerigliato sopra (la barra in alto, l'indice): la prima versione, con le animazioni CSS dentro l'SVG, faceva
+   rifare al browser tutto il disegno e la sfocatura dei vetri a ogni fotogramma, e online scattava e lampeggiava
+   (19/10/2026). Misurato col processore rallentato quattro volte: 33 ms a fotogramma prima, 20 adesso, 17 senza
+   nessuna animazione. Regola: sotto un `backdrop-filter` non si anima niente. Si ferma quando
    l'apertura esce dallo schermo; con il movimento ridotto non c'è. Sul telefono sfumano verso l'alto per non stare sotto il
    testo. La scritta della vetta («Monte Titano, 739 m») non c'è più nemmeno sul computer (scelto da Andrea il
    17/10/2026): si capisce dal disegno, e il nome scritto legava troppo il sito a San Marino.
