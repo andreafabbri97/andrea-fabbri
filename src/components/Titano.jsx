@@ -34,12 +34,14 @@ const RING_POINTS = Array.from({ length: RINGS }, (_, k) => ringPoints(k))
 const PATHS = RING_POINTS.map(toPath)
 
 // The flow, in drawing units. A stretch of flow is the line itself, a little stronger (same colour, more ink),
-// so it reads as information running through it. Every stretch moves at the same speed and they come at
-// a regular spacing, so the longer rings carry more of them: a steady flow, not a single dot. Odd rings
-// only, alternating direction, like traffic.
+// so it reads as information running through it. It has no hard edge: it is a few dashes of different
+// lengths laid on the same centre, each faint, so the ink grows towards the middle and fades at both
+// ends. Every stretch moves at the same speed and they come at a regular spacing, so the longer rings
+// carry more of them: a steady flow, not a single dot. Odd rings only, alternating direction, like traffic.
 const DRAWN = 3.4          // seconds: when the opening drawing is complete and the flow starts
-const SPEED = 70           // drawing units per second along a line
-const HEAD = 70, TAIL = 240 // length of the stronger head and of the softer trail behind it
+const SPEED = 125          // drawing units per second along a line
+const LAYERS = [280, 190, 115, 55] // lengths of the dashes that make one stretch, longest first
+const LAYER_INK = 0.15     // opacity of each dash: where all of them overlap, the stretch is strongest
 const SPACING = 620        // one stretch of flow every this many units of line
 const WAVE = 9             // seconds between two signals from the summit
 const WAVE_STEP = 0.17     // seconds the signal takes to go from one ring to the next
@@ -49,14 +51,16 @@ const FLOW = RING_POINTS.flatMap((pts, k) => {
   const count = Math.max(1, Math.round(len / SPACING))
   const gap = 1 / count
   const forward = k % 4 === 1
+  const start = DRAWN + k * 0.35
   return [{
-    k, forward,
+    k, forward, start,
     duration: len / SPEED,
-    head: `${(HEAD / len).toFixed(4)} ${(gap - HEAD / len).toFixed(4)}`,
-    tail: `${(TAIL / len).toFixed(4)} ${(gap - TAIL / len).toFixed(4)}`,
-    // Going forward the front of a dash is its far end: the head starts ahead by the difference.
-    lead: forward ? ((TAIL - HEAD) / len) * (len / SPEED) : 0,
-    delay: DRAWN + k * 0.35,
+    // A shorter dash starts (L0 - L) / 2 further along the line, so all of them share the same centre:
+    // going forward that is earlier in time, going backward later.
+    layers: LAYERS.map((l) => ({
+      dash: `${(l / len).toFixed(4)} ${(gap - l / len).toFixed(4)}`,
+      delay: start + (forward ? -1 : 1) * ((LAYERS[0] - l) / 2) / SPEED,
+    })),
   }]
 })
 
@@ -140,13 +144,12 @@ export default function Titano() {
             stroke="rgb(var(--azzurro))" strokeOpacity={(0.55 * (1 - k / RINGS)).toFixed(2)} strokeWidth="1.2" />
         ))}
         {FLOW.map((p) => (
-          <g key={`flusso${p.k}`} className="flusso" style={{ animationDelay: `${p.delay}s` }}>
-            <path d={PATHS[p.k]} pathLength="1" className={p.forward ? 'scorre-avanti' : 'scorre-indietro'}
-              style={{ animationDuration: `${p.duration.toFixed(1)}s`, animationDelay: `${p.delay}s` }}
-              stroke="rgb(var(--tenue))" strokeOpacity="0.3" strokeWidth="1.1" strokeDasharray={p.tail} strokeLinecap="round" />
-            <path d={PATHS[p.k]} pathLength="1" className={p.forward ? 'scorre-avanti' : 'scorre-indietro'}
-              style={{ animationDuration: `${p.duration.toFixed(1)}s`, animationDelay: `${(p.delay - p.lead).toFixed(2)}s` }}
-              stroke="rgb(var(--tenue))" strokeOpacity="0.6" strokeWidth="1.4" strokeDasharray={p.head} strokeLinecap="round" />
+          <g key={`flusso${p.k}`} className="flusso" style={{ animationDelay: `${p.start}s` }}>
+            {p.layers.map((l, i) => (
+              <path key={i} d={PATHS[p.k]} pathLength="1" className={p.forward ? 'scorre-avanti' : 'scorre-indietro'}
+                style={{ animationDuration: `${p.duration.toFixed(1)}s`, animationDelay: `${l.delay.toFixed(2)}s` }}
+                stroke="rgb(var(--tenue))" strokeOpacity={LAYER_INK} strokeWidth="1.3" strokeDasharray={l.dash} strokeLinecap="round" />
+            ))}
           </g>
         ))}
         <circle cx={CX} cy={CY} r="4" className="battito" style={{ animationDelay: `${DRAWN}s`, animationDuration: `${WAVE}s` }}

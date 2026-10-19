@@ -82,8 +82,10 @@ Due famiglie, scelte per contrasto di **larghezza** (non grazie contro bastoni):
    tracciano all'avvio e scorrono piano con la pagina. Finito il disegno, le linee portano informazione (19/10/2026,
    chiesto da Andrea: «più l'idea del flusso di informazioni», restando minimale). Ogni 9 secondi parte un segnale
    dalla vetta che si allarga anello dopo anello in azzurro, sfumando verso l'esterno. Lungo sei curve scorrono tratti
-   della linea stessa, nello stesso colore ma più intensi, tutti alla stessa velocità e a distanza regolare, a curve
-   alterne in versi opposti: non pallini azzurri (scelto da Andrea) ma la linea che scorre. Si ferma quando
+   della linea stessa, nello stesso colore ma più intensi, tutti alla stessa velocità (125 unità al secondo) e a distanza
+   regolare, a curve alterne in versi opposti: non pallini azzurri (scelto da Andrea) ma la linea che scorre. Ogni tratto
+   sfuma ai due capi, senza stacco netto: sono quattro trattini di lunghezze diverse con lo stesso centro, ognuno leggero
+   (chiesto da Andrea lo stesso giorno, insieme a più velocità). Si ferma quando
    l'apertura esce dallo schermo; con il movimento ridotto non c'è. Sul telefono sfumano verso l'alto per non stare sotto il
    testo. La scritta della vetta («Monte Titano, 739 m») non c'è più nemmeno sul computer (scelto da Andrea il
    17/10/2026): si capisce dal disegno, e il nome scritto legava troppo il sito a San Marino.
