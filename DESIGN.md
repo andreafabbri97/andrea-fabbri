@@ -80,14 +80,18 @@ Due famiglie, scelte per contrasto di **larghezza** (non grazie contro bastoni):
    Si tracciano da soli la prima volta che arrivano sullo schermo.
 2. **Un disegno di sfondo in apertura:** le curve di livello del Monte Titano (739 m, da Wikipedia), che si
    tracciano all'avvio e scorrono piano con la pagina. Finito il disegno, le linee portano informazione (19/10/2026,
-   chiesto da Andrea: «più l'idea del flusso di informazioni», restando minimale). Ogni 9 secondi parte un segnale
-   dalla vetta che si allarga anello dopo anello in azzurro, sfumando verso l'esterno. Lungo sei curve scorrono tratti
-   della linea stessa, nello stesso colore ma più intensi, tutti alla stessa velocità (125 unità al secondo) e a distanza
+   chiesto da Andrea: «più l'idea del flusso di informazioni», restando minimale). Ogni 9 secondi le righe si illuminano
+   in azzurro una dopo l'altra dalla vetta verso l'esterno, come una pulsazione, sfumando (il cerchio che partiva dalla
+   vetta è stato tolto il 19/10/2026, chiesto da Andrea). Lungo sei curve scorrono tratti
+   della linea stessa, nello stesso colore ma più intensi, tutti alla stessa velocità (600 unità al secondo, poco più della metà di quella con cui si disegnano le righe
+   all'apertura: chiesto da Andrea, «le informazioni devono circolare velocemente») e a distanza
    regolare, a curve alterne in versi opposti: non pallini azzurri (scelto da Andrea) ma la linea che scorre. Ogni tratto
    sfuma ai due capi, senza stacco netto: sono quattro trattini di lunghezze diverse con lo stesso centro, ognuno leggero
    (chiesto da Andrea lo stesso giorno, insieme a più velocità).
-   Il segnale e il flusso si disegnano su un `<canvas>` sopra le curve ferme (`titanoFlusso.js`), al massimo 30
-   volte al secondo, fermi mentre si scorre, fuori schermo e a scheda nascosta. E solo dove non c'è un vetro
+   Il segnale e il flusso si disegnano su un `<canvas>` sopra le curve ferme (`titanoFlusso.js`), 60 volte al
+   secondo (a 30 il tratto veloce va a scatti), solo con la pagina in cima: appena si scorre il disegno passa sotto i
+   vetri, quindi il flusso si ferma dov'è e riparte tornando su. La tela si misura solo quando cambia la finestra:
+   ridimensionarla a ogni pausa dello scorrimento faceva scattare la pagina. E solo dove non c'è un vetro
    smerigliato sopra (la barra in alto, l'indice): la prima versione, con le animazioni CSS dentro l'SVG, faceva
    rifare al browser tutto il disegno e la sfocatura dei vetri a ogni fotogramma, e online scattava e lampeggiava
    (19/10/2026). Misurato col processore rallentato quattro volte: 33 ms a fotogramma prima, 20 adesso, 17 senza

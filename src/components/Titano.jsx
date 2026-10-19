@@ -80,27 +80,27 @@ export default function Titano() {
   // under a backdrop blur makes the browser blur it all again, and that was the lag and the flicker.
   useEffect(() => {
     if (!motionAllowed() || !canvas.current || !('IntersectionObserver' in window)) return undefined
+    // Measured as if the page were at the top (where the flow runs), so it does not change with the scroll.
     const mapping = () => {
       const svg = ref.current, box = canvas.current?.parentElement?.getBoundingClientRect()
       if (!svg || !box) return null
       const w = box.width, h = svg.getBoundingClientRect().height
       const scale = Math.max(w / 1600, h / 900)
       const [tx, ty] = shift.current || [0, 0]
-      const lift = parseFloat(svg.style.transform.replace(/[^\d.-]/g, '')) || 0 // the scroll drift, same on the canvas
       const bar = document.querySelector('header')?.getBoundingClientRect()
       const index = document.getElementById('work')?.getBoundingClientRect()
-      let top = bar ? Math.max(0, bar.bottom - box.top - lift) : 0, right = w, bottom = box.height
+      let top = bar ? Math.max(0, bar.bottom - (box.top + window.scrollY)) : 0, right = w, bottom = box.height
       if (index && index.width) {
         if (index.left - box.left > w / 3) right = index.left - box.left // computer: the index stands on the right
-        else bottom = Math.min(bottom, index.top - box.top - lift)         // phone: the index comes after the opening
+        else bottom = Math.min(bottom, index.top - box.top)              // phone: the index comes after the opening
       }
       top = Math.round(top)
       return {
-        left: 0, top, width: Math.round(right), height: Math.round(bottom - top), dpr: 1, scale,
+        top, width: Math.round(right), height: Math.round(bottom - top), dpr: 1, scale,
         x: (w - 1600 * scale) / 2 + tx * scale, y: (h - 900 * scale) / 2 + ty * scale - top,
       }
     }
-    return startFlow({ canvas: canvas.current, ringPoints: RING_POINTS, paths: PATHS, centre: [CX, CY], mapping })
+    return startFlow({ canvas: canvas.current, ringPoints: RING_POINTS, paths: PATHS, mapping })
   }, [])
 
   useEffect(() => {

@@ -1,25 +1,24 @@
 // The flow on the Titano rings, drawn on a canvas laid over the drawing. The rings themselves stay a
 // still SVG: before, the flow was CSS animations inside that SVG, and every frame the browser redrew the
 // whole drawing under the mask and the frosted index (on the live site: lag and flicker, 19/10/2026).
-// Here only the moving parts are drawn, at most 30 times a second, and nothing while the page scrolls,
-// while the opening is off screen or while the tab is hidden.
+// Here only the moving parts are drawn, and only while the page is at the top: scrolled, the drawing
+// slides under the frosted bar and index, so the flow stops where it is and starts again back at the top.
+// The canvas is measured when the window changes, never while scrolling: resizing a canvas is costly.
 //
 // What moves:
-// - the signal: every WAVE seconds a ring around the summit opens and fades, and the rings light up in
-//   turn from the summit outwards, fading as they get further away;
+// - the signal: every WAVE seconds the rings light up in turn from the summit outwards, like a pulse,
+//   fading as they get further away;
 // - the flow: stretches of the line itself, a little stronger, run along six rings at one speed. Each
 //   stretch is a few dashes of different lengths on the same centre, so it fades at both ends.
 
 export const DRAWN = 3.4          // seconds: when the opening drawing is complete and the flow starts
-const SPEED = 125                 // drawing units per second along a line
+const SPEED = 600                 // drawing units per second: a little over half the speed the rings are drawn at
 const LAYERS = [270, 160, 70]    // lengths of the dashes that make one stretch, longest first
 const LAYER_INK = 0.19            // opacity of each dash: where all of them overlap, the stretch is strongest
 const SPACING = 620               // one stretch of flow every this many units of line
 const WAVE = 9                    // seconds between two signals from the summit
 const WAVE_STEP = 0.17            // seconds the signal takes to go from one ring to the next
 const FADE_IN = 1.6               // seconds the flow takes to appear once the drawing is done
-const FRAME = 1000 / 30           // at most 30 drawings a second: the flow is slow, more is wasted work
-const QUIET = 160                 // milliseconds without scrolling before the flow moves again
 
 // One ring as a polyline with the distance from its start at every point, to find a stretch by length.
 function measured(pts) {
@@ -58,7 +57,7 @@ function waveLight(t, k) {
   return 0
 }
 
-export function startFlow({ canvas, ringPoints, paths, centre, mapping }) {
+export function startFlow({ canvas, ringPoints, paths, mapping }) {
   const ctx = canvas.getContext('2d')
   if (!ctx) return () => {}
   const rings = ringPoints.map(measured)
@@ -68,25 +67,29 @@ export function startFlow({ canvas, ringPoints, paths, centre, mapping }) {
     return [{ ring, count: Math.max(1, Math.round(ring.len / SPACING)), dir: k % 4 === 1 ? 1 : -1, start: DRAWN + k * 0.35 }]
   })
 
-  let colours = null, frame = 0, last = 0, visible = true, scrolledAt = 0
+  let colours = null, frame = 0, visible = true, m = null
   const born = performance.now()
   const readColours = () => {
     const css = getComputedStyle(document.documentElement)
     colours = { line: css.getPropertyValue('--tenue').trim(), signal: css.getPropertyValue('--azzurro').trim() }
   }
 
-  const draw = (now) => {
-    frame = requestAnimationFrame(draw)
-    if (!visible || now - last < FRAME || now - scrolledAt < QUIET) return
-    last = now
-    const m = mapping()
-    if (!m || m.width <= 0 || m.height <= 0) return
+  // Size and place the canvas: at opening and when the window changes, never while scrolling.
+  const measure = () => {
+    m = mapping()
+    if (!m || m.width <= 0 || m.height <= 0) { m = null; return }
     const w = Math.round(m.width * m.dpr), h = Math.round(m.height * m.dpr)
     if (canvas.width !== w || canvas.height !== h) {
       canvas.width = w; canvas.height = h
       canvas.style.width = `${m.width}px`; canvas.style.height = `${m.height}px`
     }
-    if (canvas.style.top !== `${m.top}px`) canvas.style.top = `${m.top}px`
+    canvas.style.top = `${m.top}px`
+  }
+
+  const draw = (now) => {
+    frame = requestAnimationFrame(draw)
+    if (!visible || !m || window.scrollY > 0) return
+    const w = canvas.width, h = canvas.height
     if (!colours) readColours()
     const t = (now - born) / 1000
     ctx.setTransform(1, 0, 0, 1, 0, 0)
@@ -102,15 +105,6 @@ export function startFlow({ canvas, ringPoints, paths, centre, mapping }) {
       const a = waveLight(t, k) * 0.55 * (1 - k / shapes.length)
       if (a > 0.01) { ctx.globalAlpha = a; ctx.stroke(shape) }
     })
-    // The beat: a ring that leaves the summit as the signal starts, seven times wider and gone.
-    const since = ((t - DRAWN) % WAVE) / WAVE
-    if (since < 0.14) {
-      const q = 1 - Math.pow(1 - since / 0.14, 3)
-      ctx.globalAlpha = 0.7 * (1 - since / 0.14)
-      ctx.lineWidth = 1.2 / m.scale
-      ctx.beginPath(); ctx.arc(centre[0], centre[1], 4 * (1 + 6 * q), 0, Math.PI * 2); ctx.stroke()
-    }
-
     ctx.strokeStyle = `rgb(${colours.line})`
     ctx.lineWidth = 1.3
     for (const f of flows) {
@@ -129,8 +123,9 @@ export function startFlow({ canvas, ringPoints, paths, centre, mapping }) {
 
   const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting })
   io.observe(canvas)
-  const onScroll = () => { scrolledAt = performance.now() }
-  window.addEventListener('scroll', onScroll, { passive: true })
+  measure()
+  const resize = new ResizeObserver(measure)
+  resize.observe(document.body)
   // The theme can change while the page is open: read the colours again when it does.
   const themes = new MutationObserver(readColours)
   themes.observe(document.documentElement, { attributes: true, attributeFilter: ['data-tema', 'class'] })
@@ -138,7 +133,7 @@ export function startFlow({ canvas, ringPoints, paths, centre, mapping }) {
   scheme.addEventListener('change', readColours)
   frame = requestAnimationFrame(draw)
   return () => {
-    cancelAnimationFrame(frame); io.disconnect(); themes.disconnect()
-    window.removeEventListener('scroll', onScroll); scheme.removeEventListener('change', readColours)
+    cancelAnimationFrame(frame); io.disconnect(); themes.disconnect(); resize.disconnect()
+    scheme.removeEventListener('change', readColours)
   }
 }
