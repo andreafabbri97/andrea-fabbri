@@ -67,6 +67,8 @@ export default function Titano() {
       const t = summitShift(ref.current)
       shift.current = t
       rings.current.setAttribute('transform', t ? `translate(${t[0].toFixed(1)} ${t[1].toFixed(1)})` : '')
+      // The flow's canvas must follow the summit: tell it to measure again, now that the shift is known.
+      canvas.current?.dispatchEvent(new Event('titano-misura'))
     }
     place()
     const resize = new ResizeObserver(place)

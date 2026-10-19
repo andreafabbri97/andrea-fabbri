@@ -142,6 +142,8 @@ export function startFlow({ canvas, ringPoints, paths, mapping }) {
   // the drawing is watched too, or the flow would stay scaled for the old height, off the rings (19/10/2026).
   const drawing = canvas.parentElement?.querySelector('svg')
   if (drawing) resize.observe(drawing)
+  // Titano.jsx moves the summit under the buttons and then asks for a new measure, so the flow follows it.
+  canvas.addEventListener('titano-misura', measure)
   // The theme can change while the page is open: read the colours again when it does.
   const themes = new MutationObserver(readColours)
   themes.observe(document.documentElement, { attributes: true, attributeFilter: ['data-tema', 'class'] })
@@ -151,5 +153,6 @@ export function startFlow({ canvas, ringPoints, paths, mapping }) {
   return () => {
     cancelAnimationFrame(frame); io.disconnect(); themes.disconnect(); resize.disconnect()
     scheme.removeEventListener('change', readColours)
+    canvas.removeEventListener('titano-misura', measure)
   }
 }
