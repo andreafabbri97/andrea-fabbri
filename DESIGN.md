@@ -89,8 +89,11 @@ Due famiglie, scelte per contrasto di **larghezza** (non grazie contro bastoni):
    sfuma ai due capi, senza stacco netto: sono quattro trattini di lunghezze diverse con lo stesso centro, ognuno leggero
    (chiesto da Andrea lo stesso giorno, insieme a più velocità).
    Il segnale e il flusso si disegnano su un `<canvas>` sopra le curve ferme (`titanoFlusso.js`), 60 volte al
-   secondo (a 30 il tratto veloce va a scatti), solo con la pagina in cima: appena si scorre il disegno passa sotto i
-   vetri, quindi il flusso si ferma dov'è e riparte tornando su. La tela si misura solo quando cambia la finestra:
+   secondo (a 30 il tratto veloce va a scatti). Mentre la pagina scorre il flusso si ferma dov'è, così lo scorrimento
+   sotto i vetri resta fluido; 150 ms dopo l'ultimo scorrimento riparte dallo stesso punto, anche a pagina scorsa
+   (19/10/2026, chiesto da Andrea: fermo fuori dalla cima sembrava rotto). Misurato quel giorno sul fisso, Chrome a
+   finestra intera (3072 px): 60 fotogrammi al secondo in cima, scorrendo e fermo più in basso, in chiaro e in scuro,
+   come con le animazioni spente. La tela si misura solo quando cambia la finestra:
    ridimensionarla a ogni pausa dello scorrimento faceva scattare la pagina. E solo dove non c'è un vetro
    smerigliato sopra (la barra in alto, l'indice): la prima versione, con le animazioni CSS dentro l'SVG, faceva
    rifare al browser tutto il disegno e la sfocatura dei vetri a ogni fotogramma, e online scattava e lampeggiava
