@@ -9,13 +9,15 @@
 // What moves:
 // - the signal: every WAVE seconds the rings light up in turn from the summit outwards, like a pulse,
 //   fading as they get further away;
-// - the flow: stretches of the line itself, a little stronger, run along six rings at one speed. Each
-//   stretch is a few dashes of different lengths on the same centre, so it fades at both ends.
+// - the flow: small impulses run along six rings at one speed, like the current along a nerve (asked by
+//   Andrea, 19/10/2026). Each impulse is a few thin dashes of different lengths that all end at its head,
+//   so the head is the brightest point and the tail fades out behind it.
 
 export const DRAWN = 3.4          // seconds: when the opening drawing is complete and the flow starts
 const SPEED = 420                 // drawing units per second (600 until 19/10/2026: too fast, said Andrea)
-const LAYERS = [270, 160, 70]    // lengths of the dashes that make one stretch, longest first
-const LAYER_INK = 0.19            // opacity of each dash: where all of them overlap, the stretch is strongest
+const LAYERS = [140, 85, 45, 18]  // lengths of the dashes behind one impulse's head, longest first
+const LAYER_INK = 0.11            // opacity of each dash: at the head, where all of them overlap, it is strongest
+const IMPULSE_WIDTH = 1           // line width of the impulses, a little under the rings' own
 const SPACING = 620               // one stretch of flow every this many units of line
 const WAVE = 9                    // seconds between two signals from the summit
 const WAVE_STEP = 0.17            // seconds the signal takes to go from one ring to the next
@@ -112,16 +114,20 @@ export function startFlow({ canvas, ringPoints, paths, mapping }) {
       if (a > 0.01) { ctx.globalAlpha = a; ctx.stroke(shape) }
     })
     ctx.strokeStyle = `rgb(${colours.line})`
-    ctx.lineWidth = 1.3
+    ctx.lineWidth = IMPULSE_WIDTH
     for (const f of flows) {
       const fade = Math.min(1, Math.max(0, (t - f.start) / FADE_IN))
       if (fade <= 0) continue
       ctx.globalAlpha = LAYER_INK * fade
       const gap = f.ring.len / f.count
-      const centreAt = f.dir * (t - f.start) * SPEED
+      const headAt = f.dir * (t - f.start) * SPEED
       for (let i = 0; i < f.count; i++) {
-        const c = centreAt + i * gap
-        for (const l of LAYERS) stretch(ctx, f.ring, c - l / 2, c + l / 2)
+        const head = headAt + i * gap
+        // The tail lies behind the head, on the side the impulse comes from.
+        for (const l of LAYERS) {
+          if (f.dir > 0) stretch(ctx, f.ring, head - l, head)
+          else stretch(ctx, f.ring, head, head + l)
+        }
       }
     }
     ctx.globalAlpha = 1
