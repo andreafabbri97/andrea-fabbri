@@ -196,6 +196,20 @@ body {
 /* The opening: contour lines of Monte Titano draw themselves once. */
 @keyframes traccia { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 .curva { stroke-dasharray: 1; animation: traccia 2.4s cubic-bezier(0.65, 0, 0.35, 1) both; }
+/* Then the flow: a signal that leaves the summit ring by ring (.onda, .battito) and pulses that run
+   along the lines (.flusso). Delays and durations come from Titano.jsx; off screen it all stops. */
+@keyframes onda { 0% { opacity: 0; } 4% { opacity: 1; } 18%, 100% { opacity: 0; } }
+.onda { opacity: 0; animation: onda 9s ease-out infinite both; }
+@keyframes battito { 0% { opacity: 0.7; transform: scale(1); } 14%, 100% { opacity: 0; transform: scale(7); } }
+.battito { opacity: 0; transform-box: fill-box; transform-origin: center; animation: battito 9s cubic-bezier(0.22, 1, 0.36, 1) infinite both; }
+@keyframes compare-flusso { from { opacity: 0; } to { opacity: 1; } }
+.flusso { opacity: 0; animation: compare-flusso 1.6s ease both; }
+@keyframes scorre-avanti { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes scorre-indietro { from { stroke-dashoffset: 0; } to { stroke-dashoffset: 1; } }
+.scorre-avanti { animation: scorre-avanti 20s linear infinite both; }
+.scorre-indietro { animation: scorre-indietro 20s linear infinite both; }
+.fermo .onda, .fermo .battito, .fermo .flusso, .fermo .scorre-avanti, .fermo .scorre-indietro { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .onda, .battito, .flusso { display: none; } }
 
 /* The strip of technologies: scrolls by itself, stops under the mouse. */
 @keyframes scorre { from { transform: translateX(0); } to { transform: translateX(-50%); } }
