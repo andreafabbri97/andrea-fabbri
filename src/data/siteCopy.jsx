@@ -46,7 +46,7 @@ export const siteCopy = {
         icon: Briefcase,
         title: 'Management Engineer & Operations',
         org: 'Lenny SRL',
-        period: 'Jun 2023 — Present',
+        period: 'Jun 2023 — Jul 2026',
         location: 'Borgo Maggiore, San Marino · Hybrid',
         bullets: [
           'Part of the management team responsible for business operations, administrative support, and strategic project coordination',
@@ -59,7 +59,7 @@ export const siteCopy = {
         icon: Briefcase,
         title: 'AI Automation Engineer & Software Architect',
         org: 'Lenny SRL',
-        period: 'Jun 2023 — Present',
+        period: 'Jun 2023 — Jul 2026',
         location: 'Borgo Maggiore, San Marino · Hybrid',
         bullets: [
           'Sole architect of Lenny Platform — a 990+ route ERP used daily in a live food-delivery operation, built through AI-assisted engineering',
@@ -184,7 +184,7 @@ export const siteCopy = {
         icon: Briefcase,
         title: 'Ingegnere Gestionale & Operations',
         org: 'Lenny SRL',
-        period: 'Giu 2023 — Presente',
+        period: 'Giu 2023 — Lug 2026',
         location: 'Borgo Maggiore, San Marino · Ibrido',
         bullets: [
           'Parte del team di direzione aziendale: gestione operativa, supporto amministrativo e coordinamento strategico dei progetti',
@@ -197,7 +197,7 @@ export const siteCopy = {
         icon: Briefcase,
         title: 'AI Automation Engineer & Software Architect',
         org: 'Lenny SRL',
-        period: 'Giu 2023 — Presente',
+        period: 'Giu 2023 — Lug 2026',
         location: 'Borgo Maggiore, San Marino · Ibrido',
         bullets: [
           'Unico architetto della Lenny Platform — ERP con 990+ route usato quotidianamente in una operazione food delivery attiva, costruito attraverso ingegneria AI-assistita',
