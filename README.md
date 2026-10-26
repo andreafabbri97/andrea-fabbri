@@ -90,3 +90,11 @@ Da rifare quando cambiano titoli o disegni.
 Il file `public/<chiave>.txt` è la chiave di IndexNow, con cui il sito è segnalato a Bing e Yandex: non va
 tolto. Google Search Console è attiva dal 18/10/2026 sull'account di Andrea (proprietà con prefisso URL),
 verificata col meta tag `google-site-verification` in `index.html`: non toglierlo.
+
+Il nome «Andrea Fabbri» sopra i risultati di Google non può venire da qui: Google prende il nome di un sito solo dalla
+pagina principale del dominio, mai da una sottocartella come `/andrea-fabbri/`, e fino al 26/10/2026 sopra le pagine
+scriveva «GitHub Pages documentation». Dal 26/10/2026 la pagina principale `https://andreafabbri97.github.io/` c'è,
+nel repository pubblico [andreafabbri97.github.io](https://github.com/andreafabbri97/andreafabbri97.github.io): il nome
+in dato strutturato `WebSite`, due pulsanti per entrare qui (italiano e inglese), un `robots.txt` del dominio con la
+mappa del sito, la stessa chiave IndexNow e lo stesso meta tag di Search Console (seconda proprietà, `https://andreafabbri97.github.io/`).
+Non è un rimando automatico, apposta: con un rimando Google non leggerebbe il nome.
