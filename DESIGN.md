@@ -116,6 +116,10 @@ Due famiglie, scelte per contrasto di **larghezza** (non grazie contro bastoni):
    Sulla scala stessa, al posto dei trattini, una riga più lunga e scura dove inizia ogni sezione e una nel colore del
    settore dove inizia ogni progetto (17/10/2026, chiesto da Andrea; una colonna a parte accanto alla scala era confusa). Le posizioni le calcola `pageMarks` in `motion.js`, la stessa per
    tutti e due i righelli.
+   L'ago sta sempre sulla tacca del numero che mostra: a 0% e a 100% è esattamente sulla prima e sull'ultima tacca.
+   Il numero della scala sotto l'ago sparisce, se no si legge «100%00». Il righello comincia a 5,5 rem dall'alto,
+   così resta sotto la barra (4 rem) anche quando la pagina cresce sul fisso (27/10/2026, visto da Andrea: al 100%
+   l'ago restava 4 px sopra la tacca).
    Dove non ci sta (telefono, tablet, portatile stretto) c'è il righello corto (`Avanzamento.jsx`, 17/10/2026,
    chiesto da Andrea): una linea sottile sul bordo basso della barra in alto che si riempie leggendo, con una
    tacca alta dove inizia ogni sezione e una bassa dove inizia ogni progetto, nel colore del suo settore come sul
